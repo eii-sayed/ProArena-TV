@@ -742,6 +742,75 @@ a { text-decoration: none; color: inherit; }
   background: rgba(6, 182, 212, 0.4);
 }
 
+/* ─── Modal ─────────────────────────────────────────────────────────────── */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.8);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+.modal-content {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+.modal-content h3 {
+  margin-top: 0;
+  color: var(--text);
+  font-size: 1.1rem;
+  margin-bottom: 16px;
+}
+.modal-input {
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: var(--radius-sm);
+  margin-bottom: 20px;
+  outline: none;
+}
+.modal-input:focus {
+  border-color: var(--neon);
+  box-shadow: 0 0 0 2px rgba(6,182,212,0.2);
+}
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+.modal-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.modal-btn.cancel {
+  background: transparent;
+  color: var(--text-dim);
+}
+.modal-btn.cancel:hover {
+  background: rgba(255,255,255,0.05);
+}
+.modal-btn.submit {
+  background: var(--neon);
+  color: #000;
+}
+.modal-btn.submit:hover {
+  box-shadow: 0 0 10px var(--neon-glow);
+}
+
 /* ─── Responsive ────────────────────────────────────────────────────────── */
 @media (max-width: 900px) {
   .main-content { flex-direction: column; }

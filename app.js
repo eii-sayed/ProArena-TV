@@ -432,6 +432,68 @@ document.addEventListener('DOMContentLoaded', () => {
   // Import M3U Playlist
   const importBtn = document.getElementById('import-btn');
   const m3uUpload = document.getElementById('m3u-upload');
+  
+  // URL Import Modal
+  const urlImportBtn = document.getElementById('url-import-btn');
+  const urlModal = document.getElementById('url-modal');
+  const urlInput = document.getElementById('url-input');
+  const urlCancel = document.getElementById('url-cancel');
+  const urlSubmit = document.getElementById('url-submit');
+
+  function parseM3UContent(text, categoryName = "Imported") {
+    const lines = text.split(/\r?\n/);
+    let importedCount = 0;
+    let lastNumber = state.channels.reduce((max, c) => Math.max(max, c.number || 0), 0);
+
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i].trim();
+      if (line.startsWith('#EXTINF:')) {
+        const commaIdx = line.indexOf(',');
+        if (commaIdx !== -1) {
+          const name = line.substring(commaIdx + 1).trim();
+          let url = '';
+          for (let j = i + 1; j < lines.length; j++) {
+            const nextLine = lines[j].trim();
+            if (nextLine && !nextLine.startsWith('#')) {
+              url = nextLine;
+              break;
+            }
+          }
+          if (url) {
+            lastNumber++;
+            state.channels.push({
+              id: name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') + '-' + lastNumber,
+              name: name,
+              number: lastNumber,
+              category: categoryName,
+              country: "Unknown",
+              quality: "SD",
+              logo: `https://ui-avatars.com/api/?name=${encodeURIComponent(name.substring(0,2))}&background=1a1a2e&color=e94560&size=200&bold=true`,
+              streams: [{ name: "Stream 1", url: url }],
+              isLive: true,
+              badge: "",
+              isWorking: true
+            });
+            importedCount++;
+          }
+        }
+      }
+    }
+    
+    if (!CATEGORIES.includes(categoryName) && importedCount > 0) {
+      CATEGORIES.push(categoryName);
+      renderCategories();
+    }
+    
+    if (importedCount > 0) {
+      state.category = categoryName;
+      renderCategories();
+      renderChannelList();
+      showToast(`Imported ${importedCount} channels!`);
+    } else {
+      showToast(`No channels found.`);
+    }
+  }
 
   importBtn.addEventListener('click', () => {
     m3uUpload.click();
@@ -443,60 +505,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const reader = new FileReader();
     reader.onload = (event) => {
-      const text = event.target.result;
-      const lines = text.split(/\r?\n/);
-      let importedCount = 0;
-      let lastNumber = state.channels.reduce((max, c) => Math.max(max, c.number || 0), 0);
-
-      for (let i = 0; i < lines.length; i++) {
-        const line = lines[i].trim();
-        if (line.startsWith('#EXTINF:')) {
-          const commaIdx = line.indexOf(',');
-          if (commaIdx !== -1) {
-            const name = line.substring(commaIdx + 1).trim();
-            let url = '';
-            for (let j = i + 1; j < lines.length; j++) {
-              const nextLine = lines[j].trim();
-              if (nextLine && !nextLine.startsWith('#')) {
-                url = nextLine;
-                break;
-              }
-            }
-            if (url) {
-              lastNumber++;
-              state.channels.push({
-                id: name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') + '-' + lastNumber,
-                name: name,
-                number: lastNumber,
-                category: "Imported",
-                country: "Unknown",
-                quality: "SD",
-                logo: `https://ui-avatars.com/api/?name=${encodeURIComponent(name.substring(0,2))}&background=1a1a2e&color=e94560&size=200&bold=true`,
-                streams: [{ name: "Stream 1", url: url }],
-                isLive: true,
-                badge: "",
-                isWorking: true
-              });
-              importedCount++;
-            }
-          }
-        }
-      }
-      
-      if (!CATEGORIES.includes('Imported') && importedCount > 0) {
-        CATEGORIES.push('Imported');
-        renderCategories();
-      }
-      
-      if (importedCount > 0) {
-        state.category = 'Imported';
-        renderCategories();
-        renderChannelList();
-        showToast(`Imported ${importedCount} channels!`);
-      }
+      parseM3UContent(event.target.result, "File Import");
       m3uUpload.value = ''; 
     };
     reader.readAsText(file);
+  });
+
+  urlImportBtn.addEventListener('click', () => {
+    urlModal.style.display = 'flex';
+    urlInput.focus();
+  });
+
+  urlCancel.addEventListener('click', () => {
+    urlModal.style.display = 'none';
+    urlInput.value = '';
+  });
+
+  urlSubmit.addEventListener('click', async () => {
+    const url = urlInput.value.trim();
+    if (!url) return;
+    
+    urlSubmit.textContent = 'Loading...';
+    urlSubmit.disabled = true;
+
+    try {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error('Network response was not ok');
+      const text = await response.text();
+      parseM3UContent(text, "URL Import");
+      urlModal.style.display = 'none';
+      urlInput.value = '';
+    } catch (error) {
+      showToast('Error fetching URL. Check CORS or URL validity.');
+      console.error(error);
+    } finally {
+      urlSubmit.textContent = 'Import';
+      urlSubmit.disabled = false;
+    }
   });
 
   // Load channels

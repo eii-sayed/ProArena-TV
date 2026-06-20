@@ -34,7 +34,10 @@
       </div>
 
       <div class="header-actions">
-        <button class="header-btn" id="import-btn" title="Import .m3u Playlist">
+        <button class="header-btn" id="url-import-btn" title="Fetch .m3u from URL">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+        </button>
+        <button class="header-btn" id="import-btn" title="Import Local .m3u File">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
         </button>
         <input type="file" id="m3u-upload" accept=".m3u,.m3u8" style="display: none;">
@@ -76,31 +79,38 @@
           <!-- Error state -->
           <div class="player-error" id="player-error" style="display:none;">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-            <p>Stream unavailable or offline</p>
-            <button id="retry-btn">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;display:inline;vertical-align:middle;margin-right:4px;"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
-              Try Again
-            </button>
+            <h3 id="error-title">Stream Offline</h3>
+            <p id="error-desc">This channel is currently unavailable.</p>
+            <button class="retry-btn" id="retry-btn">Try Again</button>
           </div>
         </div>
 
-        <!-- Now Playing info -->
-        <div class="now-playing" id="now-playing" style="display:none;"></div>
+        <div class="player-details">
+          <div class="ch-badge" id="player-badge">LIVE</div>
+          <h2 class="player-title" id="player-title">Welcome to ProArena</h2>
+          <p class="player-subtitle" id="player-subtitle">Select a channel to view its streams</p>
+          
+          <!-- Stream selector chips -->
+          <div class="stream-selector" id="stream-selector"></div>
+        </div>
       </section>
 
       <!-- ─── Sidebar ─── -->
       <aside class="sidebar">
-
-        <!-- Search -->
-        <div class="search-row">
+        
+        <div class="sidebar-header">
+          <!-- Search -->
           <div class="search-box">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            <input type="text" id="channel-search" placeholder="Search channels... (Press /)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="channel-search" placeholder="Search channels... ( / )">
           </div>
-          <button class="filter-btn active" id="filter-online">Online Only</button>
+          
+          <div class="sidebar-filters">
+            <button class="filter-btn" id="filter-online">Online Only</button>
+          </div>
         </div>
 
-        <!-- Category pills -->
+        <!-- Category Pills -->
         <div class="category-pills hide-scrollbar" id="category-pills"></div>
 
         <!-- Channel count -->
@@ -120,6 +130,18 @@
 
     </main>
 
+  </div>
+
+  <!-- URL Import Modal -->
+  <div class="modal-overlay" id="url-modal" style="display:none;">
+    <div class="modal-content">
+      <h3>Import Playlist from URL</h3>
+      <input type="text" id="url-input" placeholder="https://example.com/playlist.m3u" class="modal-input">
+      <div class="modal-actions">
+        <button class="modal-btn cancel" id="url-cancel">Cancel</button>
+        <button class="modal-btn submit" id="url-submit">Import</button>
+      </div>
+    </div>
   </div>
 
   <!-- App JS -->
