@@ -184,6 +184,44 @@ function playChannel(ch, streamIdx = 0) {
   loadStream(url);
 }
 
+function renderNowPlaying() {
+  const ch = state.activeChannel;
+  if (!ch) return;
+
+  const badgeEl = document.getElementById('player-badge');
+  const titleEl = document.getElementById('player-title');
+  const subtitleEl = document.getElementById('player-subtitle');
+  const streamsEl = document.getElementById('stream-selector');
+
+  if (ch.badge) {
+    badgeEl.textContent = ch.badge;
+    badgeEl.className = 'ch-badge ' + badgeClass(ch.badge);
+    badgeEl.style.display = 'inline-block';
+  } else {
+    badgeEl.style.display = 'none';
+  }
+
+  titleEl.textContent = ch.name;
+  subtitleEl.textContent = `${ch.category} • ${ch.country || 'Unknown'}`;
+
+  // Streams
+  if (ch.streams && ch.streams.length > 1) {
+    streamsEl.innerHTML = ch.streams.map((s, idx) => `
+      <button class="stream-chip${idx === state.activeStreamIdx ? ' active' : ''}" data-idx="${idx}">
+        ${s.name || 'Stream ' + (idx + 1)}
+      </button>
+    `).join('');
+    
+    streamsEl.querySelectorAll('.stream-chip').forEach(btn => {
+      btn.addEventListener('click', () => {
+        playChannel(ch, parseInt(btn.dataset.idx));
+      });
+    });
+  } else {
+    streamsEl.innerHTML = '';
+  }
+}
+
 function loadStream(url) {
   const video = document.getElementById('player-video');
   const idleEl = document.getElementById('player-idle');
