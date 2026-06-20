@@ -387,10 +387,12 @@ function showToast(msg) {
   }, 2000);
 }
 
-// ─── Retry ──────────────────────────────────────────────────────────────────
 function retryStream() {
   if (state.activeChannel) {
     playChannel(state.activeChannel, state.activeStreamIdx);
+  }
+}
+
 // ─── Init ───────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   // Clock
