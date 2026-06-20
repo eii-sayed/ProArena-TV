@@ -293,11 +293,17 @@ function loadStream(url) {
   const overlayTop = document.getElementById('player-overlay-top');
   const qualityBadge = document.getElementById('current-quality');
   const qualitySelector = document.getElementById('quality-selector');
+  const ccBtn = document.getElementById('caption-btn');
 
   // Reset states
   if (overlayTop) overlayTop.style.display = 'none';
   if (qualityBadge) qualityBadge.textContent = 'Auto';
   if (qualitySelector) qualitySelector.innerHTML = '<option value="-1">Auto</option>';
+  if (ccBtn) {
+    ccBtn.style.display = 'none';
+    ccBtn.style.background = 'rgba(0,0,0,0.5)';
+    ccBtn.style.color = '#fff';
+  }
   idleEl.style.display = 'none';
   errorEl.style.display = 'none';
   loadingEl.style.display = 'flex';
@@ -345,6 +351,16 @@ function loadStream(url) {
         } else {
           qualitySelector.parentElement.style.display = 'none';
         }
+        
+        if (hls.subtitleTracks && hls.subtitleTracks.length > 0 && ccBtn) {
+          ccBtn.style.display = 'flex';
+        }
+      }
+    });
+
+    hls.on(Hls.Events.SUBTITLE_TRACKS_UPDATED, (_, data) => {
+      if (data.subtitleTracks.length > 0 && ccBtn) {
+        ccBtn.style.display = 'flex';
       }
     });
 
@@ -686,6 +702,56 @@ document.addEventListener('DOMContentLoaded', () => {
   const epgInput = document.getElementById('epg-input');
   const pipBtn = document.getElementById('pip-btn');
   const video = document.getElementById('player-video');
+  const captionBtn = document.getElementById('caption-btn');
+
+  if (video && video.textTracks) {
+    video.textTracks.addEventListener('addtrack', () => {
+      let hasCC = false;
+      for (let i = 0; i < video.textTracks.length; i++) {
+        if (['captions', 'subtitles'].includes(video.textTracks[i].kind)) hasCC = true;
+      }
+      if (hasCC && captionBtn) captionBtn.style.display = 'flex';
+    });
+  }
+
+  if (captionBtn) {
+    captionBtn.addEventListener('click', () => {
+      let toggledOn = false;
+      
+      // HLS.js tracks
+      if (state.hls && state.hls.subtitleTracks && state.hls.subtitleTracks.length > 0) {
+        if (state.hls.subtitleTrack === -1) {
+          state.hls.subtitleTrack = 0;
+          toggledOn = true;
+        } else {
+          state.hls.subtitleTrack = -1;
+        }
+      } else if (video && video.textTracks) {
+        // Native/Embedded tracks (CEA-608)
+        for (let i = 0; i < video.textTracks.length; i++) {
+          const track = video.textTracks[i];
+          if (['captions', 'subtitles'].includes(track.kind)) {
+            if (track.mode === 'hidden' || track.mode === 'disabled') {
+              track.mode = 'showing';
+              toggledOn = true;
+            } else {
+              track.mode = 'hidden';
+            }
+          }
+        }
+      }
+
+      if (toggledOn) {
+        captionBtn.style.background = 'var(--neon)';
+        captionBtn.style.color = '#000';
+        showToast('Captions Enabled');
+      } else {
+        captionBtn.style.background = 'rgba(0,0,0,0.5)';
+        captionBtn.style.color = '#fff';
+        showToast('Captions Disabled');
+      }
+    });
+  }
 
   if (settingsBtn) {
     settingsBtn.addEventListener('click', () => {
