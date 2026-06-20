@@ -811,6 +811,94 @@ a { text-decoration: none; color: inherit; }
   box-shadow: 0 0 10px var(--neon-glow);
 }
 
+/* ─── Settings Modal & Theme Picker ─────────────────────────────────────── */
+.settings-group {
+  margin-bottom: 20px;
+}
+.settings-group label {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  margin-bottom: 8px;
+}
+.theme-picker {
+  display: flex;
+  gap: 12px;
+}
+.theme-swatch {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.theme-swatch:hover {
+  transform: scale(1.1);
+}
+.theme-swatch.active {
+  border-color: #fff;
+  transform: scale(1.1);
+}
+
+/* ─── PiP Button & Overlay ──────────────────────────────────────────────── */
+.player-controls-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.pip-btn {
+  background: rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: #fff;
+  border-radius: 6px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.pip-btn:hover {
+  background: var(--neon);
+  color: #000;
+}
+.pip-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* ─── EPG Info ──────────────────────────────────────────────────────────── */
+.epg-info {
+  margin-top: 16px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+}
+.epg-now, .epg-next {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.epg-next {
+  margin-bottom: 0;
+  opacity: 0.6;
+  font-size: 0.9rem;
+}
+.epg-time {
+  color: var(--neon);
+  font-weight: 600;
+  min-width: 50px;
+}
+.epg-title {
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 /* ─── Responsive ────────────────────────────────────────────────────────── */
 @media (max-width: 900px) {
   .main-content { flex-direction: column; }

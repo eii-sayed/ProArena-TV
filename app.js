@@ -11,10 +11,31 @@ const state = {
   category: 'All',
   search: '',
   favorites: JSON.parse(localStorage.getItem('proarena-favs') || '[]'),
+  recent: JSON.parse(localStorage.getItem('proarena-recent') || '[]'),
+  theme: localStorage.getItem('proarena-theme') || 'cyan',
+  epgData: {}, // Map of tvg-id -> { now: {}, next: {} }
   hideBroken: true,
   hls: null,
   playerState: 'idle', // idle | loading | playing | error
 };
+
+// Apply Theme immediately
+function applyTheme(color) {
+  state.theme = color;
+  localStorage.setItem('proarena-theme', color);
+  const root = document.documentElement;
+  const themes = {
+    cyan: { neon: '#06b6d4', glow: 'rgba(6, 182, 212, 0.4)' },
+    purple: { neon: '#a855f7', glow: 'rgba(168, 85, 247, 0.4)' },
+    green: { neon: '#10b981', glow: 'rgba(16, 185, 129, 0.4)' },
+    pink: { neon: '#ec4899', glow: 'rgba(236, 72, 153, 0.4)' },
+    orange: { neon: '#f97316', glow: 'rgba(249, 115, 22, 0.4)' }
+  };
+  const t = themes[color] || themes.cyan;
+  root.style.setProperty('--neon', t.neon);
+  root.style.setProperty('--neon-glow', t.glow);
+}
+applyTheme(state.theme);
 
 // ─── SVG Icons (inline) ─────────────────────────────────────────────────────
 const icons = {
@@ -30,7 +51,7 @@ const icons = {
 };
 
 // ─── Categories ─────────────────────────────────────────────────────────────
-const CATEGORIES = ['All', 'Favorites', 'FIFA WC 2026', 'Sports', 'News', 'Entertainment', 'Music', 'Kids', 'Religious'];
+const CATEGORIES = ['All', 'Recent', 'Favorites', 'FIFA WC 2026', 'Sports', 'News', 'Entertainment', 'Music', 'Kids', 'Religious'];
 
 // ─── Badge helpers ──────────────────────────────────────────────────────────
 function badgeClass(badge) {
@@ -68,6 +89,10 @@ function applyFilters() {
   // Category
   if (state.category === 'Favorites') {
     list = list.filter(c => state.favorites.includes(c.id));
+  } else if (state.category === 'Recent') {
+    list = list.filter(c => state.recent.includes(c.id));
+    // Sort to match recent order
+    list.sort((a, b) => state.recent.indexOf(a.id) - state.recent.indexOf(b.id));
   } else if (state.category !== 'All') {
     list = list.filter(c => c.category === state.category);
   }
@@ -176,6 +201,12 @@ function playChannel(ch, streamIdx = 0) {
   const url = ch.streams[streamIdx]?.url;
   if (!url) return;
 
+  // Track Recent
+  state.recent = state.recent.filter(id => id !== ch.id);
+  state.recent.unshift(ch.id);
+  if (state.recent.length > 15) state.recent.pop();
+  localStorage.setItem('proarena-recent', JSON.stringify(state.recent));
+
   // Update UI active states
   renderChannelList();
   renderNowPlaying();
@@ -203,6 +234,26 @@ function renderNowPlaying() {
 
   titleEl.textContent = ch.name;
   subtitleEl.textContent = `${ch.category} • ${ch.country || 'Unknown'}`;
+
+  // EPG
+  const epgInfo = document.getElementById('epg-info');
+  const nowTime = document.getElementById('epg-now-time');
+  const nowTitle = document.getElementById('epg-now-title');
+  const nextTime = document.getElementById('epg-next-time');
+  const nextTitle = document.getElementById('epg-next-title');
+
+  if (epgInfo) {
+    if (ch.tvgId && state.epgData[ch.tvgId]) {
+      const epg = state.epgData[ch.tvgId];
+      epgInfo.style.display = 'block';
+      nowTime.textContent = epg.now ? epg.now.start : '';
+      nowTitle.textContent = epg.now ? epg.now.title : 'No data';
+      nextTime.textContent = epg.next ? epg.next.start : '';
+      nextTitle.textContent = epg.next ? epg.next.title : '';
+    } else {
+      epgInfo.style.display = 'none';
+    }
+  }
 
   // Streams
   if (ch.streams && ch.streams.length > 1) {
@@ -406,11 +457,42 @@ document.addEventListener('DOMContentLoaded', () => {
     renderChannelList();
   });
 
-  // Keyboard shortcut: /
+  // Keyboard shortcuts
   window.addEventListener('keydown', (e) => {
-    if (e.key === '/' && e.target.tagName !== 'INPUT') {
+    if (document.activeElement.tagName === 'INPUT') return;
+    
+    // Zap Up/Down
+    if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+      e.preventDefault();
+      if (!state.activeChannel || state.filtered.length === 0) return;
+      const curIdx = state.filtered.findIndex(c => c.id === state.activeChannel.id);
+      if (curIdx === -1) return;
+      let nextIdx = e.key === 'ArrowDown' ? curIdx + 1 : curIdx - 1;
+      if (nextIdx < 0) nextIdx = state.filtered.length - 1;
+      if (nextIdx >= state.filtered.length) nextIdx = 0;
+      playChannel(state.filtered[nextIdx]);
+    }
+    
+    // Search
+    if (e.key === '/') {
       e.preventDefault();
       searchInput.focus();
+    }
+    
+    // Fullscreen (f)
+    if (e.key === 'f') {
+      const video = document.getElementById('player-video');
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
+      } else {
+        video.requestFullscreen().catch(() => {});
+      }
+    }
+    
+    // Mute (m)
+    if (e.key === 'm') {
+      const video = document.getElementById('player-video');
+      video.muted = !video.muted;
     }
   });
 
@@ -448,6 +530,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const commaIdx = line.indexOf(',');
         if (commaIdx !== -1) {
           const name = line.substring(commaIdx + 1).trim();
+          
+          // Extract tvg-id
+          let tvgId = "";
+          const tvgIdMatch = line.match(/tvg-id="([^"]+)"/);
+          if (tvgIdMatch) tvgId = tvgIdMatch[1];
+          
           let url = '';
           for (let j = i + 1; j < lines.length; j++) {
             const nextLine = lines[j].trim();
@@ -460,6 +548,7 @@ document.addEventListener('DOMContentLoaded', () => {
             lastNumber++;
             state.channels.push({
               id: name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') + '-' + lastNumber,
+              tvgId: tvgId,
               name: name,
               number: lastNumber,
               category: categoryName,
@@ -517,30 +606,135 @@ document.addEventListener('DOMContentLoaded', () => {
     urlModal.style.display = 'none';
     urlInput.value = '';
   });
-
   urlSubmit.addEventListener('click', async () => {
     const url = urlInput.value.trim();
     if (!url) return;
-    
-    urlSubmit.textContent = 'Loading...';
-    urlSubmit.disabled = true;
-
     try {
-      const response = await fetch(url);
-      if (!response.ok) throw new Error('Network response was not ok');
-      const text = await response.text();
-      parseM3UContent(text, "URL Import");
+      urlSubmit.textContent = 'Importing...';
+      const resp = await fetch(url);
+      if (!resp.ok) throw new Error('HTTP Error ' + resp.status);
+      const text = await resp.text();
+      parseM3UContent(text, "Imported");
       urlModal.style.display = 'none';
       urlInput.value = '';
-    } catch (error) {
-      showToast('Error fetching URL. Check CORS or URL validity.');
-      console.error(error);
+    } catch (e) {
+      alert('Failed to fetch M3U: ' + e.message + '\n\nIf this is a CORS error, you need a browser extension to bypass it.');
     } finally {
       urlSubmit.textContent = 'Import';
-      urlSubmit.disabled = false;
     }
   });
+
+  // Settings Modal & Themes
+  const settingsBtn = document.getElementById('settings-btn');
+  const settingsModal = document.getElementById('settings-modal');
+  const settingsCancel = document.getElementById('settings-cancel');
+  const settingsSave = document.getElementById('settings-save');
+  const themeSwatches = document.querySelectorAll('.theme-swatch');
+  const epgInput = document.getElementById('epg-input');
+  const pipBtn = document.getElementById('pip-btn');
+  const video = document.getElementById('player-video');
+
+  if (settingsBtn) {
+    settingsBtn.addEventListener('click', () => {
+      settingsModal.style.display = 'flex';
+      themeSwatches.forEach(s => {
+        s.classList.toggle('active', s.dataset.color === state.theme);
+      });
+    });
+  }
+  
+  if (settingsCancel) {
+    settingsCancel.addEventListener('click', () => settingsModal.style.display = 'none');
+  }
+
+  themeSwatches.forEach(swatch => {
+    swatch.addEventListener('click', () => {
+      applyTheme(swatch.dataset.color);
+      themeSwatches.forEach(s => s.classList.remove('active'));
+      swatch.classList.add('active');
+    });
+  });
+
+  if (settingsSave) {
+    settingsSave.addEventListener('click', () => {
+      settingsModal.style.display = 'none';
+      const url = epgInput.value.trim();
+      if (url) {
+        loadEPG(url);
+        epgInput.value = '';
+      }
+    });
+  }
+
+  if (pipBtn && video) {
+    pipBtn.addEventListener('click', async () => {
+      try {
+        if (document.pictureInPictureElement) {
+          await document.exitPictureInPicture();
+        } else {
+          await video.requestPictureInPicture();
+        }
+      } catch (err) {
+        console.error('PiP Failed:', err);
+      }
+    });
+  }
 
   // Load channels
   loadChannels();
 });
+
+// ─── EPG Logic ──────────────────────────────────────────────────────────────
+async function loadEPG(url) {
+  try {
+    showToast('Fetching EPG...');
+    const resp = await fetch(url);
+    if (!resp.ok) throw new Error('HTTP ' + resp.status);
+    const text = await resp.text();
+    const parser = new DOMParser();
+    const xml = parser.parseFromString(text, "text/xml");
+    const programs = xml.getElementsByTagName('programme');
+    const now = new Date();
+    
+    state.epgData = {};
+    for (let i = 0; i < programs.length; i++) {
+      const prog = programs[i];
+      const channel = prog.getAttribute('channel');
+      const startStr = prog.getAttribute('start'); // "20240620180000 +0000"
+      const stopStr = prog.getAttribute('stop');
+      const titleNode = prog.getElementsByTagName('title')[0];
+      const title = titleNode ? titleNode.textContent : 'Unknown';
+      
+      if (!startStr || !stopStr) continue;
+      
+      // Basic parse: YYYYMMDDHHMMSS
+      const parseTime = (str) => {
+        return new Date(
+          str.substring(0,4),
+          parseInt(str.substring(4,6))-1,
+          str.substring(6,8),
+          str.substring(8,10),
+          str.substring(10,12),
+          str.substring(12,14)
+        );
+      };
+      
+      const start = parseTime(startStr);
+      const stop = parseTime(stopStr);
+      const timeStr = start.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+      
+      if (!state.epgData[channel]) state.epgData[channel] = {};
+      
+      if (now >= start && now <= stop) {
+        state.epgData[channel].now = { start: timeStr, title };
+      } else if (now < start && !state.epgData[channel].next) {
+        state.epgData[channel].next = { start: timeStr, title };
+      }
+    }
+    showToast('EPG Loaded successfully');
+    renderNowPlaying();
+  } catch (e) {
+    showToast('Failed to load EPG');
+    console.error('EPG Error:', e);
+  }
+}
