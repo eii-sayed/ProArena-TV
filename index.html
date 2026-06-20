@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ProArena TV — Premium live IPTV streaming with FIFA World Cup 2026 channels">
+  <title>ProArena TV — FIFA World Cup 2026 Live</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- HLS.js for streaming -->
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.17/dist/hls.min.js"></script>
+</head>
+<body>
+  <div id="app">
+
+    <!-- ═══════════ Header ═══════════ -->
+    <header class="header">
+      <div class="header-logo">
+        <div>
+          <h1>ProArena TV</h1>
+          <p class="subtitle">Premium IPTV</p>
+        </div>
+        <span class="fifa-badge">🏆 FIFA WC 2026</span>
+      </div>
+
+      <div class="header-center">
+        <span class="header-clock" id="header-clock">--:--:-- --</span>
+        <span class="live-indicator">
+          <span class="live-dot"></span>
+          <span>Live Now</span>
+        </span>
+      </div>
+
+      <div class="header-actions">
+        <!-- Placeholder action buttons -->
+      </div>
+    </header>
+
+    <!-- ═══════════ Main ═══════════ -->
+    <main class="main-content">
+
+      <!-- ─── Player ─── -->
+      <section class="player-section">
+        <div class="player-container">
+          <video id="player-video" controls playsinline></video>
+
+          <!-- Idle state -->
+          <div class="player-idle" id="player-idle">
+            <div class="player-idle-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
+            </div>
+            <h2>Select a Channel</h2>
+            <p>Choose from the sidebar to start watching</p>
+          </div>
+
+          <!-- Loading state -->
+          <div class="player-loading" id="player-loading" style="display:none;">
+            <div class="spinner"></div>
+          </div>
+
+          <!-- Error state -->
+          <div class="player-error" id="player-error" style="display:none;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <p>Stream unavailable or offline</p>
+            <button id="retry-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;display:inline;vertical-align:middle;margin-right:4px;"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+              Try Again
+            </button>
+          </div>
+        </div>
+
+        <!-- Now Playing info -->
+        <div class="now-playing" id="now-playing" style="display:none;"></div>
+      </section>
+
+      <!-- ─── Sidebar ─── -->
+      <aside class="sidebar">
+
+        <!-- Search -->
+        <div class="search-row">
+          <div class="search-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="channel-search" placeholder="Search channels... (Press /)">
+          </div>
+          <button class="filter-btn active" id="filter-online">Online Only</button>
+        </div>
+
+        <!-- Category pills -->
+        <div class="category-pills hide-scrollbar" id="category-pills"></div>
+
+        <!-- Channel count -->
+        <div class="channel-count">
+          <span id="channel-count">Loading...</span>
+        </div>
+
+        <!-- Channel list -->
+        <div class="channel-list hide-scrollbar" id="channel-list">
+          <div class="empty-state">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
+            <p>Loading channels...</p>
+          </div>
+        </div>
+
+      </aside>
+
+    </main>
+
+  </div>
+
+  <!-- App JS -->
+  <script src="app.js"></script>
+</body>
+</html>
