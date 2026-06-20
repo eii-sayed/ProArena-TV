@@ -189,8 +189,14 @@ function loadStream(url) {
   const idleEl = document.getElementById('player-idle');
   const loadingEl = document.getElementById('player-loading');
   const errorEl = document.getElementById('player-error');
+  const overlayTop = document.getElementById('player-overlay-top');
+  const qualityBadge = document.getElementById('current-quality');
+  const qualitySelector = document.getElementById('quality-selector');
 
   // Reset states
+  if (overlayTop) overlayTop.style.display = 'none';
+  if (qualityBadge) qualityBadge.textContent = 'Auto';
+  if (qualitySelector) qualitySelector.innerHTML = '<option value="-1">Auto</option>';
   idleEl.style.display = 'none';
   errorEl.style.display = 'none';
   loadingEl.style.display = 'flex';
@@ -213,10 +219,43 @@ function loadStream(url) {
     hls.loadSource(url);
     hls.attachMedia(video);
 
-    hls.on(Hls.Events.MANIFEST_PARSED, () => {
+    hls.on(Hls.Events.MANIFEST_PARSED, (event, data) => {
       video.play().catch(() => {});
       loadingEl.style.display = 'none';
       state.playerState = 'playing';
+
+      if (overlayTop && qualitySelector && qualityBadge) {
+        overlayTop.style.display = 'flex';
+        qualitySelector.innerHTML = '<option value="-1">Auto</option>';
+        
+        if (hls.levels && hls.levels.length > 1) {
+          qualitySelector.parentElement.style.display = 'block';
+          hls.levels.forEach((level, index) => {
+            const height = level.height ? `${level.height}p` : `Level ${index}`;
+            const option = document.createElement('option');
+            option.value = index;
+            option.textContent = height;
+            qualitySelector.appendChild(option);
+          });
+
+          qualitySelector.onchange = (e) => {
+            hls.currentLevel = parseInt(e.target.value);
+          };
+        } else {
+          qualitySelector.parentElement.style.display = 'none';
+        }
+      }
+    });
+
+    hls.on(Hls.Events.LEVEL_SWITCHED, (event, data) => {
+      if (qualityBadge) {
+        if (hls.levels && hls.levels[data.level]) {
+          const height = hls.levels[data.level].height;
+          qualityBadge.textContent = height ? `${height}p` : 'Auto';
+        } else {
+          qualityBadge.textContent = 'Auto';
+        }
+      }
     });
 
     hls.on(Hls.Events.ERROR, (_, data) => {

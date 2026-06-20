@@ -46,6 +46,16 @@
         <div class="player-container">
           <video id="player-video" controls playsinline></video>
 
+          <!-- Quality Overlay -->
+          <div class="player-overlay-top" id="player-overlay-top" style="display:none;">
+            <div class="current-quality" id="current-quality">Auto</div>
+            <div class="quality-selector-container">
+              <select id="quality-selector" class="quality-selector">
+                <option value="-1">Auto</option>
+              </select>
+            </div>
+          </div>
+
           <!-- Idle state -->
           <div class="player-idle" id="player-idle">
             <div class="player-idle-icon">

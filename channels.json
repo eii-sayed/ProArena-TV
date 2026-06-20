@@ -3616,5 +3616,2057 @@
     "isLive": true,
     "badge": "SPORTS",
     "isWorking": true
+  },
+  {
+    "id": "star-sports-1-hd",
+    "name": "Star Sports 1 HD",
+    "number": 202,
+    "category": "Sports",
+    "country": "International",
+    "quality": "HD",
+    "logo": "https://ui-avatars.com/api/?name=St&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://41.205.93.154/STARSPORTS1/index.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "dd-sports-2-0",
+    "name": "DD Sports 2.0",
+    "number": 203,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=DD&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "https://d3qs3d2rkhfqrt.cloudfront.net/out/v1/b17adfe543354fdd8d189b110617cddd/index.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "star-sports-1-hd-1080p",
+    "name": "Star Sports 1 HD (1080p)",
+    "number": 204,
+    "category": "Sports",
+    "country": "International",
+    "quality": "HD",
+    "logo": "https://ui-avatars.com/api/?name=St&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://103.253.18.58:8000/play/a00m"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "star-sports-1-hindi-576p",
+    "name": "Star Sports 1 Hindi (576p)",
+    "number": 205,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=St&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://103.253.18.58:8000/play/a03o"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "star-sports-2-hindi-hd-1080p",
+    "name": "Star Sports 2 Hindi HD (1080p)",
+    "number": 206,
+    "category": "Sports",
+    "country": "International",
+    "quality": "HD",
+    "logo": "https://ui-avatars.com/api/?name=St&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://103.157.248.140:8000/play/a01m/index.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "dd-sports",
+    "name": "DD SPORTS",
+    "number": 207,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=DD&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "https://d3qs3d2rkhfqrt.cloudfront.net/out/v1/b17adfe543354fdd8d189b110617cddd/index_3.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "muxip-sportsfirst-tv",
+    "name": "MuxIP-SportsFirst TV🎯",
+    "number": 208,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=Mu&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "https://d2396zb8liu8hs.cloudfront.net/v1/master/9d062541f2ff39b5c0f48b743c6411d25f62fc25/DistroTV-MuxIP-SportsFirstTV/409.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "ss-cricket",
+    "name": "SS Cricket",
+    "number": 209,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=SS&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "https://atc.hopto.org/sly-sprts-cricket-hd-sport/playlist.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "ftf-sports",
+    "name": "FTF Sports",
+    "number": 210,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=FT&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "https://1657061170.rsc.cdn77.org/HLS/FTF-LINEAR.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "tennis-channel",
+    "name": "Tennis Channel",
+    "number": 211,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=Te&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "https://cdn-uw2-prod.tsv2.amagi.tv/linear/amg01444-tennischannelth-tennischnlintl-lggb/playlist.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "sports-connect",
+    "name": "Sports Connect",
+    "number": 212,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=Sp&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "https://streamdot.broadpeak.io/cff02a74da64d1459391ce1f72d58f1a/afxpstr/SportsConnect/index.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "womens-sports-network",
+    "name": "Womens Sports Network",
+    "number": 213,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=Wo&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "https://d39accvx65hq9o.cloudfront.net/Womens_Sports_Network.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "talksport",
+    "name": "TalkSport",
+    "number": 214,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=Ta&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "https://af7a8b4e.wurl.com/master/f36d25e7e52f1ba8d7e56eb859c636563214f541/TEctZ2JfdGFsa1NQT1JUX0hMUw/playlist.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "ss-football",
+    "name": "SS Football",
+    "number": 215,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=SS&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://sewv654wfcsdwfi87fwvgbngh.siauliairsavlt.pw/iptv/KD6YT2WWZRCKHB/9289/index.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "star-cricket",
+    "name": "Star Cricket",
+    "number": 216,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=St&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "https://atc.hopto.org/star-sprts-1-hd-sport/playlist.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "qazsport",
+    "name": "QazSport",
+    "number": 217,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=Qa&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "https://qazsporttv-stream.qazcdn.com/qazsporttv/qazsporttv/playlist.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "tvr-sport",
+    "name": "TVR Sport",
+    "number": 218,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=TV&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "https://tvr-sport.lg.mncdn.com/tvrsport/smil:tvrsport.smil/chunklist_b5160000.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "tvl-sport",
+    "name": "TVL Sport",
+    "number": 219,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=TV&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "https://59nyq4a2lwap-hls-live.mariatvcdn.it/tvlsport/79d485442e700b9ae37c4344c130998d.sdp/chunks.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "tw-sport-1",
+    "name": "TW Sport 1",
+    "number": 220,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=TW&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "https://live-aburayhan1104.telewebion.ir/ek/sport1/live/1080p/index.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "tw-sport-2",
+    "name": "TW Sport 2",
+    "number": 221,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=TW&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "https://live-aburayhan1105.telewebion.ir/ek/sport2/live/1080p/index.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "tw-sport-3",
+    "name": "TW Sport 3",
+    "number": 222,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=TW&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "https://live-aburayhan1110.telewebion.ir/ek/sport3/live/1080p/index.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "sport-1",
+    "name": "Sport 1",
+    "number": 223,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=Sp&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://46.149.191.217:9005/play/a017"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "oman-sports",
+    "name": "Oman Sports",
+    "number": 224,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=Om&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "https://partneta.cdn.mgmlcdn.com/omsport/smil:omsport.stream.smil/chunklist.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "bahrain-sports-1",
+    "name": "Bahrain Sports 1",
+    "number": 225,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=Ba&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "https://5c7b683162943.streamlock.net/live/sportsone/playlist.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "bahrain-sports-2",
+    "name": "Bahrain Sports 2",
+    "number": 226,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=Ba&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "https://5c7b683162943.streamlock.net/live/bahrainsportstwo/playlist.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "1tv-sport",
+    "name": "1TV Sport",
+    "number": 227,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=1T&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "https://tv.cdn.xsg.ge/gpb-1tv/index.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "sportv2",
+    "name": "Sportv2",
+    "number": 228,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=Sp&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://79.127.243.211:14473"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "sportynext-br",
+    "name": "Sportynext Br",
+    "number": 229,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=Sp&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://balance1.QITV.TOP:8088/rj-live/rj-live/600171.ts"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "sportynet",
+    "name": "SportyNet",
+    "number": 230,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=Sp&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://balance1.QITV.TOP:8088/rj-live/rj-live/600175.ts"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "sportv-br",
+    "name": "Sportv Br",
+    "number": 231,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=Sp&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://balance1.QITV.TOP:8088/rj-live/rj-live/600227.ts"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "sportv2-br",
+    "name": "Sportv2 Br",
+    "number": 232,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=Sp&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://balance1.QITV.TOP:8088/rj-live/rj-live/600233.ts"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "sportv-3-br",
+    "name": "Sportv 3 Br",
+    "number": 233,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=Sp&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://balance1.QITV.TOP:8088/rj-live/rj-live/600236.ts"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "sports",
+    "name": "Sports",
+    "number": 234,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=Sp&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://84.17.50.102/fox/index.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "football-world-cup-2026-sky",
+    "name": "Football World Cup 2026 Sky",
+    "number": 235,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=Fo&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "https://d1211whpimeups.cloudfront.net/smil:rtbgo/chunklist.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "euro-sports",
+    "name": "Euro Sports",
+    "number": 236,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=Eu&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "https://stream.ottplus.bd/live/euro_sports_hd_abr/live/euro_sports_hd/chunks.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "star-sports-3",
+    "name": "Star Sports 3",
+    "number": 237,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=St&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://103.157.248.140:8000/play/a00i/index.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "star-sports-select-1-hd",
+    "name": "Star Sports Select 1 HD",
+    "number": 238,
+    "category": "Sports",
+    "country": "International",
+    "quality": "HD",
+    "logo": "https://ui-avatars.com/api/?name=St&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://103.157.248.140:8000/play/a00o/index.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "football-world-cup-2026",
+    "name": "Football World Cup 2026",
+    "number": 239,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=Fo&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "https://stream.ottplus.live/live/zee_bangla_cinema_abr/live/zee_bangla_cinema_720/chunks.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "football-world-cup-2026-4k",
+    "name": "Football World Cup 2026 (4K)",
+    "number": 240,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=Fo&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://ytoxw6un.ottclub.xyz/iptv/KCUHA6DGYYVA8ZZFUPQV3KZH/6408/index.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "p-sports",
+    "name": "P SPORTS",
+    "number": 241,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=P%20&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://premiumtvs.space/live/jen12345/Jen54321/89.ts"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "tsn-3",
+    "name": "TSN 3",
+    "number": 242,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=TS&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://stalker.hakunamata.workers.dev/play/260/index.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "tsn-5",
+    "name": "TSN 5",
+    "number": 243,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=TS&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://stalker.hakunamata.workers.dev/play/262/index.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "w-sports",
+    "name": "W-SPORTS",
+    "number": 244,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=W-&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "https://tglmp02.akamaized.net/out/v1/1063ebb215c14312ba9d4e415ac706d2/manifest.mpd"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "sport-1",
+    "name": "SPORT 1",
+    "number": 245,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=SP&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://estreams.tv.nej.cz/dash/CH_SPORT1_Portable.ism/playlist.mpd"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "sport-2",
+    "name": "SPORT 2",
+    "number": 246,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=SP&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://estreams.tv.nej.cz/dash/CH_SPORT2_Portable.ism/playlist.mpd"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "tap-sports",
+    "name": "Tap Sports",
+    "number": 247,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=Ta&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "https://qp-pldt-live-grp-11-prod.akamaized.net/out/u/dr_tapsports.mpd"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "live-sports-4",
+    "name": "Live Sports-4",
+    "number": 248,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=Li&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "https://andro.226503.xyz/checklist/androstreamliveexn2.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "hub-sports-2",
+    "name": "HUB Sports-2",
+    "number": 249,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=HU&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://tv-premium-pro.com/live/wezqqszfr2/i7481xvrdf/280823.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "uniteb-sports-2-hd",
+    "name": "🇮🇳 UNITEB Sports 2 HD",
+    "number": 250,
+    "category": "Sports",
+    "country": "International",
+    "quality": "HD",
+    "logo": "https://ui-avatars.com/api/?name=%F0%9F%87%AE&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "https://zati5.hasanhabibmottakin.workers.dev/0-9-channel_2105335046/index.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "fwc-2026-football-hd-1080p",
+    "name": "FWC 2026 Football HD 1080p",
+    "number": 251,
+    "category": "Sports",
+    "country": "International",
+    "quality": "HD",
+    "logo": "https://ui-avatars.com/api/?name=FW&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "https://xtream.lazyspace.online/uplink/play/742610/lmND4qC9ustQ/live/index.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "sky-sports-action",
+    "name": "SKY SPORTS ACTION",
+    "number": 252,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=SK&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://sewv654wfcsdwfi87fwvgbngh.siauliairsavlt.pw/iptv/VCQ4ADX96VH4G8PY7URBWRQU/9155/index.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "sky-sport-laliga",
+    "name": "SKY SPORT LALIGA 🇲🇽",
+    "number": 253,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=SK&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://179.60.224.196:8000/play/a0i7/index.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "2tv-sport",
+    "name": "2TV Sport 🇳🇴",
+    "number": 254,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=2T&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "https://tv.cdn.xsg.ge/gpb-2tv/index.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "go-3-sport-1-hd",
+    "name": "GO 3 sport 1 hd",
+    "number": 255,
+    "category": "Sports",
+    "country": "International",
+    "quality": "HD",
+    "logo": "https://ui-avatars.com/api/?name=GO&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://ytoxw6un.ottclub.xyz/iptv/KCUHA6DGYYVA8ZZFUPQV3KZH/18000/index.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "go-3-sport-2-hd",
+    "name": "GO 3 sport 2 hd",
+    "number": 256,
+    "category": "Sports",
+    "country": "International",
+    "quality": "HD",
+    "logo": "https://ui-avatars.com/api/?name=GO&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://ytoxw6un.ottclub.xyz/iptv/KCUHA6DGYYVA8ZZFUPQV3KZH/18001/index.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "bein-us",
+    "name": "Bein US",
+    "number": 257,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=Be&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://23.237.104.106:8080/USA_BEIN/index.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "bein-xtra-720",
+    "name": "Bein Xtra (720)",
+    "number": 258,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=Be&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "https://d9ssxzmclhfo4.cloudfront.net/bein_sports720p.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "fubo-sports-2",
+    "name": "Fubo Sports 2",
+    "number": 259,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=Fu&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "https://otte.live.fly.ww.aiv-cdn.net/pdx-nitro/live/clients/dash/enc/uiffe4jhf0/out/v1/3534efafca8c4815adbb4d2e9a1fe003/cenc.mpd"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "nba",
+    "name": "NBA",
+    "number": 260,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=NB&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://41.223.30.230/ESPN2/index.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "cricket-gold",
+    "name": "Cricket Gold",
+    "number": 261,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=Cr&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "https://d1nj4u39ja4cn0.cloudfront.net/v1/master/9d062541f2ff39b5c0f48b743c6411d25f62fc25/FLS-MuxIP-CricketGold/418.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "sky-sport",
+    "name": "Sky Sport",
+    "number": 262,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=Sk&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://45.5.118.152:8000/play/a08f/index.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "claro-sports-1",
+    "name": "Claro Sports 1",
+    "number": 263,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=Cl&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://45.167.1.136:8000/play/a00d"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "claro-sports-2",
+    "name": "Claro Sports 2",
+    "number": 264,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=Cl&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://45.5.118.152:8000/play/a0ah/index.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "via-x-sport",
+    "name": "Via X Sport",
+    "number": 265,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=Vi&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://38.226.49.253:8000/play/a042/index.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "golf-channel",
+    "name": "Golf Channel",
+    "number": 266,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=Go&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://45.167.1.136:8000/play/a05s"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "tennis-channel-backup-3",
+    "name": "Tennis Channel (Backup 3)",
+    "number": 267,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=Te&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://elpapanatas.space:8080/12meses21890310/12meses21890310/1553"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "rs-sports-1",
+    "name": "RS Sports 1",
+    "number": 268,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=RS&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "https://video07.logicahost.com.br/rssports01/rssports01/playlist.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "rs-sports-2",
+    "name": "RS Sports 2",
+    "number": 269,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=RS&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "https://video07.logicahost.com.br/rssports02/rssports02/playlist.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "rs-sports-3",
+    "name": "RS Sports 3",
+    "number": 270,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=RS&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "https://video07.logicahost.com.br/rssports03/rssports03/playlist.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "rs-sports-4",
+    "name": "RS Sports 4",
+    "number": 271,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=RS&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "https://video07.logicahost.com.br/rssports04/rssports04/playlist.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "rs-sports-5",
+    "name": "RS Sports 5",
+    "number": 272,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=RS&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "https://video03.logicahost.com.br/rssports5/rssports5/playlist.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "deporte-claro-sports",
+    "name": "DEPORTE - Claro Sports",
+    "number": 273,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=DE&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "https://dai.google.com/linear/hls/event/yINISWAPQ0CPhPixe-40wQ/master.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "deporte-sky-sports",
+    "name": "DEPORTE - SKY SPORTS",
+    "number": 274,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=DE&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://177.10.184.193:8000/play/a0eh/index.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "claro-sports",
+    "name": "CLARO SPORTS",
+    "number": 275,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=CL&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "https://dai.google.com/linear/hls/event/_OKWx76jT7mivD6d-25QAw/master.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "eurosport-1-fr",
+    "name": "Eurosport 1 (FR)",
+    "number": 276,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=Eu&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://151.80.18.177:86/Eurosport_HD/playlist.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "eurosport-1-fr-alt",
+    "name": "Eurosport 1 (FR) (Alt)",
+    "number": 277,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=Eu&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://151.80.18.177:86/Eurosport_HD/mpegts"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "eurosport-2-fr-alt",
+    "name": "Eurosport 2 (FR) (Alt)",
+    "number": 278,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=Eu&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://151.80.18.177:86/Eurosport_2_HD/mpegts"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "espn5-hd",
+    "name": "ESPN5 HD",
+    "number": 279,
+    "category": "Sports",
+    "country": "International",
+    "quality": "HD",
+    "logo": "https://ui-avatars.com/api/?name=ES&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://181.205.130.194:4000/play/a0fs"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "tango-sports-4",
+    "name": "Tango Sports 4",
+    "number": 280,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=Ta&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://190.7.19.197:232/play/a037/index.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "5-sport",
+    "name": "5 SPORT 🇮🇱",
+    "number": 281,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=5%20&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://wo0dyefk.dienalt.org/iptv/DV3AC2Q6YSR9XE/2558/index.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "bein-sport-3",
+    "name": "Bein Sport 3 🇫🇷",
+    "number": 282,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=Be&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://145.239.5.177:80/559/index.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "canal-sport",
+    "name": "CANAL + Sport 🇫🇷",
+    "number": 283,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=CA&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://151.80.18.177:86/Canal+_sport_HD/index.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "setanta-sport",
+    "name": "Setanta Sport 🇺🇦",
+    "number": 284,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=Se&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://217.174.225.146/hls/ch004_720/index.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "super-sport-1",
+    "name": "Super Sport 1 🇦🇱",
+    "number": 285,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=Su&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://93.93.113.95:25461/TV-Berati/XtreamCodes/494"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "super-sport-2",
+    "name": "Super Sport 2 🇦🇱",
+    "number": 286,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=Su&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://93.93.113.95:25461/TV-Berati/XtreamCodes/495"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "nova-sport-1-hd",
+    "name": "NOVA SPORT 1 HD 🇨🇿",
+    "number": 287,
+    "category": "Sports",
+    "country": "International",
+    "quality": "HD",
+    "logo": "https://ui-avatars.com/api/?name=NO&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://wo0dyefk.dienalt.org/iptv/DV3AC2Q6YSR9XE/2555/index.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "sport-1-hd",
+    "name": "SPORT 1 HD 🇨🇿",
+    "number": 288,
+    "category": "Sports",
+    "country": "International",
+    "quality": "HD",
+    "logo": "https://ui-avatars.com/api/?name=SP&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://88.212.15.19/live/test_sport1_25p/playlist.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "sport-2-hd",
+    "name": "SPORT 2 HD 🇨🇿",
+    "number": 289,
+    "category": "Sports",
+    "country": "International",
+    "quality": "HD",
+    "logo": "https://ui-avatars.com/api/?name=SP&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://88.212.15.19/live/test_sport_2/playlist.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "max-sport-1",
+    "name": "MAX SPORT 1 🇧🇬",
+    "number": 290,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=MA&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://77.46.130.252:99/maxsport1"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "max-sport-2",
+    "name": "MAX SPORT 2 🇧🇬",
+    "number": 291,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=MA&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://77.46.130.252:99/maxsport2"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "max-sport-3",
+    "name": "MAX SPORT 3 🇧🇬",
+    "number": 292,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=MA&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://77.46.130.252:99/maxsport3"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "max-sport-4",
+    "name": "MAX SPORT 4 🇧🇬",
+    "number": 293,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=MA&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://77.46.130.252:99/maxsport4"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "m4-sport",
+    "name": "M4 Sport 🇭🇺",
+    "number": 294,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=M4&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://46.149.191.217:9010/play/a017"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "ziggo-sport-2-hd",
+    "name": "ZIGGO SPORT 2 HD 🇳🇱",
+    "number": 295,
+    "category": "Sports",
+    "country": "International",
+    "quality": "HD",
+    "logo": "https://ui-avatars.com/api/?name=ZI&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://wo0dyefk.dienalt.org/iptv/DV3AC2Q6YSR9XE/2561/index.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "ziggo-sport-3-hd",
+    "name": "ZIGGO SPORT 3 HD 🇳🇱",
+    "number": 296,
+    "category": "Sports",
+    "country": "International",
+    "quality": "HD",
+    "logo": "https://ui-avatars.com/api/?name=ZI&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://wo0dyefk.dienalt.org/iptv/DV3AC2Q6YSR9XE/2559/index.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "ziggo-sport-live",
+    "name": "ZIGGO SPORT LIVE 🇳🇱",
+    "number": 297,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=ZI&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://wo0dyefk.dienalt.org/iptv/DV3AC2Q6YSR9XE/2560/index.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "x-sport",
+    "name": "X SPORT 🇷🇺",
+    "number": 298,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=X%20&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://iptv.prosto.tv:7000/ch109/video.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "digi-sport-2",
+    "name": "Digi Sport 2 🇷🇴",
+    "number": 299,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=Di&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://91.201.172.14:35006/"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "bein-sport-1",
+    "name": "Bein Sport 1 🇫🇷",
+    "number": 300,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=Be&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://99.27.51.147:8080/BeinSport/index.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "rtsh-sport",
+    "name": "RTSH Sport 🇦🇱",
+    "number": 301,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=RT&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://217.73.139.200:5443/play/a01d"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "sportdigital",
+    "name": "Sportdigital 🇩🇪",
+    "number": 302,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=Sp&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "https://jmp2.uk/stvp-ATAJ0500433A"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "sport-italia",
+    "name": "SPORT ITALIA 🇮🇹",
+    "number": 303,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=SP&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "https://amg01370-italiansportcom-sportitalia-rakuten-3hmdb.amagi.tv/amRdirect/ads_pod_type=playerpage_midroll&ads_env=prod&ads_ppid=&ads_rtvid=271861&ads_streaming_id=4f185419-74f6-4564-8ea9-4cdc60746e2f&ads_amagi_channel=781&ads_device_type=web&ads_device_model=&ads_device_year=&ads_player_width=&ads_rtv_content_language=ita&ads_market=it&ads_rtv_content_id=3741&ads_device_make=&ads_user_type=visitor&ads_content_classification=6&ads_gdpr_consent=&ads_device_lmt=1&ads_player_height=&uid=1gnmqg5gu-qsvc-bfo-gaq3-3dgjgexshpe/hls/amagi_hls_data_rakutenAA-sportitalia-rakuten/CDN/1920x1080_4540800/chunklist.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "tr-sport-480p",
+    "name": "TR Sport (480p) 🇮🇹",
+    "number": 304,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=TR&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "https://livetr.teleromagna.it/mia/live/playlist.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "infosport",
+    "name": "INFOSPORT 🇫🇷",
+    "number": 305,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=IN&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://212.102.60.80/Infosport/index.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "on-sports",
+    "name": "ON Sports+ 🇭🇰",
+    "number": 306,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=ON&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "https://freem3u.xyz/api/live/play.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "mmn-sport",
+    "name": "MMN Sport 🇸🇦",
+    "number": 307,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=MM&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://mmn.mypsx.net:1935/live/mmnhdsport/chunklist.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "sport5",
+    "name": "Sport5 🇮🇱",
+    "number": 308,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=Sp&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "https://rgelive.akamaized.net/hls/live/2043151/radiolive/playlist.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "willow-sports-1080p",
+    "name": "Willow Sports (1080p)",
+    "number": 309,
+    "category": "Sports",
+    "country": "International",
+    "quality": "HD",
+    "logo": "https://ui-avatars.com/api/?name=Wi&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "https://d36r8jifhgsk5j.cloudfront.net/Willow_TV.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "star-sports-1-hindi",
+    "name": "Star Sports 1 Hindi",
+    "number": 310,
+    "category": "Sports",
+    "country": "International",
+    "quality": "SD",
+    "logo": "https://ui-avatars.com/api/?name=St&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://103.157.248.140:8000/play/a00g/index.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "hub-sports-3-hd",
+    "name": "Hub Sports 3 HD",
+    "number": 311,
+    "category": "Sports",
+    "country": "International",
+    "quality": "HD",
+    "logo": "https://ui-avatars.com/api/?name=Hu&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://tv-premium-pro.com/live/wezqqszfr2/i7481xvrdf/280824.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "sky-sport1-nz-fhd",
+    "name": "Sky Sport1 NZ FHD",
+    "number": 312,
+    "category": "Sports",
+    "country": "International",
+    "quality": "HD",
+    "logo": "https://ui-avatars.com/api/?name=Sk&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://tv-premium-pro.com/live/wezqqszfr2/i7481xvrdf/579826.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "sky-sport2-nz-fhd",
+    "name": "Sky Sport2 NZ FHD",
+    "number": 313,
+    "category": "Sports",
+    "country": "International",
+    "quality": "HD",
+    "logo": "https://ui-avatars.com/api/?name=Sk&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://tv-premium-pro.com/live/wezqqszfr2/i7481xvrdf/579825.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "sky-sport3-nz-fhd",
+    "name": "Sky Sport3 NZ FHD",
+    "number": 314,
+    "category": "Sports",
+    "country": "International",
+    "quality": "HD",
+    "logo": "https://ui-avatars.com/api/?name=Sk&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://tv-premium-pro.com/live/wezqqszfr2/i7481xvrdf/579824.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
+  },
+  {
+    "id": "sky-sport5-nz-fhd",
+    "name": "Sky Sport5 NZ FHD",
+    "number": 315,
+    "category": "Sports",
+    "country": "International",
+    "quality": "HD",
+    "logo": "https://ui-avatars.com/api/?name=Sk&background=1a1a2e&color=e94560&size=200&bold=true",
+    "streams": [
+      {
+        "name": "Server 1",
+        "url": "http://tv-premium-pro.com/live/wezqqszfr2/i7481xvrdf/579822.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "SPORTS",
+    "isWorking": true
   }
 ]
