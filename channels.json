@@ -669,7 +669,7 @@
     "id": "t-sports",
     "name": "ČT Sports",
     "number": 38,
-    "category": "Sports",
+    "category": "FIFA WC 2026",
     "country": "International",
     "quality": "HD",
     "logo": "https://ui-avatars.com/api/?name=%C4%8CT&background=1a1a2e&color=e94560&size=200&bold=true",
@@ -680,7 +680,7 @@
       }
     ],
     "isLive": true,
-    "badge": "SPORTS",
+    "badge": "🏆 LIVE",
     "isWorking": true
   },
   {
@@ -831,7 +831,7 @@
     "id": "t-sports-2",
     "name": "T Sports 🇧🇩",
     "number": 47,
-    "category": "Sports",
+    "category": "FIFA WC 2026",
     "country": "International",
     "quality": "HD",
     "logo": "https://ui-avatars.com/api/?name=T&background=1a1a2e&color=e94560&size=200&bold=true",
@@ -842,7 +842,7 @@
       }
     ],
     "isLive": true,
-    "badge": "SPORTS",
+    "badge": "🏆 LIVE",
     "isWorking": true
   },
   {
@@ -885,7 +885,7 @@
     "id": "t-sports-3",
     "name": "T Sports",
     "number": 50,
-    "category": "Sports",
+    "category": "FIFA WC 2026",
     "country": "International",
     "quality": "HD",
     "logo": "https://ui-avatars.com/api/?name=T&background=1a1a2e&color=e94560&size=200&bold=true",
@@ -896,7 +896,7 @@
       }
     ],
     "isLive": true,
-    "badge": "SPORTS",
+    "badge": "🏆 LIVE",
     "isWorking": true
   },
   {
@@ -1047,7 +1047,7 @@
     "id": "tnt-sports-3",
     "name": "TNT SPORTS 3",
     "number": 59,
-    "category": "Sports",
+    "category": "FIFA WC 2026",
     "country": "International",
     "quality": "HD",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/TNT_Sports_Logo_2023.svg/800px-TNT_Sports_Logo_2023.svg.png",
@@ -1058,7 +1058,7 @@
       }
     ],
     "isLive": true,
-    "badge": "SPORTS",
+    "badge": "🏆 LIVE",
     "isWorking": true
   },
   {
@@ -2415,7 +2415,7 @@
     "id": "tnt-sports-backup",
     "name": "TNT Sports (Backup)",
     "number": 135,
-    "category": "Sports",
+    "category": "FIFA WC 2026",
     "country": "International",
     "quality": "HD",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/TNT_Sports_Logo_2023.svg/800px-TNT_Sports_Logo_2023.svg.png",
@@ -2426,14 +2426,14 @@
       }
     ],
     "isLive": true,
-    "badge": "SPORTS",
+    "badge": "🏆 LIVE",
     "isWorking": true
   },
   {
     "id": "tnt-sports-backup-2",
     "name": "TNT Sports (Backup 2)",
     "number": 136,
-    "category": "Sports",
+    "category": "FIFA WC 2026",
     "country": "International",
     "quality": "HD",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/TNT_Sports_Logo_2023.svg/800px-TNT_Sports_Logo_2023.svg.png",
@@ -2444,7 +2444,7 @@
       }
     ],
     "isLive": true,
-    "badge": "SPORTS",
+    "badge": "🏆 LIVE",
     "isWorking": true
   },
   {
@@ -3243,7 +3243,7 @@
     "id": "tnt-sports-premium",
     "name": "TNT SPORTS PREMIUM 🇬🇧",
     "number": 181,
-    "category": "Sports",
+    "category": "FIFA WC 2026",
     "country": "International",
     "quality": "HD",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/TNT_Sports_Logo_2023.svg/800px-TNT_Sports_Logo_2023.svg.png",
@@ -3254,7 +3254,7 @@
       }
     ],
     "isLive": true,
-    "badge": "SPORTS",
+    "badge": "🏆 LIVE",
     "isWorking": true
   },
   {
