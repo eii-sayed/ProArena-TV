@@ -15,6 +15,7 @@ const state = {
   theme: localStorage.getItem('proarena-theme') || 'cyan',
   epgData: {}, // Map of tvg-id -> { now: {}, next: {} }
   hideBroken: true,
+  renderCount: 50,
   hls: null,
   playerState: 'idle', // idle | loading | playing | error
 };
@@ -120,11 +121,61 @@ function toggleFavorite(id) {
     showToast('Added to favorites ★');
   }
   localStorage.setItem('proarena-favs', JSON.stringify(state.favorites));
-  renderChannelList();
+  
+  // Update DOM directly for performance
+  const btn = document.querySelector(`.ch-fav-btn[data-fav="${id}"]`);
+  if (btn) {
+    const isFavd = state.favorites.includes(id);
+    btn.className = `ch-fav-btn${isFavd ? ' fav' : ''}`;
+    btn.title = isFavd ? 'Remove favorite' : 'Add favorite';
+    btn.innerHTML = isFavd ? icons.heartFill : icons.plus;
+    
+    // If we're currently viewing the Favorites category, remove the card visually
+    if (state.category === 'Favorites' && !isFavd) {
+      const card = btn.closest('.channel-card');
+      if (card) card.remove();
+      const countEl = document.getElementById('channel-count');
+      state.filtered = state.filtered.filter(c => c.id !== id);
+      countEl.textContent = `Favorites Channels (${state.filtered.length})`;
+    }
+  }
 }
 
 function isFav(id) {
   return state.favorites.includes(id);
+}
+
+function appendChannels(startIndex, count) {
+  const listEl = document.getElementById('channel-list');
+  const toRender = state.filtered.slice(startIndex, startIndex + count);
+  
+  if (toRender.length === 0) return;
+
+  const html = toRender.map(ch => {
+    const favd = isFav(ch.id);
+    const isActive = state.activeChannel && state.activeChannel.id === ch.id;
+    return `
+      <div class="channel-card${isActive ? ' active' : ''}" data-id="${ch.id}">
+        <div class="ch-logo">
+          <img src="${ch.logo}" alt="${ch.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <span class="avatar" style="display:none;">${ch.name.charAt(0)}</span>
+        </div>
+        <div class="ch-info">
+          <p class="ch-name">${ch.name}</p>
+          <div class="ch-meta">
+            ${ch.badge ? `<span class="ch-badge ${badgeClass(ch.badge)}">${ch.badge}</span>` : ''}
+            <span class="ch-country">${ch.country || ''}</span>
+          </div>
+        </div>
+        <span class="ch-number">CH ${ch.number}</span>
+        <button class="ch-fav-btn${favd ? ' fav' : ''}" data-fav="${ch.id}" title="${favd ? 'Remove' : 'Add'} favorite">
+          ${favd ? icons.heartFill : icons.plus}
+        </button>
+      </div>
+    `;
+  }).join('');
+  
+  listEl.insertAdjacentHTML('beforeend', html);
 }
 
 // ─── Render: Channel List ───────────────────────────────────────────────────
@@ -146,51 +197,10 @@ function renderChannelList() {
     return;
   }
 
-  // Build HTML
-  const frag = document.createDocumentFragment();
-
-  state.filtered.forEach(ch => {
-    const card = document.createElement('div');
-    card.className = `channel-card${state.activeChannel?.id === ch.id ? ' active' : ''}`;
-    card.dataset.id = ch.id;
-
-    const favd = isFav(ch.id);
-
-    card.innerHTML = `
-      <div class="ch-logo">
-        <img src="${ch.logo}" alt="${ch.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-        <span class="avatar" style="display:none;">${ch.name.charAt(0)}</span>
-      </div>
-      <div class="ch-info">
-        <p class="ch-name">${ch.name}</p>
-        <div class="ch-meta">
-          ${ch.badge ? `<span class="ch-badge ${badgeClass(ch.badge)}">${ch.badge}</span>` : ''}
-          <span class="ch-country">${ch.country || ''}</span>
-        </div>
-      </div>
-      <span class="ch-number">CH ${ch.number}</span>
-      <button class="ch-fav-btn${favd ? ' fav' : ''}" data-fav="${ch.id}" title="${favd ? 'Remove' : 'Add'} favorite">
-        ${favd ? icons.heartFill : icons.plus}
-      </button>
-    `;
-
-    // Play on click
-    card.addEventListener('click', (e) => {
-      if (e.target.closest('.ch-fav-btn')) return;
-      playChannel(ch);
-    });
-
-    // Fav button
-    card.querySelector('.ch-fav-btn').addEventListener('click', (e) => {
-      e.stopPropagation();
-      toggleFavorite(ch.id);
-    });
-
-    frag.appendChild(card);
-  });
-
+  // Clear existing and lazy load first batch
   listEl.innerHTML = '';
-  listEl.appendChild(frag);
+  state.renderCount = 50;
+  appendChannels(0, state.renderCount);
 }
 
 // ─── Play Channel ───────────────────────────────────────────────────────────
@@ -207,8 +217,10 @@ function playChannel(ch, streamIdx = 0) {
   if (state.recent.length > 15) state.recent.pop();
   localStorage.setItem('proarena-recent', JSON.stringify(state.recent));
 
-  // Update UI active states
-  renderChannelList();
+  // Update UI active states natively
+  document.querySelectorAll('.channel-card').forEach(card => {
+    card.classList.toggle('active', card.dataset.id === ch.id);
+  });
   renderNowPlaying();
 
   // Start playback
@@ -441,6 +453,19 @@ function retryStream() {
   }
 }
 
+// ─── Utils ────────────────────────────────────────────────────────────────────
+function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+}
+
 // ─── Init ───────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   // Clock
@@ -450,11 +475,39 @@ document.addEventListener('DOMContentLoaded', () => {
   // Categories
   renderCategories();
 
-  // Search
+  // Search (Debounced)
   const searchInput = document.getElementById('channel-search');
-  searchInput.addEventListener('input', (e) => {
+  searchInput.addEventListener('input', debounce((e) => {
     state.search = e.target.value;
     renderChannelList();
+  }, 300));
+
+  // Channel List Event Delegation & Infinite Scroll
+  const channelListEl = document.getElementById('channel-list');
+  
+  channelListEl.addEventListener('click', (e) => {
+    const favBtn = e.target.closest('.ch-fav-btn');
+    if (favBtn) {
+      e.stopPropagation();
+      toggleFavorite(favBtn.dataset.fav);
+      return;
+    }
+    
+    const card = e.target.closest('.channel-card');
+    if (card) {
+      const chId = card.dataset.id;
+      const ch = state.filtered.find(c => c.id === chId);
+      if (ch) playChannel(ch);
+    }
+  });
+
+  channelListEl.addEventListener('scroll', () => {
+    if (channelListEl.scrollTop + channelListEl.clientHeight >= channelListEl.scrollHeight - 300) {
+      if (state.renderCount < state.filtered.length) {
+        appendChannels(state.renderCount, 50);
+        state.renderCount += 50;
+      }
+    }
   });
 
   // Keyboard shortcuts
