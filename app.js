@@ -430,6 +430,76 @@ document.addEventListener('DOMContentLoaded', () => {
   // Retry button
   document.getElementById('retry-btn').addEventListener('click', retryStream);
 
+  // Import M3U Playlist
+  const importBtn = document.getElementById('import-btn');
+  const m3uUpload = document.getElementById('m3u-upload');
+
+  importBtn.addEventListener('click', () => {
+    m3uUpload.click();
+  });
+
+  m3uUpload.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const text = event.target.result;
+      const lines = text.split(/\r?\n/);
+      let importedCount = 0;
+      let lastNumber = state.channels.reduce((max, c) => Math.max(max, c.number || 0), 0);
+
+      for (let i = 0; i < lines.length; i++) {
+        const line = lines[i].trim();
+        if (line.startsWith('#EXTINF:')) {
+          const commaIdx = line.indexOf(',');
+          if (commaIdx !== -1) {
+            const name = line.substring(commaIdx + 1).trim();
+            let url = '';
+            for (let j = i + 1; j < lines.length; j++) {
+              const nextLine = lines[j].trim();
+              if (nextLine && !nextLine.startsWith('#')) {
+                url = nextLine;
+                break;
+              }
+            }
+            if (url) {
+              lastNumber++;
+              state.channels.push({
+                id: name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') + '-' + lastNumber,
+                name: name,
+                number: lastNumber,
+                category: "Imported",
+                country: "Unknown",
+                quality: "SD",
+                logo: `https://ui-avatars.com/api/?name=${encodeURIComponent(name.substring(0,2))}&background=1a1a2e&color=e94560&size=200&bold=true`,
+                streams: [{ name: "Stream 1", url: url }],
+                isLive: true,
+                badge: "",
+                isWorking: true
+              });
+              importedCount++;
+            }
+          }
+        }
+      }
+      
+      if (!CATEGORIES.includes('Imported') && importedCount > 0) {
+        CATEGORIES.push('Imported');
+        renderCategories();
+      }
+      
+      if (importedCount > 0) {
+        state.category = 'Imported';
+        renderCategories();
+        renderChannelList();
+        showToast(`Imported ${importedCount} channels!`);
+      }
+      m3uUpload.value = ''; 
+    };
+    reader.readAsText(file);
+  });
+
   // Load channels
   loadChannels();
 });
