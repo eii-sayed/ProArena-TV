@@ -337,47 +337,6 @@ function loadStream(url) {
 }
 
 // ─── Render: Now Playing Bar ────────────────────────────────────────────────
-function renderNowPlaying() {
-  const el = document.getElementById('now-playing');
-  const ch = state.activeChannel;
-
-  if (!ch) {
-    el.style.display = 'none';
-    return;
-  }
-
-  el.style.display = 'flex';
-
-  const serverBtns = ch.streams.map((s, i) =>
-    `<button class="server-btn${i === state.activeStreamIdx ? ' active' : ''}" data-stream="${i}">${s.name}</button>`
-  ).join('');
-
-  el.innerHTML = `
-    <div class="now-playing-logo">
-      <img src="${ch.logo}" alt="${ch.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-      <span class="fallback" style="display:none;">${ch.name.charAt(0)}</span>
-    </div>
-    <div class="now-playing-info">
-      <h3>${ch.name}</h3>
-      <div class="meta">
-        <span class="badge-live">LIVE</span>
-        <span>${ch.category}</span>
-        <span>•</span>
-        <span>${ch.quality || 'HD'}</span>
-      </div>
-    </div>
-    <div class="now-playing-servers">${serverBtns}</div>
-  `;
-
-  // Server switch
-  el.querySelectorAll('.server-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const idx = parseInt(btn.dataset.stream);
-      playChannel(ch, idx);
-    });
-  });
-}
-
 // ─── Render: Category Pills ─────────────────────────────────────────────────
 function renderCategories() {
   const container = document.getElementById('category-pills');
