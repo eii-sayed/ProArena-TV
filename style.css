@@ -1127,70 +1127,37 @@ a { text-decoration: none; color: inherit; }
   color: var(--neon);
 }
 
-/* ─── Stats for Nerds Overlay & Button ──────────────────────────────────── */
-.stats-overlay {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  background: rgba(10, 10, 18, 0.85);
-  border: 1px solid var(--border);
-  backdrop-filter: blur(10px);
-  border-radius: var(--radius-sm);
-  padding: 12px;
-  width: 250px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.85em;
-  color: var(--text);
-  z-index: 10;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
-}
-.stats-header {
+/* ─── Stream Controls & Selector ────────────────────────────────────────── */
+.stream-controls {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 6px;
-  margin-bottom: 8px;
-  font-weight: 700;
-  color: var(--neon);
+  gap: 12px;
+  margin-top: 12px;
+  flex-wrap: wrap;
 }
-.stats-close-btn {
-  font-size: 1.2em;
-  line-height: 1;
-  color: var(--text-dim);
-}
-.stats-close-btn:hover {
-  color: var(--red);
-}
-.stats-row {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 4px;
-}
-.stats-row span:first-child {
-  color: var(--text-dim);
-}
-.stats-row span:last-child {
-  text-align: right;
-  word-break: break-all;
-}
-/* Custom player controls inside the top overlay */
-.player-controls-right * {
-  pointer-events: auto;
-}
-.player-overlay-bottom {
-  position: absolute;
-  bottom: 50px;
-  right: 16px;
+.stream-selector {
   display: flex;
   gap: 8px;
-  z-index: 10;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
+  flex-wrap: wrap;
 }
-.player-overlay-bottom * {
-  pointer-events: auto;
+.stream-chip {
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 11px;
+  font-weight: 600;
+  border: 1px solid var(--border);
+  background: var(--bg-hover);
+  color: var(--text-dim);
+  transition: all 0.2s;
+  cursor: pointer;
 }
+.stream-chip:hover, .stream-chip.active {
+  border-color: var(--neon);
+  color: var(--neon);
+  background: var(--neon-dim);
+  box-shadow: 0 0 8px var(--neon-glow);
+}
+
 .overlay-btn {
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(4px);
@@ -1206,6 +1173,7 @@ a { text-decoration: none; color: inherit; }
   display: flex;
   align-items: center;
   gap: 4px;
+  cursor: pointer;
 }
 .overlay-btn:hover {
   background: var(--bg-hover);
@@ -1214,23 +1182,4 @@ a { text-decoration: none; color: inherit; }
   box-shadow: 0 0 8px var(--neon-glow);
 }
 
-/* Hide native controls fullscreen button in webkit browsers to avoid confusion */
-video::-webkit-media-controls-fullscreen-button {
-  display: none !important;
-}
 
-/* Style the player container when in browser fullscreen mode */
-.player-container:fullscreen {
-  width: 100vw !important;
-  height: 100vh !important;
-  aspect-ratio: auto !important;
-  border-radius: 0 !important;
-  border: none !important;
-}
-.player-container:-webkit-full-screen {
-  width: 100vw !important;
-  height: 100vh !important;
-  aspect-ratio: auto !important;
-  border-radius: 0 !important;
-  border: none !important;
-}

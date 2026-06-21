@@ -91,32 +91,8 @@
             </div>
           </div>
 
-          <!-- Player Bottom Controls Overlay -->
-          <div class="player-overlay-bottom" id="player-overlay-bottom" style="display:none;">
-            <button class="overlay-btn" id="stats-btn" style="display:none;" title="Stats for Nerds">📊 Stats</button>
-            <button class="overlay-btn" id="aspect-btn" title="Toggle Aspect Ratio">📺 Fit</button>
-            <button class="overlay-btn" id="fullscreen-btn" title="Toggle Fullscreen (F)">
-              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
-            </button>
-          </div>
-
           <!-- Number Zap Overlay -->
           <div class="number-overlay" id="number-overlay" style="display:none;"></div>
-
-          <!-- Stats for Nerds Overlay -->
-          <div class="stats-overlay" id="stats-overlay" style="display:none;">
-            <div class="stats-header">
-              <span>Stats for Nerds</span>
-              <button class="stats-close-btn" id="stats-close-btn">&times;</button>
-            </div>
-            <div class="stats-content">
-              <div class="stats-row"><span>Resolution</span><span id="stats-res">0x0</span></div>
-              <div class="stats-row"><span>Codec</span><span id="stats-codec">-</span></div>
-              <div class="stats-row"><span>Bitrate</span><span id="stats-bitrate">0 kbps</span></div>
-              <div class="stats-row"><span>Buffer Length</span><span id="stats-buffer">0s</span></div>
-              <div class="stats-row"><span>Dropped Frames</span><span id="stats-fps">0</span></div>
-            </div>
-          </div>
 
           <!-- Idle state -->
           <div class="player-idle" id="player-idle">
@@ -162,8 +138,10 @@
             </button>
           </div>
           
-          <!-- Stream selector chips -->
-          <div class="stream-selector" id="stream-selector"></div>
+          <!-- Stream selector chips & aspect selector -->
+          <div class="stream-controls">
+            <div class="stream-selector" id="stream-selector"></div>
+          </div>
         </div>
       </section>
 

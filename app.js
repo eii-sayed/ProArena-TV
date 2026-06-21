@@ -349,17 +349,8 @@ function loadStream(url) {
   const qualitySelector = document.getElementById('quality-selector');
   const ccBtn = document.getElementById('caption-btn');
 
-  // Reset stats overlay
-  const statsOverlay = document.getElementById('stats-overlay');
-  if (statsOverlay) statsOverlay.style.display = 'none';
-  const statsBtn = document.getElementById('stats-btn');
-  if (statsBtn) statsBtn.style.display = 'none';
-  clearInterval(statsTimer);
-
   // Reset states
   if (overlayTop) overlayTop.style.display = 'none';
-  const overlayBottom = document.getElementById('player-overlay-bottom');
-  if (overlayBottom) overlayBottom.style.display = 'none';
   if (qualityBadge) qualityBadge.textContent = 'Auto';
   if (qualitySelector) qualitySelector.innerHTML = '<option value="-1">Auto</option>';
   if (ccBtn) {
@@ -544,70 +535,11 @@ function handleStreamError() {
   }
 }
 
-// ─── Stats for Nerds Real-time Updates ──────────────────────────────────────
-let statsTimer = null;
-function startStatsInterval() {
-  const overlay = document.getElementById('stats-overlay');
-  const resEl = document.getElementById('stats-res');
-  const codecEl = document.getElementById('stats-codec');
-  const bitrateEl = document.getElementById('stats-bitrate');
-  const bufferEl = document.getElementById('stats-buffer');
-  const fpsEl = document.getElementById('stats-fps');
-  const video = document.getElementById('player-video');
 
-  clearInterval(statsTimer);
-  statsTimer = setInterval(() => {
-    if (state.playerState !== 'playing' || !video) return;
-
-    resEl.textContent = video.videoWidth ? `${video.videoWidth}x${video.videoHeight}` : '0x0';
-    
-    if (state.hls) {
-      const level = state.hls.levels[state.hls.currentLevel];
-      if (level) {
-        const attrs = level.attrs || {};
-        codecEl.textContent = attrs.CODECS || 'unknown';
-        bitrateEl.textContent = level.bitrate ? `${Math.round(level.bitrate / 1000)} kbps` : 'unknown';
-      }
-    } else {
-      codecEl.textContent = 'Native (Safari/Direct)';
-      bitrateEl.textContent = 'unknown';
-    }
-
-    let bufferLen = 0;
-    try {
-      if (video.buffered.length > 0) {
-        for (let i = 0; i < video.buffered.length; i++) {
-          const start = video.buffered.start(i);
-          const end = video.buffered.end(i);
-          if (video.currentTime >= start && video.currentTime <= end) {
-            bufferLen = end - video.currentTime;
-            break;
-          }
-        }
-      }
-    } catch(e) {}
-    bufferEl.textContent = `${bufferLen.toFixed(1)}s`;
-
-    try {
-      const quality = video.getVideoPlaybackQuality ? video.getVideoPlaybackQuality() : {};
-      fpsEl.textContent = quality.totalVideoFrames ? `${quality.droppedVideoFrames} / ${quality.totalVideoFrames} dropped` : 'N/A';
-    } catch(e) {
-      fpsEl.textContent = 'N/A';
-    }
-  }, 1000);
-}
 
 function onPlaybackStarted() {
-  const statsBtn = document.getElementById('stats-btn');
-  if (statsBtn) statsBtn.style.display = 'flex';
-  
   const overlayTop = document.getElementById('player-overlay-top');
   if (overlayTop) overlayTop.style.display = 'flex';
-
-  const overlayBottom = document.getElementById('player-overlay-bottom');
-  if (overlayBottom) overlayBottom.style.display = 'flex';
-
-  startStatsInterval();
 }
 
 // ─── EPG Schedule Modal Handler ─────────────────────────────────────────────
@@ -651,42 +583,21 @@ function openEPGScheduleModal() {
 
 // ─── Fullscreen Handler ─────────────────────────────────────────────────────
 function toggleFullscreen() {
-  const container = document.querySelector('.player-container');
   const video = document.getElementById('player-video');
-  if (!container || !video) return;
+  if (!video) return;
 
   if (!document.fullscreenElement && 
       !document.webkitFullscreenElement && 
       !document.mozFullScreenElement && 
       !document.msFullscreenElement) {
     
-    // Try container fullscreen first
-    const requestFS = container.requestFullscreen || 
-                      container.webkitRequestFullscreen || 
-                      container.mozRequestFullScreen || 
-                      container.msRequestFullscreen;
-                      
-    if (requestFS) {
-      requestFS.call(container).catch((err) => {
-        console.warn("Container fullscreen failed, falling back to video element:", err);
-        const requestVideoFS = video.requestFullscreen || 
-                               video.webkitRequestFullscreen || 
-                               video.webkitEnterFullscreen || 
-                               video.mozRequestFullScreen || 
-                               video.msRequestFullscreen;
-        if (requestVideoFS) {
-          requestVideoFS.call(video).catch(() => {});
-        }
-      });
-    } else {
-      const requestVideoFS = video.requestFullscreen || 
-                             video.webkitRequestFullscreen || 
-                             video.webkitEnterFullscreen || 
-                             video.mozRequestFullScreen || 
-                             video.msRequestFullscreen;
-      if (requestVideoFS) {
-        requestVideoFS.call(video).catch(() => {});
-      }
+    const requestVideoFS = video.requestFullscreen || 
+                           video.webkitRequestFullscreen || 
+                           video.webkitEnterFullscreen || 
+                           video.mozRequestFullScreen || 
+                           video.msRequestFullscreen;
+    if (requestVideoFS) {
+      requestVideoFS.call(video).catch(() => {});
     }
   } else {
     const exitFS = document.exitFullscreen || 
@@ -907,27 +818,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Stats for Nerds Toggle
-  const statsBtn = document.getElementById('stats-btn');
-  const statsOverlay = document.getElementById('stats-overlay');
-  const statsCloseBtn = document.getElementById('stats-close-btn');
-  if (statsBtn && statsOverlay) {
-    statsBtn.addEventListener('click', () => {
-      const show = statsOverlay.style.display === 'none';
-      statsOverlay.style.display = show ? 'block' : 'none';
-    });
-  }
-  if (statsCloseBtn && statsOverlay) {
-    statsCloseBtn.addEventListener('click', () => {
-      statsOverlay.style.display = 'none';
-    });
-  }
 
-  // Fullscreen Button
-  const fullscreenBtn = document.getElementById('fullscreen-btn');
-  if (fullscreenBtn) {
-    fullscreenBtn.addEventListener('click', toggleFullscreen);
-  }
 
   // Double click video to toggle fullscreen
   const videoEl = document.getElementById('player-video');
@@ -938,32 +829,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Aspect Ratio / Zoom Toggle
-  const aspectBtn = document.getElementById('aspect-btn');
-  const videoElement = document.getElementById('player-video');
-  if (aspectBtn && videoElement) {
-    aspectBtn.addEventListener('click', () => {
-      const modes = ['contain', 'cover', 'fill'];
-      const labels = {
-        contain: '📺 Fit',
-        cover: '🔍 Zoom',
-        fill: '↔️ Stretch'
-      };
-      const toasts = {
-        contain: 'Aspect Ratio: Fit (Contain)',
-        cover: 'Aspect Ratio: Zoom (Cover)',
-        fill: 'Aspect Ratio: Stretch (Fill)'
-      };
-      
-      let nextIdx = modes.indexOf(state.aspectMode) + 1;
-      if (nextIdx >= modes.length) nextIdx = 0;
-      
-      state.aspectMode = modes[nextIdx];
-      videoElement.style.objectFit = state.aspectMode;
-      aspectBtn.textContent = labels[state.aspectMode];
-      showToast(toasts[state.aspectMode]);
-    });
-  }
 
   // Close modals on clicking overlay background
   window.addEventListener('click', (e) => {
