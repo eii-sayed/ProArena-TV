@@ -1,36 +1,40 @@
 # ProArena TV
 
-ProArena TV is a premium, lightweight, and responsive IPTV streaming web application built entirely with **Vanilla JavaScript, HTML, and CSS**. It offers a sleek and modern user interface to browse, filter, and play live TV channels via m3u8 streams.
+ProArena TV is a premium, lightweight, and highly-responsive IPTV streaming web application built entirely with **Vanilla JavaScript, HTML, and CSS**. It offers a sleek and modern user interface to browse, filter, and play live TV channels via m3u8 streams.
 
 ## 🚀 Features
 
-- **Zero Dependencies:** Built entirely with native web technologies. No React, Vue, or Angular required.
+- **Zero Dependencies:** Built entirely with native web technologies. No heavy frameworks required.
 - **HLS Streaming Support:** Uses `hls.js` for robust playback of HTTP Live Streaming (HLS) formats, with automatic native fallback for browsers like Safari.
-- **Modern UI/UX:** Features a beautiful, responsive dark mode design with glassmorphism effects, micro-animations, and SVG icons.
-- **Channel Categorization & Search:** Easily filter channels by categories (Sports, News, Entertainment, etc.) or search by name. Includes a quick `/` keyboard shortcut for searching.
+- **Modern UI/UX:** Features a beautiful, responsive dark mode design with glassmorphism effects, micro-animations, theme customization, and SVG icons.
+- **Dynamic M3U Playlists:** Paste any external M3U link into `config.js` and the app will automatically fetch and load it alongside your local channels seamlessly.
+- **Native CORS Bypass:** Importing GitHub M3U UI links (like `github.com/..`) are automatically rewritten to raw links (`raw.githubusercontent.com/..`) to bypass CORS naturally without browser extensions. A fallback CORS proxy is also built-in.
+- **Local File Import:** Upload local `.m3u` or `.m3u8` playlist files directly via the UI.
+- **Electronic Program Guide (EPG):** Load XMLTV EPG data to see full channel schedules and "Now Playing / Next Playing" information natively on the player.
+- **Channel Categorization & Search:** Filter channels by categories or search instantly. Includes a quick `/` keyboard shortcut for searching.
+- **Keyboard & Remote Support:** Zap up/down using arrows, tune directly to a channel by pressing numbers (`0-9`), and toggle fullscreen with `F`.
 - **Favorites System:** Users can save their favorite channels locally. Favorites persist across sessions using `localStorage`.
-- **Online Only Filter:** Instantly filter out channels that are marked as offline or broken.
-- **Multi-Server Support:** Seamlessly switch between multiple stream sources (servers) for a single channel to ensure the best viewing experience.
-- **FIFA WC 2026 Ready:** Special UI highlights and badges for major events like the World Cup.
+- **Online Only Filter & Health Checks:** Instantly filter out channels that are marked as offline or broken. The player dynamically checks stream health.
+- **Picture-in-Picture & Captions:** Support for floating PiP video and native/HLS subtitle tracks.
 
 ## 🛠️ Technology Stack
 
 - **Frontend Core:** HTML5, CSS3 (Vanilla), JavaScript (ES6+)
 - **Streaming:** [hls.js](https://github.com/video-dev/hls.js/)
-- **Data Source:** JSON (`channels.json`)
+- **Data Source:** JSON (`channels.json`) and standard M3U/M3U8 playlists.
 
 ## 📺 Usage
 
 ### Running Locally
 
-Since the application relies on fetching a local JSON file (`channels.json`) and handling CORS for streams, it must be run via a local web server.
+Since the application relies on fetching local files (`channels.json` and `config.js`), it must be run via a local web server or deployed online (like Cloudflare Pages).
 
 1. Clone the repository:
    ```bash
    git clone https://github.com/eii-sayed/ProArena-TV.git
    cd ProArena-TV
    ```
-2. Start a local server. You can use tools like VS Code Live Server, or Python/Node.js:
+2. Start a local server:
    ```bash
    # Using Node.js (http-server)
    npx http-server -p 8080
@@ -40,9 +44,21 @@ Since the application relies on fetching a local JSON file (`channels.json`) and
    ```
 3. Open your browser and navigate to `http://localhost:8080`.
 
-### Adding Channels
+### Loading Dynamic External Playlists (NEW)
 
-All channel data is loaded dynamically from `channels.json`. To add or modify channels, update the array with the following object structure:
+You no longer need to edit the source code to load an external M3U list. Simply open the `config.js` file located in the root folder:
+
+```javascript
+const APP_CONFIG = {
+    // Paste your M3U playlist URL between the quotes
+    EXTERNAL_PLAYLIST_URL: "https://raw.githubusercontent.com/Free-TV/IPTV/master/playlist.m3u8"
+};
+```
+Every time the app loads, it will fetch the channels from this URL and display them dynamically.
+
+### Adding Channels Manually
+
+Channel data is also loaded locally from `channels.json`. To add or modify persistent channels, update the array with the following object structure:
 
 ```json
 {
@@ -67,8 +83,8 @@ All channel data is loaded dynamically from `channels.json`. To add or modify ch
 
 ## ⚠️ Disclaimer
 
-This project is a video player interface. It does not host, provide, or distribute any video streams or copyrighted material. The `channels.json` file is meant to be populated by the user with their own legally obtained m3u8 links.
+This project is a video player interface. It does not host, provide, or distribute any video streams or copyrighted material. The `channels.json` and playlist inputs are meant to be populated by the user with their own legally obtained m3u8 links.
 
 ## 📄 License
 
-This project is open-source and available under the [MIT License](LICENSE).
+This project is open-source and available under the MIT License.
