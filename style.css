@@ -619,9 +619,10 @@ a { text-decoration: none; color: inherit; }
 }
 
 .ch-logo {
+  position: relative;
   width: 42px; height: 42px;
   border-radius: 10px;
-  overflow: hidden;
+  overflow: visible;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -934,3 +935,116 @@ a { text-decoration: none; color: inherit; }
   transition: opacity 0.3s;
 }
 .toast.hiding { opacity: 0; }
+
+/* ─── Volume Slider ────────────────────────────────────────────────────── */
+.volume-control {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 4px;
+}
+.volume-icon {
+  width: 18px;
+  height: 18px;
+  color: #fff;
+  opacity: 0.8;
+  flex-shrink: 0;
+}
+.volume-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 70px;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255,255,255,0.2);
+  outline: none;
+  cursor: pointer;
+}
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--neon);
+  box-shadow: 0 0 6px var(--neon-glow);
+  cursor: pointer;
+}
+.volume-slider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--neon);
+  border: none;
+  cursor: pointer;
+}
+
+/* ─── Number Zap Overlay ───────────────────────────────────────────────── */
+.number-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 48px;
+  font-weight: 700;
+  color: #fff;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 16px 32px;
+  border-radius: var(--radius);
+  border: 1px solid rgba(255,255,255,0.1);
+  z-index: 20;
+  letter-spacing: 4px;
+  text-shadow: 0 0 16px var(--neon-glow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.15s ease-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+/* ─── Sort Selector ────────────────────────────────────────────────────── */
+.sort-selector {
+  background: var(--bg-hover);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+.sort-selector:hover,
+.sort-selector:focus {
+  border-color: var(--neon);
+}
+.sort-selector option {
+  background: var(--bg-surface);
+  color: var(--text);
+}
+
+/* ─── Health Dots ──────────────────────────────────────────────────────── */
+.health-dot {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid var(--bg-card);
+}
+.health-online {
+  background: var(--green);
+  box-shadow: 0 0 4px var(--green);
+}
+.health-offline {
+  background: var(--red);
+  box-shadow: 0 0 4px var(--red);
+}

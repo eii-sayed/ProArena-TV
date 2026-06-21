@@ -2,6 +2,27 @@
    ProArena TV — Premium IPTV — Vanilla JS (No frameworks)
    ═══════════════════════════════════════════════════════════════════════════ */
 
+// ─── Security: Safe localStorage helper ─────────────────────────────────────
+function safeParse(key, fallback) {
+  try {
+    const raw = localStorage.getItem(key);
+    if (!raw) return fallback;
+    const parsed = JSON.parse(raw);
+    return Array.isArray(fallback) ? (Array.isArray(parsed) ? parsed : fallback) : parsed;
+  } catch (e) {
+    console.warn(`Corrupted localStorage key "${key}", resetting.`);
+    localStorage.removeItem(key);
+    return fallback;
+  }
+}
+
+// ─── Security: XSS Sanitizer ────────────────────────────────────────────────
+function sanitize(str) {
+  if (typeof str !== 'string') return '';
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+}
+
 // ─── State ──────────────────────────────────────────────────────────────────
 const state = {
   channels: [],
@@ -10,14 +31,18 @@ const state = {
   activeStreamIdx: 0,
   category: 'All',
   search: '',
-  favorites: JSON.parse(localStorage.getItem('proarena-favs') || '[]'),
-  recent: JSON.parse(localStorage.getItem('proarena-recent') || '[]'),
+  favorites: safeParse('proarena-favs', []),
+  recent: safeParse('proarena-recent', []),
   theme: localStorage.getItem('proarena-theme') || 'cyan',
-  epgData: {}, // Map of tvg-id -> { now: {}, next: {} }
+  epgData: {},
   hideBroken: true,
   renderCount: 50,
+  sortBy: 'number', // number | name-az | name-za | country
   hls: null,
-  playerState: 'idle', // idle | loading | playing | error
+  playerState: 'idle',
+  healthCache: {}, // url -> true/false/null(pending)
+  numberBuffer: '', // for channel number zapping
+  numberTimer: null,
 };
 
 // Apply Theme immediately
@@ -107,6 +132,16 @@ function applyFilters() {
     );
   }
 
+  // Sort (skip for Recent which has its own order)
+  if (state.category !== 'Recent') {
+    switch (state.sortBy) {
+      case 'name-az': list.sort((a, b) => a.name.localeCompare(b.name)); break;
+      case 'name-za': list.sort((a, b) => b.name.localeCompare(a.name)); break;
+      case 'country': list.sort((a, b) => (a.country || '').localeCompare(b.country || '')); break;
+      default: list.sort((a, b) => (a.number || 0) - (b.number || 0)); break;
+    }
+  }
+
   state.filtered = list;
 }
 
@@ -154,21 +189,27 @@ function appendChannels(startIndex, count) {
   const html = toRender.map(ch => {
     const favd = isFav(ch.id);
     const isActive = state.activeChannel && state.activeChannel.id === ch.id;
+    const name = sanitize(ch.name);
+    const country = sanitize(ch.country || '');
+    const badge = sanitize(ch.badge || '');
+    const healthDot = state.healthCache[ch.streams?.[0]?.url];
+    const dotClass = healthDot === true ? 'health-online' : healthDot === false ? 'health-offline' : '';
     return `
-      <div class="channel-card${isActive ? ' active' : ''}" data-id="${ch.id}">
+      <div class="channel-card${isActive ? ' active' : ''}" data-id="${sanitize(ch.id)}">
         <div class="ch-logo">
-          <img src="${ch.logo}" alt="${ch.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-          <span class="avatar" style="display:none;">${ch.name.charAt(0)}</span>
+          <img src="${sanitize(ch.logo)}" alt="${name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <span class="avatar" style="display:none;">${name.charAt(0)}</span>
+          ${dotClass ? `<span class="health-dot ${dotClass}"></span>` : ''}
         </div>
         <div class="ch-info">
-          <p class="ch-name">${ch.name}</p>
+          <p class="ch-name">${name}</p>
           <div class="ch-meta">
-            ${ch.badge ? `<span class="ch-badge ${badgeClass(ch.badge)}">${ch.badge}</span>` : ''}
-            <span class="ch-country">${ch.country || ''}</span>
+            ${badge ? `<span class="ch-badge ${badgeClass(ch.badge)}">${badge}</span>` : ''}
+            <span class="ch-country">${country}</span>
           </div>
         </div>
         <span class="ch-number">CH ${ch.number}</span>
-        <button class="ch-fav-btn${favd ? ' fav' : ''}" data-fav="${ch.id}" title="${favd ? 'Remove' : 'Add'} favorite">
+        <button class="ch-fav-btn${favd ? ' fav' : ''}" data-fav="${sanitize(ch.id)}" title="${favd ? 'Remove' : 'Add'} favorite">
           ${favd ? icons.heartFill : icons.plus}
         </button>
       </div>
@@ -469,7 +510,84 @@ function retryStream() {
   }
 }
 
-// ─── Utils ────────────────────────────────────────────────────────────────────
+// ─── Export Favorites as M3U ────────────────────────────────────────────────
+function exportFavorites() {
+  const favChannels = state.channels.filter(c => state.favorites.includes(c.id));
+  if (favChannels.length === 0) {
+    showToast('No favorites to export');
+    return;
+  }
+  let m3u = '#EXTM3U\n';
+  favChannels.forEach(ch => {
+    m3u += `#EXTINF:-1,${ch.name}\n`;
+    m3u += ch.streams[0]?.url + '\n';
+  });
+  const blob = new Blob([m3u], { type: 'audio/x-mpegurl' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'proarena-favorites.m3u';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  showToast(`Exported ${favChannels.length} favorites!`);
+}
+
+// ─── Stream Health Check ────────────────────────────────────────────────────
+function checkStreamHealth(channels) {
+  channels.forEach(ch => {
+    const url = ch.streams?.[0]?.url;
+    if (!url || state.healthCache[url] !== undefined) return;
+    state.healthCache[url] = null; // pending
+    fetch(url, { method: 'HEAD', mode: 'no-cors', signal: AbortSignal.timeout(5000) })
+      .then(() => {
+        state.healthCache[url] = true;
+        updateHealthDot(ch.id, 'health-online');
+      })
+      .catch(() => {
+        state.healthCache[url] = false;
+        updateHealthDot(ch.id, 'health-offline');
+      });
+  });
+}
+
+function updateHealthDot(chId, dotClass) {
+  const card = document.querySelector(`.channel-card[data-id="${chId}"]`);
+  if (!card) return;
+  let dot = card.querySelector('.health-dot');
+  if (!dot) {
+    dot = document.createElement('span');
+    dot.className = 'health-dot';
+    card.querySelector('.ch-logo')?.appendChild(dot);
+  }
+  dot.className = 'health-dot ' + dotClass;
+}
+
+// ─── Number Zap (TV Remote Style) ───────────────────────────────────────────
+function handleNumberZap(digit) {
+  state.numberBuffer += digit;
+  const overlay = document.getElementById('number-overlay');
+  if (overlay) {
+    overlay.textContent = 'CH ' + state.numberBuffer;
+    overlay.style.display = 'flex';
+  }
+  clearTimeout(state.numberTimer);
+  state.numberTimer = setTimeout(() => {
+    const num = parseInt(state.numberBuffer, 10);
+    state.numberBuffer = '';
+    if (overlay) overlay.style.display = 'none';
+    const ch = state.channels.find(c => c.number === num);
+    if (ch) {
+      playChannel(ch);
+      showToast(`Tuned to CH ${num}`);
+    } else {
+      showToast(`Channel ${num} not found`);
+    }
+  }, 1500);
+}
+
+// ─── Utils ──────────────────────────────────────────────────────────────────
 function debounce(func, wait) {
   let timeout;
   return function executedFunction(...args) {
@@ -562,6 +680,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'm') {
       const video = document.getElementById('player-video');
       video.muted = !video.muted;
+      const slider = document.getElementById('volume-slider');
+      if (slider) slider.value = video.muted ? 0 : video.volume;
+    }
+    
+    // Number zap (0-9)
+    if (/^[0-9]$/.test(e.key)) {
+      handleNumberZap(e.key);
     }
   });
 
@@ -576,6 +701,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Retry button
   document.getElementById('retry-btn').addEventListener('click', retryStream);
+
+  // Sort selector
+  const sortSelector = document.getElementById('sort-selector');
+  if (sortSelector) {
+    sortSelector.addEventListener('change', (e) => {
+      state.sortBy = e.target.value;
+      renderChannelList();
+    });
+  }
+
+  // Export button
+  const exportBtn = document.getElementById('export-btn');
+  if (exportBtn) {
+    exportBtn.addEventListener('click', exportFavorites);
+  }
+
+  // Volume slider
+  const volumeSlider = document.getElementById('volume-slider');
+  const playerVideo = document.getElementById('player-video');
+  if (volumeSlider && playerVideo) {
+    volumeSlider.value = playerVideo.volume;
+    volumeSlider.addEventListener('input', (e) => {
+      playerVideo.volume = parseFloat(e.target.value);
+      playerVideo.muted = playerVideo.volume === 0;
+    });
+  }
 
   // Import M3U Playlist
   const importBtn = document.getElementById('import-btn');
@@ -678,6 +829,12 @@ document.addEventListener('DOMContentLoaded', () => {
   urlSubmit.addEventListener('click', async () => {
     const url = urlInput.value.trim();
     if (!url) return;
+    
+    // Security: warn on non-M3U URLs
+    if (!/\.m3u8?$/i.test(url) && !/\.m3u/i.test(url)) {
+      if (!confirm('This URL does not appear to be an .m3u/.m3u8 playlist. Continue anyway?')) return;
+    }
+    
     try {
       urlSubmit.textContent = 'Importing...';
       const resp = await fetch(url);
@@ -800,7 +957,15 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Load channels
-  loadChannels();
+  loadChannels().then(() => {
+    // Run health checks in background for the first batch
+    checkStreamHealth(state.filtered.slice(0, 50));
+  });
+
+  // Register Service Worker
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js').catch(() => {});
+  }
 });
 
 // ─── EPG Logic ──────────────────────────────────────────────────────────────
