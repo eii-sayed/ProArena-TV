@@ -104,6 +104,32 @@ async function loadChannels() {
     state.channels = await resp.json();
     applyFilters();
     renderChannelList();
+
+    // Dynamically load external playlist if configured
+    if (typeof APP_CONFIG !== 'undefined' && APP_CONFIG.EXTERNAL_PLAYLIST_URL) {
+      setTimeout(async () => {
+        try {
+          let dynamicUrl = APP_CONFIG.EXTERNAL_PLAYLIST_URL.trim();
+          if (dynamicUrl.includes('github.com') && dynamicUrl.includes('/blob/')) {
+            dynamicUrl = dynamicUrl.replace('github.com', 'raw.githubusercontent.com').replace('/blob/', '/');
+          }
+          let text;
+          try {
+            const r = await fetch(dynamicUrl);
+            if (!r.ok) throw new Error('HTTP ' + r.status);
+            text = await r.text();
+          } catch(e) {
+            const proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(dynamicUrl);
+            const proxyR = await fetch(proxyUrl);
+            if (!proxyR.ok) throw new Error('HTTP ' + proxyR.status);
+            text = await proxyR.text();
+          }
+          parseM3UContent(text, "Dynamic Playlist");
+        } catch (err) {
+          console.error('Failed to load dynamic playlist:', err);
+        }
+      }, 500);
+    }
   } catch (e) {
     console.error('Failed to load channels:', e);
   }
@@ -947,8 +973,13 @@ document.addEventListener('DOMContentLoaded', () => {
     urlInput.value = '';
   });
   urlSubmit.addEventListener('click', async () => {
-    const url = urlInput.value.trim();
+    let url = urlInput.value.trim();
     if (!url) return;
+    
+    // Automatically rewrite GitHub UI links to raw files to bypass CORS organically
+    if (url.includes('github.com') && url.includes('/blob/')) {
+        url = url.replace('github.com', 'raw.githubusercontent.com').replace('/blob/', '/');
+    }
     
     // Security: warn on non-M3U URLs
     if (!/\.m3u8?$/i.test(url) && !/\.m3u/i.test(url)) {
