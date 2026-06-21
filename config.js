@@ -5,5 +5,5 @@ const APP_CONFIG = {
     // Example: "https://raw.githubusercontent.com/Free-TV/IPTV/master/playlist.m3u8"
     // Leave it empty ("") to only use the local channels.json
     
-    EXTERNAL_PLAYLIST_URL: ""
+    EXTERNAL_PLAYLIST_URL: "https://github.com/abusaeeidx/Mrgify-BDIX-IPTV/blob/main/playlist.m3u"
 };
