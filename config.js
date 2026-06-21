@@ -5,5 +5,10 @@ const APP_CONFIG = {
     // Example: "https://raw.githubusercontent.com/Free-TV/IPTV/master/playlist.m3u8"
     // Leave it empty ("") to only use the local channels.json
     
-    EXTERNAL_PLAYLIST_URL: "https://github.com/abusaeeidx/Mrgify-BDIX-IPTV/blob/main/playlist.m3u"
+    EXTERNAL_PLAYLIST_URL: "",
+    
+    // 📅 DEFAULT EPG (TV GUIDE) URL
+    // The app will automatically load this XMLTV guide in the background.
+    // Example: "https://iptv-org.github.io/epg/guides/us/tvguide.com.epg.xml"
+    DEFAULT_EPG_URL: "https://iptv-org.github.io/epg/guides/us/tvguide.com.epg.xml"
 };

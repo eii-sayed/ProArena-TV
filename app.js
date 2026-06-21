@@ -44,6 +44,7 @@ const state = {
   aspectMode: 'contain', // contain (Fit) | cover (Zoom) | fill (Stretch)
   numberBuffer: '', // for channel number zapping
   numberTimer: null,
+  clusterizeInstance: null,
 };
 
 // Apply Theme immediately
@@ -83,7 +84,7 @@ const icons = {
 };
 
 // ─── Categories ─────────────────────────────────────────────────────────────
-const CATEGORIES = ['All', 'Recent', 'Favorites', 'FIFA WC 2026', 'Sports', 'News', 'Entertainment', 'Music', 'Kids', 'Religious'];
+// Categories are now generated dynamically based on loaded channels.
 
 // ─── Badge helpers ──────────────────────────────────────────────────────────
 function badgeClass(badge) {
@@ -129,6 +130,13 @@ async function loadChannels() {
           console.error('Failed to load dynamic playlist:', err);
         }
       }, 500);
+    }
+    
+    // Auto-load EPG if configured
+    if (typeof APP_CONFIG !== 'undefined' && APP_CONFIG.DEFAULT_EPG_URL) {
+      setTimeout(() => {
+        loadEPG(APP_CONFIG.DEFAULT_EPG_URL.trim(), true);
+      }, 2000); // load after a delay to not block UI
     }
   } catch (e) {
     console.error('Failed to load channels:', e);
@@ -212,13 +220,31 @@ function isFav(id) {
   return state.favorites.includes(id);
 }
 
-function appendChannels(startIndex, count) {
-  const listEl = document.getElementById('channel-list');
-  const toRender = state.filtered.slice(startIndex, startIndex + count);
-  
-  if (toRender.length === 0) return;
+// ─── Render: Channel List (Virtualization) ──────────────────────────────────
+function renderChannelList() {
+  applyFilters();
 
-  const html = toRender.map(ch => {
+  const countEl = document.getElementById('channel-count');
+  countEl.textContent = `${state.category === 'All' ? 'All' : state.category} Channels (${state.filtered.length})`;
+
+  if (state.filtered.length === 0) {
+    const emptyHtml = [`
+      <div class="empty-state">
+        ${icons.search}
+        <p>No channels found</p>
+        <p class="hint">Try a different search or category</p>
+      </div>
+    `];
+    if (state.clusterizeInstance) {
+      state.clusterizeInstance.update(emptyHtml);
+    } else {
+      document.getElementById('channel-list').innerHTML = emptyHtml[0];
+    }
+    return;
+  }
+
+  // Generate HTML strings for all channels
+  const htmlRows = state.filtered.map(ch => {
     const favd = isFav(ch.id);
     const isActive = state.activeChannel && state.activeChannel.id === ch.id;
     const name = sanitize(ch.name);
@@ -226,11 +252,14 @@ function appendChannels(startIndex, count) {
     const badge = sanitize(ch.badge || '');
     const healthDot = state.healthCache[ch.streams?.[0]?.url];
     const dotClass = healthDot === true ? 'health-online' : healthDot === false ? 'health-offline' : '';
+    
+    let logoUrl = ch.logo ? sanitize(ch.logo) : `https://ui-avatars.com/api/?name=${encodeURIComponent(name.substring(0,2))}&background=1a1a2e&color=e94560&size=200&bold=true`;
+    
     return `
       <div class="channel-card${isActive ? ' active' : ''}" data-id="${sanitize(ch.id)}">
         <div class="ch-logo">
-          <img src="${sanitize(ch.logo)}" alt="${name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-          <span class="avatar" style="display:none;">${name.charAt(0)}</span>
+          <img src="${logoUrl}" alt="${name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <span class="avatar" style="display:none; align-items:center; justify-content:center; width:100%; height:100%; font-size:14px; font-weight:bold; background:#1a1a2e; color:#e94560; border-radius:8px;">${name.charAt(0)}</span>
           ${dotClass ? `<span class="health-dot ${dotClass}"></span>` : ''}
         </div>
         <div class="ch-info">
@@ -246,34 +275,20 @@ function appendChannels(startIndex, count) {
         </button>
       </div>
     `;
-  }).join('');
-  
-  listEl.insertAdjacentHTML('beforeend', html);
-}
+  });
 
-// ─── Render: Channel List ───────────────────────────────────────────────────
-function renderChannelList() {
-  applyFilters();
-
-  const listEl = document.getElementById('channel-list');
-  const countEl = document.getElementById('channel-count');
-
-  countEl.textContent = `${state.category === 'All' ? 'All' : state.category} Channels (${state.filtered.length})`;
-
-  if (state.filtered.length === 0) {
-    listEl.innerHTML = `
-      <div class="empty-state">
-        ${icons.search}
-        <p>No channels found</p>
-        <p class="hint">Try a different search or category</p>
-      </div>`;
-    return;
+  if (state.clusterizeInstance) {
+    state.clusterizeInstance.update(htmlRows);
+  } else {
+    state.clusterizeInstance = new Clusterize({
+      rows: htmlRows,
+      scrollId: 'channel-scroll-area',
+      contentId: 'channel-list',
+      no_data_text: 'No channels found',
+      blocks_in_cluster: 4,
+      rows_in_block: 20
+    });
   }
-
-  // Clear existing and lazy load first batch
-  listEl.innerHTML = '';
-  state.renderCount = 50;
-  appendChannels(0, state.renderCount);
 }
 
 // ─── Play Channel ───────────────────────────────────────────────────────────
@@ -498,7 +513,11 @@ function renderCategories() {
   const container = document.getElementById('category-pills');
   container.innerHTML = '';
 
-  CATEGORIES.forEach(cat => {
+  const dynamicCategories = [...new Set(state.channels.map(c => c.category).filter(Boolean))].sort();
+  const baseCategories = ['All', 'Recent', 'Favorites', 'FIFA WC 2026', 'Sports'];
+  const finalCategories = [...new Set([...baseCategories, ...dynamicCategories])];
+
+  finalCategories.forEach(cat => {
     const btn = document.createElement('button');
     const isFifa = cat === 'FIFA WC 2026';
     btn.className = `pill${state.category === cat ? ' pill-active' : ''}${isFifa ? ' pill-fifa' : ''}`;
@@ -737,14 +756,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  channelListEl.addEventListener('scroll', () => {
-    if (channelListEl.scrollTop + channelListEl.clientHeight >= channelListEl.scrollHeight - 300) {
-      if (state.renderCount < state.filtered.length) {
-        appendChannels(state.renderCount, 50);
-        state.renderCount += 50;
-      }
-    }
-  });
+  // Virtualization via Clusterize.js handles scrolling now
 
   // Keyboard shortcuts
   window.addEventListener('keydown', (e) => {
@@ -932,10 +944,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
     
-    if (!CATEGORIES.includes(categoryName) && importedCount > 0) {
-      CATEGORIES.push(categoryName);
-      renderCategories();
-    }
+    // Categories are now automatically extracted during renderCategories()
     
     if (importedCount > 0) {
       state.category = categoryName;
@@ -1083,6 +1092,42 @@ document.addEventListener('DOMContentLoaded', () => {
     settingsCancel.addEventListener('click', () => settingsModal.style.display = 'none');
   }
 
+  const exportFavsBtn = document.getElementById('export-favs-btn');
+  if (exportFavsBtn) {
+    exportFavsBtn.addEventListener('click', () => {
+      exportFavoritesToM3U();
+      settingsModal.style.display = 'none';
+    });
+  }
+
+  function exportFavoritesToM3U() {
+    if (state.favorites.length === 0) {
+      alert("You don't have any favorite channels to export!");
+      return;
+    }
+    
+    let m3uContent = '#EXTM3U\n';
+    const favChannels = state.channels.filter(c => state.favorites.includes(c.id));
+    
+    favChannels.forEach(ch => {
+      if (ch.streams && ch.streams.length > 0) {
+         m3uContent += `#EXTINF:-1 tvg-id="${ch.tvgId || ''}" tvg-name="${ch.name}" tvg-logo="${ch.logo}" group-title="Favorites",${ch.name}\n`;
+         m3uContent += `${ch.streams[0].url}\n`;
+      }
+    });
+
+    const blob = new Blob([m3uContent], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'proarena_favorites.m3u';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    showToast('Favorites Exported Successfully!');
+  }
+
   themeSwatches.forEach(swatch => {
     swatch.addEventListener('click', () => {
       applyTheme(swatch.dataset.color);
@@ -1129,9 +1174,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ─── EPG Logic ──────────────────────────────────────────────────────────────
-async function loadEPG(url) {
+async function loadEPG(url, isSilent = false) {
   try {
-    showToast('Fetching EPG...');
+    if (!isSilent) showToast('Fetching EPG...');
     const resp = await fetch(url);
     if (!resp.ok) throw new Error('HTTP ' + resp.status);
     const text = await resp.text();
@@ -1207,10 +1252,10 @@ async function loadEPG(url) {
       }
     }
 
-    showToast('EPG Loaded successfully');
+    if (!isSilent) showToast('EPG Loaded successfully');
     renderNowPlaying();
   } catch (e) {
-    showToast('Failed to load EPG');
+    if (!isSilent) showToast('Failed to load EPG');
     console.error('EPG Error:', e);
   }
 }
