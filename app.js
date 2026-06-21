@@ -41,6 +41,7 @@ const state = {
   hls: null,
   playerState: 'idle',
   healthCache: {}, // url -> true/false/null(pending)
+  aspectMode: 'contain', // contain (Fit) | cover (Zoom) | fill (Stretch)
   numberBuffer: '', // for channel number zapping
   numberTimer: null,
 };
@@ -339,6 +340,7 @@ function renderNowPlaying() {
 
 function loadStream(url) {
   const video = document.getElementById('player-video');
+  if (video) video.style.objectFit = state.aspectMode;
   const idleEl = document.getElementById('player-idle');
   const loadingEl = document.getElementById('player-loading');
   const errorEl = document.getElementById('player-error');
@@ -641,30 +643,49 @@ function openEPGScheduleModal() {
 // ─── Fullscreen Handler ─────────────────────────────────────────────────────
 function toggleFullscreen() {
   const container = document.querySelector('.player-container');
-  if (!container) return;
+  const video = document.getElementById('player-video');
+  if (!container || !video) return;
 
   if (!document.fullscreenElement && 
       !document.webkitFullscreenElement && 
       !document.mozFullScreenElement && 
       !document.msFullscreenElement) {
-    if (container.requestFullscreen) {
-      container.requestFullscreen().catch(() => {});
-    } else if (container.webkitRequestFullscreen) {
-      container.webkitRequestFullscreen().catch(() => {});
-    } else if (container.mozRequestFullScreen) {
-      container.mozRequestFullScreen().catch(() => {});
-    } else if (container.msRequestFullscreen) {
-      container.msRequestFullscreen().catch(() => {});
+    
+    // Try container fullscreen first
+    const requestFS = container.requestFullscreen || 
+                      container.webkitRequestFullscreen || 
+                      container.mozRequestFullScreen || 
+                      container.msRequestFullscreen;
+                      
+    if (requestFS) {
+      requestFS.call(container).catch((err) => {
+        console.warn("Container fullscreen failed, falling back to video element:", err);
+        const requestVideoFS = video.requestFullscreen || 
+                               video.webkitRequestFullscreen || 
+                               video.webkitEnterFullscreen || 
+                               video.mozRequestFullScreen || 
+                               video.msRequestFullscreen;
+        if (requestVideoFS) {
+          requestVideoFS.call(video).catch(() => {});
+        }
+      });
+    } else {
+      const requestVideoFS = video.requestFullscreen || 
+                             video.webkitRequestFullscreen || 
+                             video.webkitEnterFullscreen || 
+                             video.mozRequestFullScreen || 
+                             video.msRequestFullscreen;
+      if (requestVideoFS) {
+        requestVideoFS.call(video).catch(() => {});
+      }
     }
   } else {
-    if (document.exitFullscreen) {
-      document.exitFullscreen().catch(() => {});
-    } else if (document.webkitExitFullscreen) {
-      document.webkitExitFullscreen().catch(() => {});
-    } else if (document.mozCancelFullScreen) {
-      document.mozCancelFullScreen().catch(() => {});
-    } else if (document.msExitFullscreen) {
-      document.msExitFullscreen().catch(() => {});
+    const exitFS = document.exitFullscreen || 
+                   document.webkitExitFullscreen || 
+                   document.mozCancelFullScreen || 
+                   document.msExitFullscreen;
+    if (exitFS) {
+      exitFS.call(document).catch(() => {});
     }
   }
 }
@@ -905,6 +926,33 @@ document.addEventListener('DOMContentLoaded', () => {
     videoEl.addEventListener('dblclick', (e) => {
       e.preventDefault();
       toggleFullscreen();
+    });
+  }
+
+  // Aspect Ratio / Zoom Toggle
+  const aspectBtn = document.getElementById('aspect-btn');
+  const videoElement = document.getElementById('player-video');
+  if (aspectBtn && videoElement) {
+    aspectBtn.addEventListener('click', () => {
+      const modes = ['contain', 'cover', 'fill'];
+      const labels = {
+        contain: '📺 Fit',
+        cover: '🔍 Zoom',
+        fill: '↔️ Stretch'
+      };
+      const toasts = {
+        contain: 'Aspect Ratio: Fit (Contain)',
+        cover: 'Aspect Ratio: Zoom (Cover)',
+        fill: 'Aspect Ratio: Stretch (Fill)'
+      };
+      
+      let nextIdx = modes.indexOf(state.aspectMode) + 1;
+      if (nextIdx >= modes.length) nextIdx = 0;
+      
+      state.aspectMode = modes[nextIdx];
+      videoElement.style.objectFit = state.aspectMode;
+      aspectBtn.textContent = labels[state.aspectMode];
+      showToast(toasts[state.aspectMode]);
     });
   }
 
