@@ -358,6 +358,8 @@ function loadStream(url) {
 
   // Reset states
   if (overlayTop) overlayTop.style.display = 'none';
+  const overlayBottom = document.getElementById('player-overlay-bottom');
+  if (overlayBottom) overlayBottom.style.display = 'none';
   if (qualityBadge) qualityBadge.textContent = 'Auto';
   if (qualitySelector) qualitySelector.innerHTML = '<option value="-1">Auto</option>';
   if (ccBtn) {
@@ -598,6 +600,13 @@ function startStatsInterval() {
 function onPlaybackStarted() {
   const statsBtn = document.getElementById('stats-btn');
   if (statsBtn) statsBtn.style.display = 'flex';
+  
+  const overlayTop = document.getElementById('player-overlay-top');
+  if (overlayTop) overlayTop.style.display = 'flex';
+
+  const overlayBottom = document.getElementById('player-overlay-bottom');
+  if (overlayBottom) overlayBottom.style.display = 'flex';
+
   startStatsInterval();
 }
 

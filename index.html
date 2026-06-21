@@ -91,6 +91,15 @@
             </div>
           </div>
 
+          <!-- Player Bottom Controls Overlay -->
+          <div class="player-overlay-bottom" id="player-overlay-bottom" style="display:none;">
+            <button class="overlay-btn" id="stats-btn" style="display:none;" title="Stats for Nerds">📊 Stats</button>
+            <button class="overlay-btn" id="aspect-btn" title="Toggle Aspect Ratio">📺 Fit</button>
+            <button class="overlay-btn" id="fullscreen-btn" title="Toggle Fullscreen (F)">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+            </button>
+          </div>
+
           <!-- Number Zap Overlay -->
           <div class="number-overlay" id="number-overlay" style="display:none;"></div>
 
@@ -153,18 +162,8 @@
             </button>
           </div>
           
-          <!-- Stream controls -->
-          <div class="stream-controls">
-            <div class="stream-selector" id="stream-selector"></div>
-            <div style="display: flex; gap: 8px;">
-              <button class="stats-btn" id="stats-btn" style="display:none;">📊 Stats</button>
-              <button class="aspect-btn" id="aspect-btn" title="Toggle Aspect Ratio">📺 Fit</button>
-              <button class="fullscreen-btn" id="fullscreen-btn" title="Toggle Fullscreen (F)">
-                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px; vertical-align: middle;"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
-                Fullscreen
-              </button>
-            </div>
-          </div>
+          <!-- Stream selector chips -->
+          <div class="stream-selector" id="stream-selector"></div>
         </div>
       </section>
 
