@@ -957,14 +957,23 @@ document.addEventListener('DOMContentLoaded', () => {
     
     try {
       urlSubmit.textContent = 'Importing...';
-      const resp = await fetch(url);
-      if (!resp.ok) throw new Error('HTTP Error ' + resp.status);
-      const text = await resp.text();
+      let text;
+      try {
+        const resp = await fetch(url);
+        if (!resp.ok) throw new Error('HTTP Error ' + resp.status);
+        text = await resp.text();
+      } catch (directError) {
+        // Fallback to CORS proxy if direct fetch fails
+        const proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(url);
+        const proxyResp = await fetch(proxyUrl);
+        if (!proxyResp.ok) throw new Error('HTTP Error ' + proxyResp.status + ' (Proxy)');
+        text = await proxyResp.text();
+      }
       parseM3UContent(text, "Imported");
       urlModal.style.display = 'none';
       urlInput.value = '';
     } catch (e) {
-      alert('Failed to fetch M3U: ' + e.message + '\n\nIf this is a CORS error, you need a browser extension to bypass it.');
+      alert('Failed to fetch M3U: ' + e.message + '\n\nThe URL might be invalid or completely blocked by the remote server.');
     } finally {
       urlSubmit.textContent = 'Import';
     }
