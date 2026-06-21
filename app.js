@@ -51,15 +51,20 @@ function applyTheme(color) {
   localStorage.setItem('proarena-theme', color);
   const root = document.documentElement;
   const themes = {
-    cyan: { neon: '#06b6d4', glow: 'rgba(6, 182, 212, 0.4)' },
-    purple: { neon: '#a855f7', glow: 'rgba(168, 85, 247, 0.4)' },
-    green: { neon: '#10b981', glow: 'rgba(16, 185, 129, 0.4)' },
-    pink: { neon: '#ec4899', glow: 'rgba(236, 72, 153, 0.4)' },
-    orange: { neon: '#f97316', glow: 'rgba(249, 115, 22, 0.4)' }
+    cyan: { neon: '#06b6d4', glow: 'rgba(6, 182, 212, 0.4)', bg: '#0a0a12', surface: '#12121e', hover: '#1a1a2e', card: '#14142a' },
+    purple: { neon: '#a855f7', glow: 'rgba(168, 85, 247, 0.4)', bg: '#0a0a12', surface: '#12121e', hover: '#1a1a2e', card: '#14142a' },
+    green: { neon: '#10b981', glow: 'rgba(16, 185, 129, 0.4)', bg: '#0a0a12', surface: '#12121e', hover: '#1a1a2e', card: '#14142a' },
+    pink: { neon: '#ec4899', glow: 'rgba(236, 72, 153, 0.4)', bg: '#0a0a12', surface: '#12121e', hover: '#1a1a2e', card: '#14142a' },
+    orange: { neon: '#f97316', glow: 'rgba(249, 115, 22, 0.4)', bg: '#0a0a12', surface: '#12121e', hover: '#1a1a2e', card: '#14142a' },
+    black: { neon: '#00e5ff', glow: 'rgba(0, 229, 255, 0.4)', bg: '#000000', surface: '#080808', hover: '#121212', card: '#0b0b0b' }
   };
   const t = themes[color] || themes.cyan;
   root.style.setProperty('--neon', t.neon);
   root.style.setProperty('--neon-glow', t.glow);
+  root.style.setProperty('--bg', t.bg);
+  root.style.setProperty('--bg-surface', t.surface);
+  root.style.setProperty('--bg-hover', t.hover);
+  root.style.setProperty('--bg-card', t.card);
 }
 applyTheme(state.theme);
 
@@ -294,6 +299,7 @@ function renderNowPlaying() {
   const nowTitle = document.getElementById('epg-now-title');
   const nextTime = document.getElementById('epg-next-time');
   const nextTitle = document.getElementById('epg-next-title');
+  const epgScheduleBtn = document.getElementById('epg-schedule-btn');
 
   if (epgInfo) {
     if (ch.tvgId && state.epgData[ch.tvgId]) {
@@ -303,8 +309,13 @@ function renderNowPlaying() {
       nowTitle.textContent = epg.now ? epg.now.title : 'No data';
       nextTime.textContent = epg.next ? epg.next.start : '';
       nextTitle.textContent = epg.next ? epg.next.title : '';
+      
+      if (epgScheduleBtn) {
+        epgScheduleBtn.style.display = (epg.programs && epg.programs.length > 0) ? 'inline-flex' : 'none';
+      }
     } else {
       epgInfo.style.display = 'none';
+      if (epgScheduleBtn) epgScheduleBtn.style.display = 'none';
     }
   }
 
@@ -335,6 +346,13 @@ function loadStream(url) {
   const qualityBadge = document.getElementById('current-quality');
   const qualitySelector = document.getElementById('quality-selector');
   const ccBtn = document.getElementById('caption-btn');
+
+  // Reset stats overlay
+  const statsOverlay = document.getElementById('stats-overlay');
+  if (statsOverlay) statsOverlay.style.display = 'none';
+  const statsBtn = document.getElementById('stats-btn');
+  if (statsBtn) statsBtn.style.display = 'none';
+  clearInterval(statsTimer);
 
   // Reset states
   if (overlayTop) overlayTop.style.display = 'none';
@@ -371,6 +389,7 @@ function loadStream(url) {
       video.play().catch(() => {});
       loadingEl.style.display = 'none';
       state.playerState = 'playing';
+      onPlaybackStarted();
 
       if (overlayTop && qualitySelector && qualityBadge) {
         overlayTop.style.display = 'flex';
@@ -418,9 +437,7 @@ function loadStream(url) {
 
     hls.on(Hls.Events.ERROR, (_, data) => {
       if (data.fatal) {
-        loadingEl.style.display = 'none';
-        errorEl.style.display = 'flex';
-        state.playerState = 'error';
+        handleStreamError();
       }
     });
 
@@ -433,11 +450,10 @@ function loadStream(url) {
       video.play().catch(() => {});
       loadingEl.style.display = 'none';
       state.playerState = 'playing';
+      onPlaybackStarted();
     }, { once: true });
     video.addEventListener('error', () => {
-      loadingEl.style.display = 'none';
-      errorEl.style.display = 'flex';
-      state.playerState = 'error';
+      handleStreamError();
     }, { once: true });
   }
   // Direct URL
@@ -447,11 +463,10 @@ function loadStream(url) {
       video.play().catch(() => {});
       loadingEl.style.display = 'none';
       state.playerState = 'playing';
+      onPlaybackStarted();
     }, { once: true });
     video.addEventListener('error', () => {
-      loadingEl.style.display = 'none';
-      errorEl.style.display = 'flex';
-      state.playerState = 'error';
+      handleStreamError();
     }, { once: true });
   }
 }
@@ -510,28 +525,117 @@ function retryStream() {
   }
 }
 
-// ─── Export Favorites as M3U ────────────────────────────────────────────────
-function exportFavorites() {
-  const favChannels = state.channels.filter(c => state.favorites.includes(c.id));
-  if (favChannels.length === 0) {
-    showToast('No favorites to export');
-    return;
+// ─── Stream Error Failover Handler ──────────────────────────────────────────
+function handleStreamError() {
+  if (state.activeChannel && state.activeChannel.streams && state.activeStreamIdx < state.activeChannel.streams.length - 1) {
+    const nextIdx = state.activeStreamIdx + 1;
+    showToast(`Stream failed. Trying backup stream ${nextIdx + 1}...`);
+    playChannel(state.activeChannel, nextIdx);
+  } else {
+    const loadingEl = document.getElementById('player-loading');
+    const errorEl = document.getElementById('player-error');
+    if (loadingEl) loadingEl.style.display = 'none';
+    if (errorEl) errorEl.style.display = 'flex';
+    state.playerState = 'error';
   }
-  let m3u = '#EXTM3U\n';
-  favChannels.forEach(ch => {
-    m3u += `#EXTINF:-1,${ch.name}\n`;
-    m3u += ch.streams[0]?.url + '\n';
-  });
-  const blob = new Blob([m3u], { type: 'audio/x-mpegurl' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'proarena-favorites.m3u';
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-  showToast(`Exported ${favChannels.length} favorites!`);
+}
+
+// ─── Stats for Nerds Real-time Updates ──────────────────────────────────────
+let statsTimer = null;
+function startStatsInterval() {
+  const overlay = document.getElementById('stats-overlay');
+  const resEl = document.getElementById('stats-res');
+  const codecEl = document.getElementById('stats-codec');
+  const bitrateEl = document.getElementById('stats-bitrate');
+  const bufferEl = document.getElementById('stats-buffer');
+  const fpsEl = document.getElementById('stats-fps');
+  const video = document.getElementById('player-video');
+
+  clearInterval(statsTimer);
+  statsTimer = setInterval(() => {
+    if (state.playerState !== 'playing' || !video) return;
+
+    resEl.textContent = video.videoWidth ? `${video.videoWidth}x${video.videoHeight}` : '0x0';
+    
+    if (state.hls) {
+      const level = state.hls.levels[state.hls.currentLevel];
+      if (level) {
+        const attrs = level.attrs || {};
+        codecEl.textContent = attrs.CODECS || 'unknown';
+        bitrateEl.textContent = level.bitrate ? `${Math.round(level.bitrate / 1000)} kbps` : 'unknown';
+      }
+    } else {
+      codecEl.textContent = 'Native (Safari/Direct)';
+      bitrateEl.textContent = 'unknown';
+    }
+
+    let bufferLen = 0;
+    try {
+      if (video.buffered.length > 0) {
+        for (let i = 0; i < video.buffered.length; i++) {
+          const start = video.buffered.start(i);
+          const end = video.buffered.end(i);
+          if (video.currentTime >= start && video.currentTime <= end) {
+            bufferLen = end - video.currentTime;
+            break;
+          }
+        }
+      }
+    } catch(e) {}
+    bufferEl.textContent = `${bufferLen.toFixed(1)}s`;
+
+    try {
+      const quality = video.getVideoPlaybackQuality ? video.getVideoPlaybackQuality() : {};
+      fpsEl.textContent = quality.totalVideoFrames ? `${quality.droppedVideoFrames} / ${quality.totalVideoFrames} dropped` : 'N/A';
+    } catch(e) {
+      fpsEl.textContent = 'N/A';
+    }
+  }, 1000);
+}
+
+function onPlaybackStarted() {
+  const statsBtn = document.getElementById('stats-btn');
+  if (statsBtn) statsBtn.style.display = 'flex';
+  startStatsInterval();
+}
+
+// ─── EPG Schedule Modal Handler ─────────────────────────────────────────────
+function openEPGScheduleModal() {
+  const ch = state.activeChannel;
+  if (!ch || !ch.tvgId || !state.epgData[ch.tvgId]) return;
+
+  const epg = state.epgData[ch.tvgId];
+  const modal = document.getElementById('epg-modal');
+  const titleEl = document.getElementById('epg-modal-channel-name');
+  const listEl = document.getElementById('epg-schedule-list');
+  const now = new Date();
+
+  titleEl.textContent = `${ch.name} Schedule`;
+  listEl.innerHTML = '';
+
+  if (!epg.programs || epg.programs.length === 0) {
+    listEl.innerHTML = '<div style="padding: 20px; text-align: center; color: var(--text-dim);">No schedule data available</div>';
+  } else {
+    listEl.innerHTML = epg.programs.map(prog => {
+      const isActive = now >= prog.rawStart && now <= prog.rawStop;
+      return `
+        <div class="epg-schedule-item${isActive ? ' active' : ''}">
+          <span class="epg-schedule-time">${prog.start} - ${prog.stop}</span>
+          <span class="epg-schedule-title">${sanitize(prog.title)}</span>
+        </div>
+      `;
+    }).join('');
+  }
+
+  modal.style.display = 'flex';
+  
+  // Scroll active item into view
+  setTimeout(() => {
+    const activeItem = listEl.querySelector('.epg-schedule-item.active');
+    if (activeItem) {
+      activeItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }, 100);
 }
 
 // ─── Stream Health Check ────────────────────────────────────────────────────
@@ -684,6 +788,13 @@ document.addEventListener('DOMContentLoaded', () => {
       if (slider) slider.value = video.muted ? 0 : video.volume;
     }
     
+    // Help modal (?), Shift + /
+    if (e.key === '?') {
+      e.preventDefault();
+      const helpModal = document.getElementById('help-modal');
+      if (helpModal) helpModal.style.display = 'flex';
+    }
+    
     // Number zap (0-9)
     if (/^[0-9]$/.test(e.key)) {
       handleNumberZap(e.key);
@@ -711,11 +822,56 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Export button
-  const exportBtn = document.getElementById('export-btn');
-  if (exportBtn) {
-    exportBtn.addEventListener('click', exportFavorites);
+  // Help Modal
+  const helpBtn = document.getElementById('help-btn');
+  const helpModal = document.getElementById('help-modal');
+  const helpClose = document.getElementById('help-close');
+  if (helpBtn && helpModal) {
+    helpBtn.addEventListener('click', () => {
+      helpModal.style.display = 'flex';
+    });
   }
+  if (helpClose && helpModal) {
+    helpClose.addEventListener('click', () => {
+      helpModal.style.display = 'none';
+    });
+  }
+
+  // EPG Schedule Modal
+  const epgScheduleBtn = document.getElementById('epg-schedule-btn');
+  const epgModal = document.getElementById('epg-modal');
+  const epgModalClose = document.getElementById('epg-modal-close');
+  if (epgScheduleBtn) {
+    epgScheduleBtn.addEventListener('click', openEPGScheduleModal);
+  }
+  if (epgModalClose && epgModal) {
+    epgModalClose.addEventListener('click', () => {
+      epgModal.style.display = 'none';
+    });
+  }
+
+  // Stats for Nerds Toggle
+  const statsBtn = document.getElementById('stats-btn');
+  const statsOverlay = document.getElementById('stats-overlay');
+  const statsCloseBtn = document.getElementById('stats-close-btn');
+  if (statsBtn && statsOverlay) {
+    statsBtn.addEventListener('click', () => {
+      const show = statsOverlay.style.display === 'none';
+      statsOverlay.style.display = show ? 'block' : 'none';
+    });
+  }
+  if (statsCloseBtn && statsOverlay) {
+    statsCloseBtn.addEventListener('click', () => {
+      statsOverlay.style.display = 'none';
+    });
+  }
+
+  // Close modals on clicking overlay background
+  window.addEventListener('click', (e) => {
+    if (e.target.classList.contains('modal-overlay')) {
+      e.target.style.display = 'none';
+    }
+  });
 
   // Volume slider
   const volumeSlider = document.getElementById('volume-slider');
@@ -981,18 +1137,10 @@ async function loadEPG(url) {
     const now = new Date();
     
     state.epgData = {};
-    for (let i = 0; i < programs.length; i++) {
-      const prog = programs[i];
-      const channel = prog.getAttribute('channel');
-      const startStr = prog.getAttribute('start'); // "20240620180000 +0000"
-      const stopStr = prog.getAttribute('stop');
-      const titleNode = prog.getElementsByTagName('title')[0];
-      const title = titleNode ? titleNode.textContent : 'Unknown';
-      
-      if (!startStr || !stopStr) continue;
-      
-      // Basic parse: YYYYMMDDHHMMSS
-      const parseTime = (str) => {
+    
+    // Basic parse: YYYYMMDDHHMMSS
+    const parseTime = (str) => {
+      try {
         return new Date(
           str.substring(0,4),
           parseInt(str.substring(4,6))-1,
@@ -1001,20 +1149,60 @@ async function loadEPG(url) {
           str.substring(10,12),
           str.substring(12,14)
         );
-      };
+      } catch(e) {
+        return null;
+      }
+    };
+
+    for (let i = 0; i < programs.length; i++) {
+      const prog = programs[i];
+      const channel = prog.getAttribute('channel');
+      const startStr = prog.getAttribute('start');
+      const stopStr = prog.getAttribute('stop');
+      const titleNode = prog.getElementsByTagName('title')[0];
+      const title = titleNode ? titleNode.textContent : 'Unknown';
+      
+      if (!startStr || !stopStr) continue;
       
       const start = parseTime(startStr);
       const stop = parseTime(stopStr);
+      if (!start || !stop) continue;
+
       const timeStr = start.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+      const stopTimeStr = stop.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
       
-      if (!state.epgData[channel]) state.epgData[channel] = {};
+      if (!state.epgData[channel]) {
+        state.epgData[channel] = { now: null, next: null, programs: [] };
+      }
       
-      if (now >= start && now <= stop) {
-        state.epgData[channel].now = { start: timeStr, title };
-      } else if (now < start && !state.epgData[channel].next) {
-        state.epgData[channel].next = { start: timeStr, title };
+      state.epgData[channel].programs.push({
+        start: timeStr,
+        stop: stopTimeStr,
+        title: title,
+        rawStart: start,
+        rawStop: stop
+      });
+    }
+
+    // Sort and calculate now/next for each channel
+    for (const channelId in state.epgData) {
+      const chEpg = state.epgData[channelId];
+      chEpg.programs.sort((a, b) => a.rawStart - b.rawStart);
+      
+      const currentIdx = chEpg.programs.findIndex(p => now >= p.rawStart && now <= p.rawStop);
+      if (currentIdx !== -1) {
+        chEpg.now = chEpg.programs[currentIdx];
+        if (currentIdx + 1 < chEpg.programs.length) {
+          chEpg.next = chEpg.programs[currentIdx + 1];
+        }
+      } else {
+        const nextIdx = chEpg.programs.findIndex(p => p.rawStart > now);
+        if (nextIdx !== -1) {
+          chEpg.next = chEpg.programs[nextIdx];
+        }
       }
     }
+
     showToast('EPG Loaded successfully');
     renderNowPlaying();
   } catch (e) {

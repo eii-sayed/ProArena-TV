@@ -55,8 +55,8 @@
       </div>
 
       <div class="header-actions">
-        <button class="header-btn" id="export-btn" title="Export Favorites as M3U">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <button class="header-btn" id="help-btn" title="Keyboard Shortcuts">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
         </button>
         <button class="header-btn" id="settings-btn" title="Settings & Themes">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
@@ -93,6 +93,21 @@
 
           <!-- Number Zap Overlay -->
           <div class="number-overlay" id="number-overlay" style="display:none;"></div>
+
+          <!-- Stats for Nerds Overlay -->
+          <div class="stats-overlay" id="stats-overlay" style="display:none;">
+            <div class="stats-header">
+              <span>Stats for Nerds</span>
+              <button class="stats-close-btn" id="stats-close-btn">&times;</button>
+            </div>
+            <div class="stats-content">
+              <div class="stats-row"><span>Resolution</span><span id="stats-res">0x0</span></div>
+              <div class="stats-row"><span>Codec</span><span id="stats-codec">-</span></div>
+              <div class="stats-row"><span>Bitrate</span><span id="stats-bitrate">0 kbps</span></div>
+              <div class="stats-row"><span>Buffer Length</span><span id="stats-buffer">0s</span></div>
+              <div class="stats-row"><span>Dropped Frames</span><span id="stats-fps">0</span></div>
+            </div>
+          </div>
 
           <!-- Idle state -->
           <div class="player-idle" id="player-idle">
@@ -132,10 +147,17 @@
               <span class="epg-time" id="epg-next-time"></span>
               <span class="epg-title" id="epg-next-title"></span>
             </div>
+            <button class="epg-schedule-btn" id="epg-schedule-btn" style="display:none;">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              Full Schedule
+            </button>
           </div>
           
-          <!-- Stream selector chips -->
-          <div class="stream-selector" id="stream-selector"></div>
+          <!-- Stream controls -->
+          <div class="stream-controls">
+            <div class="stream-selector" id="stream-selector"></div>
+            <button class="stats-btn" id="stats-btn" style="display:none;">📊 Stats</button>
+          </div>
         </div>
       </section>
 
@@ -207,6 +229,7 @@
           <button class="theme-swatch" data-color="green" style="background: #10b981;"></button>
           <button class="theme-swatch" data-color="pink" style="background: #ec4899;"></button>
           <button class="theme-swatch" data-color="orange" style="background: #f97316;"></button>
+          <button class="theme-swatch" data-color="black" style="background: #000000; border: 1px solid var(--border);"></button>
         </div>
       </div>
 
@@ -218,6 +241,37 @@
       <div class="modal-actions">
         <button class="modal-btn cancel" id="settings-cancel">Close</button>
         <button class="modal-btn submit" id="settings-save">Save & Load EPG</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shortcuts Help Modal -->
+  <div class="modal-overlay" id="help-modal" style="display:none;">
+    <div class="modal-content">
+      <h3>Keyboard Shortcuts</h3>
+      <div class="shortcuts-list">
+        <div class="shortcut-item"><kbd>↑</kbd> / <kbd>↓</kbd> <span>Channel Zap Up / Down</span></div>
+        <div class="shortcut-item"><kbd>0</kbd> - <kbd>9</kbd> <span>Tune Channel by Number</span></div>
+        <div class="shortcut-item"><kbd>F</kbd> <span>Toggle Fullscreen</span></div>
+        <div class="shortcut-item"><kbd>M</kbd> <span>Mute / Unmute Player</span></div>
+        <div class="shortcut-item"><kbd>/</kbd> <span>Focus Sidebar Search</span></div>
+        <div class="shortcut-item"><kbd>?</kbd> <span>Show Shortcuts Guide</span></div>
+      </div>
+      <div class="modal-actions">
+        <button class="modal-btn submit" id="help-close">Got it</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- EPG Schedule Modal -->
+  <div class="modal-overlay" id="epg-modal" style="display:none;">
+    <div class="modal-content" style="max-width: 500px;">
+      <h3 id="epg-modal-channel-name">Channel Schedule</h3>
+      <div class="epg-schedule-list custom-scrollbar" id="epg-schedule-list" style="max-height: 350px; overflow-y: auto; margin: 20px 0; text-align: left;">
+        <!-- Schedule items will be dynamically injected here -->
+      </div>
+      <div class="modal-actions">
+        <button class="modal-btn cancel" id="epg-modal-close">Close</button>
       </div>
     </div>
   </div>

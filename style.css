@@ -1048,3 +1048,154 @@ a { text-decoration: none; color: inherit; }
   background: var(--red);
   box-shadow: 0 0 4px var(--red);
 }
+
+/* ─── Keyboard Shortcuts Modal ─────────────────────────────────────────── */
+.shortcuts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 20px 0;
+  text-align: left;
+}
+.shortcut-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 0.95em;
+}
+.shortcut-item kbd {
+  background: var(--bg-hover);
+  border: 1px solid var(--border);
+  color: var(--neon);
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9em;
+  min-width: 45px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* ─── EPG Schedule Modal & Button ───────────────────────────────────────── */
+.epg-schedule-btn {
+  margin-top: 12px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  color: var(--neon);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 0.85em;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.epg-schedule-btn:hover {
+  background: var(--neon-dim);
+  border-color: var(--neon);
+  color: var(--text);
+  box-shadow: 0 0 8px var(--neon-glow);
+}
+.epg-schedule-list {
+  display: flex;
+  flex-direction: column;
+}
+.epg-schedule-item {
+  display: flex;
+  gap: 15px;
+  padding: 12px 10px;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.95em;
+  transition: background 0.15s ease;
+}
+.epg-schedule-item:hover {
+  background: var(--bg-hover);
+}
+.epg-schedule-item.active {
+  background: var(--neon-dim);
+  border-left: 3px solid var(--neon);
+  color: var(--neon);
+}
+.epg-schedule-time {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text-dim);
+  white-space: nowrap;
+  min-width: 105px;
+}
+.epg-schedule-item.active .epg-schedule-time {
+  color: var(--neon);
+}
+
+/* ─── Stats for Nerds Overlay & Button ──────────────────────────────────── */
+.stats-overlay {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: rgba(10, 10, 18, 0.85);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+  width: 250px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85em;
+  color: var(--text);
+  z-index: 10;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+}
+.stats-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 6px;
+  margin-bottom: 8px;
+  font-weight: 700;
+  color: var(--neon);
+}
+.stats-close-btn {
+  font-size: 1.2em;
+  line-height: 1;
+  color: var(--text-dim);
+}
+.stats-close-btn:hover {
+  color: var(--red);
+}
+.stats-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+.stats-row span:first-child {
+  color: var(--text-dim);
+}
+.stats-row span:last-child {
+  text-align: right;
+  word-break: break-all;
+}
+.stream-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 15px;
+}
+.stats-btn {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.85em;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.stats-btn:hover {
+  background: var(--bg-hover);
+  border-color: var(--neon);
+  box-shadow: 0 0 10px var(--neon-glow);
+}
