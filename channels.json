@@ -1,9 +1,313 @@
 [
   {
-    "id": "star-jalsha-1",
+    "id": "caze-tv-br-1",
+    "tvgId": "Caze TV BR",
+    "name": "Caze TV BR",
+    "number": 1,
+    "category": "FIFA",
+    "country": "Unknown",
+    "quality": "SD",
+    "logo": "https://assets.football-logos.cc/logos/tournaments/1500x1500/fifa-world-cup-2026--white.10e0b37b.png",
+    "streams": [
+      {
+        "name": "Stream 1",
+        "url": "https://dfr80qz435crc.cloudfront.net/MNOP/Amagi/Caze/Caze_TV_BR/Caze_TV.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "",
+    "isWorking": true
+  },
+  {
+    "id": "somoy-2",
+    "tvgId": "Somoy",
+    "name": "Somoy",
+    "number": 2,
+    "category": "FIFA",
+    "country": "Unknown",
+    "quality": "SD",
+    "logo": "https://assets.football-logos.cc/logos/tournaments/1500x1500/fifa-world-cup-2026--white.10e0b37b.png",
+    "streams": [
+      {
+        "name": "Stream 1",
+        "url": "https://live.thebosstv.com:30443/dwlive/Somoy-TV/chunks.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "",
+    "isWorking": true
+  },
+  {
+    "id": "z-bangla-sonar-low-3",
+    "tvgId": "Z Bangla sonar Low",
+    "name": "Z Bangla sonar Low",
+    "number": 3,
+    "category": "FIFA",
+    "country": "Unknown",
+    "quality": "SD",
+    "logo": "https://assets.football-logos.cc/logos/tournaments/1500x1500/fifa-world-cup-2026--white.10e0b37b.png",
+    "streams": [
+      {
+        "name": "Stream 1",
+        "url": "https://d1g8wgjurz8via.cloudfront.net/bpk-tv/ColorsHD/default/Zeebanglahd.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "",
+    "isWorking": true
+  },
+  {
+    "id": "bein-sports-1-720p-4",
+    "tvgId": "Bein_Sports_1 720p",
+    "name": "Bein Sports 1 720p",
+    "number": 4,
+    "category": "FIFA",
+    "country": "Unknown",
+    "quality": "SD",
+    "logo": "https://assets.football-logos.cc/logos/tournaments/1500x1500/fifa-world-cup-2026--white.10e0b37b.png",
+    "streams": [
+      {
+        "name": "Stream 1",
+        "url": "https://1nyaler.streamhostingcdn.top/stream/23/index.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "",
+    "isWorking": true
+  },
+  {
+    "id": "bein-sports-1-uhd-5",
+    "tvgId": "beIN SPORTS 1 UHD",
+    "name": "beIN SPORTS 1 UHD",
+    "number": 5,
+    "category": "FIFA",
+    "country": "Unknown",
+    "quality": "SD",
+    "logo": "https://assets.football-logos.cc/logos/tournaments/1500x1500/fifa-world-cup-2026--white.10e0b37b.png",
+    "streams": [
+      {
+        "name": "Stream 1",
+        "url": "http://proxpanel.cc/h1wqD6CY/byxHYgX/707929"
+      }
+    ],
+    "isLive": true,
+    "badge": "",
+    "isWorking": true
+  },
+  {
+    "id": "bein-sports-max-1-4k-6",
+    "tvgId": "beIN SPORTS MAX 1 4K",
+    "name": "beIN SPORTS MAX 1 4K",
+    "number": 6,
+    "category": "FIFA",
+    "country": "Unknown",
+    "quality": "SD",
+    "logo": "https://assets.football-logos.cc/logos/tournaments/1500x1500/fifa-world-cup-2026--white.10e0b37b.png",
+    "streams": [
+      {
+        "name": "Stream 1",
+        "url": "http://proxpanel.cc/h1wqD6CY/byxHYgX/835130"
+      }
+    ],
+    "isLive": true,
+    "badge": "",
+    "isWorking": true
+  },
+  {
+    "id": "win-sports-7",
+    "tvgId": "WIN_Sports",
+    "name": "WIN Sports",
+    "number": 7,
+    "category": "FIFA",
+    "country": "Unknown",
+    "quality": "SD",
+    "logo": "https://assets.football-logos.cc/logos/tournaments/1500x1500/fifa-world-cup-2026--white.10e0b37b.png",
+    "streams": [
+      {
+        "name": "Stream 1",
+        "url": "https://1nyaler.streamhostingcdn.top/stream/32/index.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "",
+    "isWorking": true
+  },
+  {
+    "id": "fox-8",
+    "tvgId": "FOX",
+    "name": "FOX",
+    "number": 8,
+    "category": "FIFA",
+    "country": "Unknown",
+    "quality": "SD",
+    "logo": "https://assets.football-logos.cc/logos/tournaments/1500x1500/fifa-world-cup-2026--white.10e0b37b.png",
+    "streams": [
+      {
+        "name": "Stream 1",
+        "url": "http://84.17.50.102/fox/index.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "",
+    "isWorking": true
+  },
+  {
+    "id": "fs1-9",
+    "tvgId": "FS1",
+    "name": "FS1",
+    "number": 9,
+    "category": "FIFA",
+    "country": "Unknown",
+    "quality": "SD",
+    "logo": "https://assets.football-logos.cc/logos/tournaments/1500x1500/fifa-world-cup-2026--white.10e0b37b.png",
+    "streams": [
+      {
+        "name": "Stream 1",
+        "url": "http://41.223.30.230/FOXSPORTS1/index.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "",
+    "isWorking": true
+  },
+  {
+    "id": "fs2-10",
+    "tvgId": "FS2",
+    "name": "FS2",
+    "number": 10,
+    "category": "FIFA",
+    "country": "Unknown",
+    "quality": "SD",
+    "logo": "https://assets.football-logos.cc/logos/tournaments/1500x1500/fifa-world-cup-2026--white.10e0b37b.png",
+    "streams": [
+      {
+        "name": "Stream 1",
+        "url": "https://1nyaler.streamhostingcdn.top/stream/26/index.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "",
+    "isWorking": true
+  },
+  {
+    "id": "ptv-11",
+    "tvgId": "PTV",
+    "name": "PTV",
+    "number": 11,
+    "category": "FIFA",
+    "country": "Unknown",
+    "quality": "SD",
+    "logo": "https://assets.football-logos.cc/logos/tournaments/1500x1500/fifa-world-cup-2026--white.10e0b37b.png",
+    "streams": [
+      {
+        "name": "Stream 1",
+        "url": "http://198.195.239.50:8095/tsports/tracks-v1a1/mono.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "",
+    "isWorking": true
+  },
+  {
+    "id": "dazn-1-12",
+    "tvgId": "DAZN 1",
+    "name": "DAZN 1",
+    "number": 12,
+    "category": "FIFA",
+    "country": "Unknown",
+    "quality": "SD",
+    "logo": "https://assets.football-logos.cc/logos/tournaments/1500x1500/fifa-world-cup-2026--white.10e0b37b.png",
+    "streams": [
+      {
+        "name": "Stream 1",
+        "url": "https://1nyaler.streamhostingcdn.top/stream/94/index.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "",
+    "isWorking": true
+  },
+  {
+    "id": "telemundo-13",
+    "tvgId": "Telemundo",
+    "name": "Telemundo",
+    "number": 13,
+    "category": "FIFA",
+    "country": "Unknown",
+    "quality": "SD",
+    "logo": "https://assets.football-logos.cc/logos/tournaments/1500x1500/fifa-world-cup-2026--white.10e0b37b.png",
+    "streams": [
+      {
+        "name": "Stream 1",
+        "url": "https://nbculocallive.akamaized.net/hls/live/2037499/puertorico/stream1/master.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "",
+    "isWorking": true
+  },
+  {
+    "id": "espn-s1-14",
+    "tvgId": "ESPN S1",
+    "name": "ESPN S1",
+    "number": 14,
+    "category": "FIFA",
+    "country": "Unknown",
+    "quality": "SD",
+    "logo": "https://assets.football-logos.cc/logos/tournaments/1500x1500/fifa-world-cup-2026--white.10e0b37b.png",
+    "streams": [
+      {
+        "name": "Stream 1",
+        "url": "https://1nyaler.streamhostingcdn.top/stream/97/index.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "",
+    "isWorking": true
+  },
+  {
+    "id": "espn-s2-15",
+    "tvgId": "ESPN S2",
+    "name": "ESPN S2",
+    "number": 15,
+    "category": "FIFA",
+    "country": "Unknown",
+    "quality": "SD",
+    "logo": "https://assets.football-logos.cc/logos/tournaments/1500x1500/fifa-world-cup-2026--white.10e0b37b.png",
+    "streams": [
+      {
+        "name": "Stream 1",
+        "url": "http://186.33.40.97:8789/play/20"
+      }
+    ],
+    "isLive": true,
+    "badge": "",
+    "isWorking": true
+  },
+  {
+    "id": "d-sports-16",
+    "tvgId": "D Sports",
+    "name": "D Sports",
+    "number": 16,
+    "category": "FIFA",
+    "country": "Unknown",
+    "quality": "SD",
+    "logo": "https://assets.football-logos.cc/logos/tournaments/1500x1500/fifa-world-cup-2026--white.10e0b37b.png",
+    "streams": [
+      {
+        "name": "Stream 1",
+        "url": "https://1nyaler.streamhostingcdn.top/stream/106/index.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "",
+    "isWorking": true
+  },
+  {
+    "id": "star-jalsha-17",
     "tvgId": "",
     "name": "Star Jalsha",
-    "number": 1,
+    "number": 17,
     "category": "Bangla",
     "country": "Unknown",
     "quality": "SD",
@@ -19,10 +323,10 @@
     "isWorking": true
   },
   {
-    "id": "star-jalsha-2-2",
+    "id": "star-jalsha-2-18",
     "tvgId": "",
     "name": "Star Jalsha 2",
-    "number": 2,
+    "number": 18,
     "category": "Bangla",
     "country": "Unknown",
     "quality": "SD",
@@ -38,10 +342,10 @@
     "isWorking": true
   },
   {
-    "id": "star-jalsha-3-3",
+    "id": "star-jalsha-3-19",
     "tvgId": "",
     "name": "Star Jalsha 3",
-    "number": 3,
+    "number": 19,
     "category": "Bangla",
     "country": "Unknown",
     "quality": "SD",
@@ -57,10 +361,10 @@
     "isWorking": true
   },
   {
-    "id": "zee-bangla-hd-4",
+    "id": "zee-bangla-hd-20",
     "tvgId": "",
     "name": "zee Bangla HD",
-    "number": 4,
+    "number": 20,
     "category": "Bangla",
     "country": "Unknown",
     "quality": "SD",
@@ -76,10 +380,10 @@
     "isWorking": true
   },
   {
-    "id": "zee-bangla-5",
+    "id": "zee-bangla-21",
     "tvgId": "",
     "name": "zee Bangla",
-    "number": 5,
+    "number": 21,
     "category": "Bangla",
     "country": "Unknown",
     "quality": "SD",
@@ -95,10 +399,10 @@
     "isWorking": true
   },
   {
-    "id": "zee-bangla-2-6",
+    "id": "zee-bangla-2-22",
     "tvgId": "",
     "name": "Zee Bangla 2",
-    "number": 6,
+    "number": 22,
     "category": "Bangla",
     "country": "Unknown",
     "quality": "SD",
@@ -114,10 +418,10 @@
     "isWorking": true
   },
   {
-    "id": "zee-bangla-3-7",
+    "id": "zee-bangla-3-23",
     "tvgId": "",
     "name": "zee Bangla 3",
-    "number": 7,
+    "number": 23,
     "category": "Bangla",
     "country": "Unknown",
     "quality": "SD",
@@ -133,10 +437,10 @@
     "isWorking": true
   },
   {
-    "id": "zee-bangla-4-8",
+    "id": "zee-bangla-4-24",
     "tvgId": "",
     "name": "Zee Bangla 4",
-    "number": 8,
+    "number": 24,
     "category": "Bangla",
     "country": "Unknown",
     "quality": "SD",
@@ -152,10 +456,10 @@
     "isWorking": true
   },
   {
-    "id": "sony-max-sd-9",
+    "id": "sony-max-sd-25",
     "tvgId": "",
     "name": "SONY MAX SD",
-    "number": 9,
+    "number": 25,
     "category": "Bangla",
     "country": "Unknown",
     "quality": "SD",
@@ -171,10 +475,10 @@
     "isWorking": true
   },
   {
-    "id": "gopal-bhar-tv-10",
+    "id": "gopal-bhar-tv-26",
     "tvgId": "",
     "name": "Gopal Bhar TV",
-    "number": 10,
+    "number": 26,
     "category": "Bangla",
     "country": "Unknown",
     "quality": "SD",
@@ -190,10 +494,10 @@
     "isWorking": true
   },
   {
-    "id": "enter10-bangla-11",
+    "id": "enter10-bangla-27",
     "tvgId": "",
     "name": "Enter10 Bangla",
-    "number": 11,
+    "number": 27,
     "category": "Bangla",
     "country": "Unknown",
     "quality": "SD",
@@ -209,10 +513,10 @@
     "isWorking": true
   },
   {
-    "id": "football-english-12",
+    "id": "football-english-28",
     "tvgId": "",
     "name": "FOOTBALL ENGLISH",
-    "number": 12,
+    "number": 28,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -228,10 +532,10 @@
     "isWorking": true
   },
   {
-    "id": "world-cup-a1-13",
+    "id": "world-cup-a1-29",
     "tvgId": "",
     "name": "World Cup A1 🇧🇩",
-    "number": 13,
+    "number": 29,
     "category": "FIFA WC 2026",
     "country": "Unknown",
     "quality": "SD",
@@ -247,10 +551,10 @@
     "isWorking": true
   },
   {
-    "id": "world-cup-a2-14",
+    "id": "world-cup-a2-30",
     "tvgId": "",
     "name": "World Cup A2 🇧🇩",
-    "number": 14,
+    "number": 30,
     "category": "FIFA WC 2026",
     "country": "Unknown",
     "quality": "SD",
@@ -266,10 +570,10 @@
     "isWorking": true
   },
   {
-    "id": "t-sports-15",
+    "id": "t-sports-31",
     "tvgId": "",
     "name": "T Sports 🇧🇩",
-    "number": 15,
+    "number": 31,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -285,10 +589,10 @@
     "isWorking": true
   },
   {
-    "id": "btv-live-16",
+    "id": "btv-live-32",
     "tvgId": "",
     "name": "BTV Live 🇧🇩",
-    "number": 16,
+    "number": 32,
     "category": "Bangla",
     "country": "Unknown",
     "quality": "SD",
@@ -304,10 +608,10 @@
     "isWorking": true
   },
   {
-    "id": "btv-b-17",
+    "id": "btv-b-33",
     "tvgId": "",
     "name": "BTV B 🇧🇩",
-    "number": 17,
+    "number": 33,
     "category": "Bangla",
     "country": "Unknown",
     "quality": "SD",
@@ -323,10 +627,10 @@
     "isWorking": true
   },
   {
-    "id": "somoy-tv-18",
+    "id": "somoy-tv-34",
     "tvgId": "",
     "name": "Somoy TV 🇧🇩",
-    "number": 18,
+    "number": 34,
     "category": "Bangla",
     "country": "Unknown",
     "quality": "SD",
@@ -342,10 +646,10 @@
     "isWorking": true
   },
   {
-    "id": "somoy-tv-b-19",
+    "id": "somoy-tv-b-35",
     "tvgId": "",
     "name": "Somoy TV B 🇧🇩",
-    "number": 19,
+    "number": 35,
     "category": "Bangla",
     "country": "Unknown",
     "quality": "SD",
@@ -361,10 +665,10 @@
     "isWorking": true
   },
   {
-    "id": "somoy-tv-c-20",
+    "id": "somoy-tv-c-36",
     "tvgId": "",
     "name": "Somoy TV C 🇧🇩",
-    "number": 20,
+    "number": 36,
     "category": "Bangla",
     "country": "Unknown",
     "quality": "SD",
@@ -380,10 +684,10 @@
     "isWorking": true
   },
   {
-    "id": "somoy-tv-d-21",
+    "id": "somoy-tv-d-37",
     "tvgId": "",
     "name": "Somoy TV D",
-    "number": 21,
+    "number": 37,
     "category": "Bangla",
     "country": "Unknown",
     "quality": "SD",
@@ -399,10 +703,10 @@
     "isWorking": true
   },
   {
-    "id": "toffee-live-22",
+    "id": "toffee-live-38",
     "tvgId": "",
     "name": "Toffee Live",
-    "number": 22,
+    "number": 38,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -418,10 +722,10 @@
     "isWorking": true
   },
   {
-    "id": "world-cup-s1-23",
+    "id": "world-cup-s1-39",
     "tvgId": "",
     "name": "World Cup S1",
-    "number": 23,
+    "number": 39,
     "category": "FIFA WC 2026",
     "country": "Unknown",
     "quality": "SD",
@@ -437,10 +741,10 @@
     "isWorking": true
   },
   {
-    "id": "world-cup-s2-24",
+    "id": "world-cup-s2-40",
     "tvgId": "",
     "name": "World Cup S2",
-    "number": 24,
+    "number": 40,
     "category": "FIFA WC 2026",
     "country": "Unknown",
     "quality": "SD",
@@ -456,10 +760,10 @@
     "isWorking": true
   },
   {
-    "id": "unite-8-sports-1-hd-hindi-25",
+    "id": "unite-8-sports-1-hd-hindi-41",
     "tvgId": "",
     "name": "Unite 8 Sports 1 HD 🇮🇳 Hindi",
-    "number": 25,
+    "number": 41,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -475,10 +779,10 @@
     "isWorking": true
   },
   {
-    "id": "unite-8-sports-1-hd-b-26",
+    "id": "unite-8-sports-1-hd-b-42",
     "tvgId": "",
     "name": "Unite 8 Sports 1 HD B 🇮🇳",
-    "number": 26,
+    "number": 42,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -494,10 +798,10 @@
     "isWorking": true
   },
   {
-    "id": "unite-8-sports-2-hd-27",
+    "id": "unite-8-sports-2-hd-43",
     "tvgId": "",
     "name": "Unite 8 Sports 2 HD",
-    "number": 27,
+    "number": 43,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -513,10 +817,10 @@
     "isWorking": true
   },
   {
-    "id": "unite-8-sports-b-hd-28",
+    "id": "unite-8-sports-b-hd-44",
     "tvgId": "",
     "name": "Unite 8 Sports B HD",
-    "number": 28,
+    "number": 44,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -532,10 +836,10 @@
     "isWorking": true
   },
   {
-    "id": "616-sports-4k-29",
+    "id": "616-sports-4k-45",
     "tvgId": "",
     "name": "616 Sports 4K",
-    "number": 29,
+    "number": 45,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -551,10 +855,10 @@
     "isWorking": true
   },
   {
-    "id": "616-sports-4k-b-30",
+    "id": "616-sports-4k-b-46",
     "tvgId": "",
     "name": "616 Sports 4K B",
-    "number": 30,
+    "number": 46,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -570,10 +874,10 @@
     "isWorking": true
   },
   {
-    "id": "go-live-sports-31",
+    "id": "go-live-sports-47",
     "tvgId": "",
     "name": "Go Live Sports",
-    "number": 31,
+    "number": 47,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -589,10 +893,10 @@
     "isWorking": true
   },
   {
-    "id": "go-live-sports-b-32",
+    "id": "go-live-sports-b-48",
     "tvgId": "",
     "name": "Go Live Sports B",
-    "number": 32,
+    "number": 48,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -608,10 +912,10 @@
     "isWorking": true
   },
   {
-    "id": "fussball-4k-33",
+    "id": "fussball-4k-49",
     "tvgId": "",
     "name": "Fussball 4K",
-    "number": 33,
+    "number": 49,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -627,10 +931,10 @@
     "isWorking": true
   },
   {
-    "id": "fussball-1-34",
+    "id": "fussball-1-50",
     "tvgId": "",
     "name": "Fussball 1",
-    "number": 34,
+    "number": 50,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -646,10 +950,10 @@
     "isWorking": true
   },
   {
-    "id": "fussball-2-35",
+    "id": "fussball-2-51",
     "tvgId": "",
     "name": "Fussball 2",
-    "number": 35,
+    "number": 51,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -665,10 +969,10 @@
     "isWorking": true
   },
   {
-    "id": "world-cup-t1-36",
+    "id": "world-cup-t1-52",
     "tvgId": "",
     "name": "World Cup T1",
-    "number": 36,
+    "number": 52,
     "category": "FIFA WC 2026",
     "country": "Unknown",
     "quality": "SD",
@@ -684,10 +988,10 @@
     "isWorking": true
   },
   {
-    "id": "world-cup-t2-37",
+    "id": "world-cup-t2-53",
     "tvgId": "",
     "name": "World Cup T2",
-    "number": 37,
+    "number": 53,
     "category": "FIFA WC 2026",
     "country": "Unknown",
     "quality": "SD",
@@ -703,10 +1007,10 @@
     "isWorking": true
   },
   {
-    "id": "world-cup-t3-4k-38",
+    "id": "world-cup-t3-4k-54",
     "tvgId": "",
     "name": "World Cup T3 4K",
-    "number": 38,
+    "number": 54,
     "category": "FIFA WC 2026",
     "country": "Unknown",
     "quality": "SD",
@@ -722,10 +1026,10 @@
     "isWorking": true
   },
   {
-    "id": "tsn-1-wc-39",
+    "id": "tsn-1-wc-55",
     "tvgId": "",
     "name": "TSN 1 WC",
-    "number": 39,
+    "number": 55,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -741,10 +1045,10 @@
     "isWorking": true
   },
   {
-    "id": "fox-sports-fifa-40",
+    "id": "fox-sports-fifa-56",
     "tvgId": "",
     "name": "Fox Sports - FIFA",
-    "number": 40,
+    "number": 56,
     "category": "FIFA WC 2026",
     "country": "Unknown",
     "quality": "SD",
@@ -760,10 +1064,10 @@
     "isWorking": true
   },
   {
-    "id": "fox-sports-1-fifa-41",
+    "id": "fox-sports-1-fifa-57",
     "tvgId": "",
     "name": "Fox Sports 1 - FIFA",
-    "number": 41,
+    "number": 57,
     "category": "FIFA WC 2026",
     "country": "Unknown",
     "quality": "SD",
@@ -779,10 +1083,10 @@
     "isWorking": true
   },
   {
-    "id": "fox-sports-1-b-fifa-42",
+    "id": "fox-sports-1-b-fifa-58",
     "tvgId": "",
     "name": "Fox Sports 1 B - FIFA",
-    "number": 42,
+    "number": 58,
     "category": "FIFA WC 2026",
     "country": "Unknown",
     "quality": "SD",
@@ -798,10 +1102,10 @@
     "isWorking": true
   },
   {
-    "id": "fox-sports-1-c-fifa-43",
+    "id": "fox-sports-1-c-fifa-59",
     "tvgId": "",
     "name": "Fox Sports 1 C - FIFA",
-    "number": 43,
+    "number": 59,
     "category": "FIFA WC 2026",
     "country": "Unknown",
     "quality": "SD",
@@ -817,10 +1121,10 @@
     "isWorking": true
   },
   {
-    "id": "s-football-44",
+    "id": "s-football-60",
     "tvgId": "",
     "name": "S Football",
-    "number": 44,
+    "number": 60,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -836,10 +1140,10 @@
     "isWorking": true
   },
   {
-    "id": "bein-sports-1-max-arabic-45",
+    "id": "bein-sports-1-max-arabic-61",
     "tvgId": "",
     "name": "Bein Sports 1 Max Arabic",
-    "number": 45,
+    "number": 61,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -855,10 +1159,10 @@
     "isWorking": true
   },
   {
-    "id": "bein-sports-46",
+    "id": "bein-sports-62",
     "tvgId": "",
     "name": "Bein Sports",
-    "number": 46,
+    "number": 62,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -874,10 +1178,10 @@
     "isWorking": true
   },
   {
-    "id": "ptv-sports-a-47",
+    "id": "ptv-sports-a-63",
     "tvgId": "",
     "name": "PTV Sports A🇵🇰",
-    "number": 47,
+    "number": 63,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -893,10 +1197,10 @@
     "isWorking": true
   },
   {
-    "id": "ptv-sports-b-48",
+    "id": "ptv-sports-b-64",
     "tvgId": "",
     "name": "PTV Sports B 🇵🇰",
-    "number": 48,
+    "number": 64,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -912,10 +1216,10 @@
     "isWorking": true
   },
   {
-    "id": "ptv-sports-c-49",
+    "id": "ptv-sports-c-65",
     "tvgId": "",
     "name": "PTV Sports C 🇵🇰",
-    "number": 49,
+    "number": 65,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -931,10 +1235,10 @@
     "isWorking": true
   },
   {
-    "id": "4k-test-50",
+    "id": "4k-test-66",
     "tvgId": "",
     "name": "4K Test",
-    "number": 50,
+    "number": 66,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -950,10 +1254,10 @@
     "isWorking": true
   },
   {
-    "id": "m6-spports-51",
+    "id": "m6-spports-67",
     "tvgId": "",
     "name": "M6 Spports",
-    "number": 51,
+    "number": 67,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -969,10 +1273,10 @@
     "isWorking": true
   },
   {
-    "id": "d-sports-52",
+    "id": "d-sports-68",
     "tvgId": "",
     "name": "D Sports",
-    "number": 52,
+    "number": 68,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -988,10 +1292,10 @@
     "isWorking": true
   },
   {
-    "id": "tsn-1-usa-53",
+    "id": "tsn-1-usa-69",
     "tvgId": "",
     "name": "TSN 1 🇺🇸 USA",
-    "number": 53,
+    "number": 69,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -1007,10 +1311,10 @@
     "isWorking": true
   },
   {
-    "id": "tsn-2-usa-54",
+    "id": "tsn-2-usa-70",
     "tvgId": "",
     "name": "TSN 2 🇺🇸 USA",
-    "number": 54,
+    "number": 70,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -1026,10 +1330,10 @@
     "isWorking": true
   },
   {
-    "id": "tsn-3-usa-55",
+    "id": "tsn-3-usa-71",
     "tvgId": "",
     "name": "TSN 3 🇺🇸 USA",
-    "number": 55,
+    "number": 71,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -1045,10 +1349,10 @@
     "isWorking": true
   },
   {
-    "id": "tsn-4-usa-56",
+    "id": "tsn-4-usa-72",
     "tvgId": "",
     "name": "TSN 4 🇺🇸 USA",
-    "number": 56,
+    "number": 72,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -1064,10 +1368,10 @@
     "isWorking": true
   },
   {
-    "id": "tsn-5-usa-57",
+    "id": "tsn-5-usa-73",
     "tvgId": "",
     "name": "TSN 5 🇺🇸 USA",
-    "number": 57,
+    "number": 73,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -1083,10 +1387,10 @@
     "isWorking": true
   },
   {
-    "id": "caze-tv-brazil-58",
+    "id": "caze-tv-brazil-74",
     "tvgId": "",
     "name": "Caze Tv 🇧🇷 Brazil",
-    "number": 58,
+    "number": 74,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -1102,10 +1406,10 @@
     "isWorking": true
   },
   {
-    "id": "tsn-1-canada-59",
+    "id": "tsn-1-canada-75",
     "tvgId": "",
     "name": "TSN 1 🇨🇦 Canada",
-    "number": 59,
+    "number": 75,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -1121,10 +1425,10 @@
     "isWorking": true
   },
   {
-    "id": "tsn-2-canada-60",
+    "id": "tsn-2-canada-76",
     "tvgId": "",
     "name": "TSN 2 🇨🇦 Canada",
-    "number": 60,
+    "number": 76,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -1140,10 +1444,10 @@
     "isWorking": true
   },
   {
-    "id": "tsn-3-canada-61",
+    "id": "tsn-3-canada-77",
     "tvgId": "",
     "name": "TSN 3 🇨🇦 Canada",
-    "number": 61,
+    "number": 77,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -1159,10 +1463,10 @@
     "isWorking": true
   },
   {
-    "id": "tsn-4-canada-62",
+    "id": "tsn-4-canada-78",
     "tvgId": "",
     "name": "TSN 4 🇨🇦 Canada",
-    "number": 62,
+    "number": 78,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -1178,10 +1482,10 @@
     "isWorking": true
   },
   {
-    "id": "tsn-5-canada-63",
+    "id": "tsn-5-canada-79",
     "tvgId": "",
     "name": "TSN 5 🇨🇦 Canada",
-    "number": 63,
+    "number": 79,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -1197,10 +1501,10 @@
     "isWorking": true
   },
   {
-    "id": "win-sports-64",
+    "id": "win-sports-80",
     "tvgId": "",
     "name": "Win Sports",
-    "number": 64,
+    "number": 80,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -1216,10 +1520,10 @@
     "isWorking": true
   },
   {
-    "id": "dazn-direct-65",
+    "id": "dazn-direct-81",
     "tvgId": "",
     "name": "Dazn Direct",
-    "number": 65,
+    "number": 81,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -1235,10 +1539,10 @@
     "isWorking": true
   },
   {
-    "id": "tvp-sports-66",
+    "id": "tvp-sports-82",
     "tvgId": "",
     "name": "TVP Sports",
-    "number": 66,
+    "number": 82,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -1254,10 +1558,10 @@
     "isWorking": true
   },
   {
-    "id": "d-sports-67",
+    "id": "d-sports-83",
     "tvgId": "",
     "name": "D Sports",
-    "number": 67,
+    "number": 83,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -1273,10 +1577,10 @@
     "isWorking": true
   },
   {
-    "id": "tyc-sports-68",
+    "id": "tyc-sports-84",
     "tvgId": "",
     "name": "TYC Sports",
-    "number": 68,
+    "number": 84,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -1292,10 +1596,10 @@
     "isWorking": true
   },
   {
-    "id": "tv-azteca-69",
+    "id": "tv-azteca-85",
     "tvgId": "",
     "name": "Tv Azteca",
-    "number": 69,
+    "number": 85,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -1311,10 +1615,10 @@
     "isWorking": true
   },
   {
-    "id": "tudn-sports-70",
+    "id": "tudn-sports-86",
     "tvgId": "",
     "name": "Tudn Sports 🇲🇽",
-    "number": 70,
+    "number": 86,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -1330,10 +1634,10 @@
     "isWorking": true
   },
   {
-    "id": "tudn-sports-b-71",
+    "id": "tudn-sports-b-87",
     "tvgId": "",
     "name": "Tudn Sports B 🇲🇽",
-    "number": 71,
+    "number": 87,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -1349,10 +1653,10 @@
     "isWorking": true
   },
   {
-    "id": "canal-5-72",
+    "id": "canal-5-88",
     "tvgId": "",
     "name": "Canal 5 🇲🇽",
-    "number": 72,
+    "number": 88,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -1368,10 +1672,10 @@
     "isWorking": true
   },
   {
-    "id": "el-heddaf-73",
+    "id": "el-heddaf-89",
     "tvgId": "",
     "name": "El Heddaf",
-    "number": 73,
+    "number": 89,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -1387,10 +1691,10 @@
     "isWorking": true
   },
   {
-    "id": "fussball-tv-74",
+    "id": "fussball-tv-90",
     "tvgId": "",
     "name": "Fussball Tv",
-    "number": 74,
+    "number": 90,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -1406,10 +1710,10 @@
     "isWorking": true
   },
   {
-    "id": "fussball-tv-b-75",
+    "id": "fussball-tv-b-91",
     "tvgId": "",
     "name": "Fussball Tv B",
-    "number": 75,
+    "number": 91,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -1425,10 +1729,10 @@
     "isWorking": true
   },
   {
-    "id": "bein-sports-1-max-76",
+    "id": "bein-sports-1-max-92",
     "tvgId": "",
     "name": "Bein Sports 1 Max",
-    "number": 76,
+    "number": 92,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -1444,10 +1748,10 @@
     "isWorking": true
   },
   {
-    "id": "tampad-77",
+    "id": "tampad-93",
     "tvgId": "",
     "name": "Tampad 🇵🇰",
-    "number": 77,
+    "number": 93,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -1463,10 +1767,10 @@
     "isWorking": true
   },
   {
-    "id": "fifa-live-bangla-78",
+    "id": "fifa-live-bangla-94",
     "tvgId": "",
     "name": "FIFA Live - Bangla 🇮🇳",
-    "number": 78,
+    "number": 94,
     "category": "Bangla",
     "country": "Unknown",
     "quality": "SD",
@@ -1482,10 +1786,10 @@
     "isWorking": true
   },
   {
-    "id": "fifa-live-bangla-a-79",
+    "id": "fifa-live-bangla-a-95",
     "tvgId": "",
     "name": "FIFA Live - Bangla A 🇮🇳",
-    "number": 79,
+    "number": 95,
     "category": "Bangla",
     "country": "Unknown",
     "quality": "SD",
@@ -1501,10 +1805,10 @@
     "isWorking": true
   },
   {
-    "id": "fifa-live-bangla-b-80",
+    "id": "fifa-live-bangla-b-96",
     "tvgId": "",
     "name": "FIFA Live - Bangla B 🇮🇳",
-    "number": 80,
+    "number": 96,
     "category": "Bangla",
     "country": "Unknown",
     "quality": "SD",
@@ -1520,10 +1824,10 @@
     "isWorking": true
   },
   {
-    "id": "t-sports-1-81",
+    "id": "t-sports-1-97",
     "tvgId": "T_sports_1",
     "name": "T Sports 1",
-    "number": 81,
+    "number": 97,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -1539,10 +1843,10 @@
     "isWorking": true
   },
   {
-    "id": "t-sports-2-82",
+    "id": "t-sports-2-98",
     "tvgId": "T_sports_2",
     "name": "T Sports 2",
-    "number": 82,
+    "number": 98,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -1558,10 +1862,10 @@
     "isWorking": true
   },
   {
-    "id": "bein-sports-1-83",
+    "id": "bein-sports-1-99",
     "tvgId": "Bein_Sports_1",
     "name": "Bein Sports 1",
-    "number": 83,
+    "number": 99,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -1577,10 +1881,10 @@
     "isWorking": true
   },
   {
-    "id": "win-sports-84",
+    "id": "win-sports-100",
     "tvgId": "WIN_Sports",
     "name": "WIN Sports",
-    "number": 84,
+    "number": 100,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -1596,10 +1900,10 @@
     "isWorking": true
   },
   {
-    "id": "zee-bangla-sonar-fifa-bangla-commentary-85",
+    "id": "zee-bangla-sonar-fifa-bangla-commentary-101",
     "tvgId": "",
     "name": "Zee Bangla Sonar (FIFA BANGLA COMMENTARY)",
-    "number": 85,
+    "number": 101,
     "category": "Bangla",
     "country": "Unknown",
     "quality": "SD",
@@ -1615,10 +1919,10 @@
     "isWorking": true
   },
   {
-    "id": "football-world-cup-2026-link-hindi-86",
+    "id": "football-world-cup-2026-link-hindi-102",
     "tvgId": "",
     "name": "Football World Cup 2026 link hindi",
-    "number": 86,
+    "number": 102,
     "category": "FIFA WC 2026",
     "country": "Unknown",
     "quality": "SD",
@@ -1634,10 +1938,10 @@
     "isWorking": true
   },
   {
-    "id": "football-world-cup-2026-4k-87",
+    "id": "football-world-cup-2026-4k-103",
     "tvgId": "",
     "name": "Football World Cup 2026 (4K)",
-    "number": 87,
+    "number": 103,
     "category": "FIFA WC 2026",
     "country": "Unknown",
     "quality": "SD",
@@ -1653,10 +1957,10 @@
     "isWorking": true
   },
   {
-    "id": "football-world-cup-2026-4k-2-88",
+    "id": "football-world-cup-2026-4k-2-104",
     "tvgId": "",
     "name": "Football World Cup 2026 (4K) 2",
-    "number": 88,
+    "number": 104,
     "category": "FIFA WC 2026",
     "country": "Unknown",
     "quality": "SD",
@@ -1672,10 +1976,10 @@
     "isWorking": true
   },
   {
-    "id": "football-world-cup-2026-4k-3-89",
+    "id": "football-world-cup-2026-4k-3-105",
     "tvgId": "",
     "name": "Football World Cup 2026 (4K) 3",
-    "number": 89,
+    "number": 105,
     "category": "FIFA WC 2026",
     "country": "Unknown",
     "quality": "SD",
@@ -1691,10 +1995,10 @@
     "isWorking": true
   },
   {
-    "id": "t-sport-90",
+    "id": "t-sport-106",
     "tvgId": "",
     "name": "T sport",
-    "number": 90,
+    "number": 106,
     "category": "Football World Cup 2026",
     "country": "Unknown",
     "quality": "SD",
@@ -1710,10 +2014,10 @@
     "isWorking": true
   },
   {
-    "id": "t-sports-hd-91",
+    "id": "t-sports-hd-107",
     "tvgId": "",
     "name": "T Sports HD",
-    "number": 91,
+    "number": 107,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -1729,10 +2033,10 @@
     "isWorking": true
   },
   {
-    "id": "t-sports-hd-2-92",
+    "id": "t-sports-hd-2-108",
     "tvgId": "",
     "name": "T Sports HD 2",
-    "number": 92,
+    "number": 108,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -1748,10 +2052,10 @@
     "isWorking": true
   },
   {
-    "id": "ptv-sports-93",
+    "id": "ptv-sports-109",
     "tvgId": "",
     "name": "PTV SPORTS",
-    "number": 93,
+    "number": 109,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -1767,10 +2071,10 @@
     "isWorking": true
   },
   {
-    "id": "jumuna-tv-94",
+    "id": "jumuna-tv-110",
     "tvgId": "",
     "name": "Jumuna TV",
-    "number": 94,
+    "number": 110,
     "category": "Football World Cup 2026",
     "country": "Unknown",
     "quality": "SD",
@@ -1786,10 +2090,10 @@
     "isWorking": true
   },
   {
-    "id": "somoy-tv-95",
+    "id": "somoy-tv-111",
     "tvgId": "",
     "name": "Somoy TV",
-    "number": 95,
+    "number": 111,
     "category": "Bangla",
     "country": "Unknown",
     "quality": "SD",
@@ -1805,10 +2109,10 @@
     "isWorking": true
   },
   {
-    "id": "channel-24-96",
+    "id": "channel-24-112",
     "tvgId": "",
     "name": "Channel 24",
-    "number": 96,
+    "number": 112,
     "category": "Football World Cup 2026",
     "country": "Unknown",
     "quality": "SD",
@@ -1824,10 +2128,10 @@
     "isWorking": true
   },
   {
-    "id": "independent-tv-97",
+    "id": "independent-tv-113",
     "tvgId": "",
     "name": "Independent TV",
-    "number": 97,
+    "number": 113,
     "category": "Bangla",
     "country": "Unknown",
     "quality": "SD",
@@ -1843,10 +2147,10 @@
     "isWorking": true
   },
   {
-    "id": "ekattor-98",
+    "id": "ekattor-114",
     "tvgId": "",
     "name": "Ekattor",
-    "number": 98,
+    "number": 114,
     "category": "Bangla",
     "country": "Unknown",
     "quality": "SD",
@@ -1862,10 +2166,10 @@
     "isWorking": true
   },
   {
-    "id": "atn-news-99",
+    "id": "atn-news-115",
     "tvgId": "",
     "name": "ATN NEWS",
-    "number": 99,
+    "number": 115,
     "category": "News",
     "country": "Unknown",
     "quality": "SD",
@@ -1881,10 +2185,10 @@
     "isWorking": true
   },
   {
-    "id": "btv-100",
+    "id": "btv-116",
     "tvgId": "",
     "name": "BTV",
-    "number": 100,
+    "number": 116,
     "category": "Bangla",
     "country": "Unknown",
     "quality": "SD",
@@ -1900,10 +2204,10 @@
     "isWorking": true
   },
   {
-    "id": "news24-101",
+    "id": "news24-117",
     "tvgId": "",
     "name": "NEWS24",
-    "number": 101,
+    "number": 117,
     "category": "News",
     "country": "Unknown",
     "quality": "SD",
@@ -1919,10 +2223,10 @@
     "isWorking": true
   },
   {
-    "id": "btv-102",
+    "id": "btv-118",
     "tvgId": "",
     "name": "BTV",
-    "number": 102,
+    "number": 118,
     "category": "Bangla",
     "country": "Unknown",
     "quality": "SD",
@@ -1938,10 +2242,10 @@
     "isWorking": true
   },
   {
-    "id": "star-news-103",
+    "id": "star-news-119",
     "tvgId": "",
     "name": "Star News",
-    "number": 103,
+    "number": 119,
     "category": "News",
     "country": "Unknown",
     "quality": "SD",
@@ -1957,10 +2261,10 @@
     "isWorking": true
   },
   {
-    "id": "deepto-104",
+    "id": "deepto-120",
     "tvgId": "",
     "name": "Deepto",
-    "number": 104,
+    "number": 120,
     "category": "Bangla",
     "country": "Unknown",
     "quality": "SD",
@@ -1976,10 +2280,10 @@
     "isWorking": true
   },
   {
-    "id": "bpk-tv-1712-105",
+    "id": "bpk-tv-1712-121",
     "tvgId": "",
     "name": "BPK TV 1712",
-    "number": 105,
+    "number": 121,
     "category": "Football World Cup 2026",
     "country": "Unknown",
     "quality": "SD",
@@ -1995,10 +2299,10 @@
     "isWorking": true
   },
   {
-    "id": "bpk-tv-1713-106",
+    "id": "bpk-tv-1713-122",
     "tvgId": "",
     "name": "BPK TV 1713",
-    "number": 106,
+    "number": 122,
     "category": "Football World Cup 2026",
     "country": "Unknown",
     "quality": "SD",
@@ -2014,10 +2318,10 @@
     "isWorking": true
   },
   {
-    "id": "bpk-tv-1714-107",
+    "id": "bpk-tv-1714-123",
     "tvgId": "",
     "name": "BPK TV 1714",
-    "number": 107,
+    "number": 123,
     "category": "Football World Cup 2026",
     "country": "Unknown",
     "quality": "SD",
@@ -2033,10 +2337,10 @@
     "isWorking": true
   },
   {
-    "id": "bangla-vision-108",
+    "id": "bangla-vision-124",
     "tvgId": "",
     "name": "Bangla Vision",
-    "number": 108,
+    "number": 124,
     "category": "Bangla",
     "country": "Unknown",
     "quality": "SD",
@@ -2052,10 +2356,10 @@
     "isWorking": true
   },
   {
-    "id": "n-tv-109",
+    "id": "n-tv-125",
     "tvgId": "",
     "name": "N TV",
-    "number": 109,
+    "number": 125,
     "category": "Football World Cup 2026",
     "country": "Unknown",
     "quality": "SD",
@@ -2071,10 +2375,10 @@
     "isWorking": true
   },
   {
-    "id": "bpk-tv-1717-110",
+    "id": "bpk-tv-1717-126",
     "tvgId": "",
     "name": "BPK TV 1717",
-    "number": 110,
+    "number": 126,
     "category": "Football World Cup 2026",
     "country": "Unknown",
     "quality": "SD",
@@ -2090,10 +2394,10 @@
     "isWorking": true
   },
   {
-    "id": "bpk-tv-1718-111",
+    "id": "bpk-tv-1718-127",
     "tvgId": "",
     "name": "BPK TV 1718",
-    "number": 111,
+    "number": 127,
     "category": "Football World Cup 2026",
     "country": "Unknown",
     "quality": "SD",
@@ -2109,10 +2413,10 @@
     "isWorking": true
   },
   {
-    "id": "bpk-tv-1719-112",
+    "id": "bpk-tv-1719-128",
     "tvgId": "",
     "name": "BPK TV 1719",
-    "number": 112,
+    "number": 128,
     "category": "Football World Cup 2026",
     "country": "Unknown",
     "quality": "SD",
@@ -2128,10 +2432,10 @@
     "isWorking": true
   },
   {
-    "id": "sa-tv-113",
+    "id": "sa-tv-129",
     "tvgId": "",
     "name": "SA TV",
-    "number": 113,
+    "number": 129,
     "category": "Football World Cup 2026",
     "country": "Unknown",
     "quality": "SD",
@@ -2147,10 +2451,10 @@
     "isWorking": true
   },
   {
-    "id": "atn-bangla-114",
+    "id": "atn-bangla-130",
     "tvgId": "",
     "name": "ATN BANGLA",
-    "number": 114,
+    "number": 130,
     "category": "Bangla",
     "country": "Unknown",
     "quality": "SD",
@@ -2166,10 +2470,10 @@
     "isWorking": true
   },
   {
-    "id": "machranga-115",
+    "id": "machranga-131",
     "tvgId": "",
     "name": "machranga",
-    "number": 115,
+    "number": 131,
     "category": "Football World Cup 2026",
     "country": "Unknown",
     "quality": "SD",
@@ -2185,10 +2489,10 @@
     "isWorking": true
   },
   {
-    "id": "channel-i-116",
+    "id": "channel-i-132",
     "tvgId": "",
     "name": "Channel I",
-    "number": 116,
+    "number": 132,
     "category": "Bangla",
     "country": "Unknown",
     "quality": "SD",
@@ -2204,10 +2508,10 @@
     "isWorking": true
   },
   {
-    "id": "islamic-tv-117",
+    "id": "islamic-tv-133",
     "tvgId": "",
     "name": "islamic tv",
-    "number": 117,
+    "number": 133,
     "category": "Football World Cup 2026",
     "country": "Unknown",
     "quality": "SD",
@@ -2223,10 +2527,10 @@
     "isWorking": true
   },
   {
-    "id": "dbc-news-118",
+    "id": "dbc-news-134",
     "tvgId": "",
     "name": "DBC NEWS",
-    "number": 118,
+    "number": 134,
     "category": "News",
     "country": "Unknown",
     "quality": "SD",
@@ -2242,10 +2546,10 @@
     "isWorking": true
   },
   {
-    "id": "channel-9-119",
+    "id": "channel-9-135",
     "tvgId": "",
     "name": "Channel 9",
-    "number": 119,
+    "number": 135,
     "category": "Football World Cup 2026",
     "country": "Unknown",
     "quality": "SD",
@@ -2261,10 +2565,10 @@
     "isWorking": true
   },
   {
-    "id": "rtv-live-120",
+    "id": "rtv-live-136",
     "tvgId": "",
     "name": "RTV Live",
-    "number": 120,
+    "number": 136,
     "category": "Bangla",
     "country": "Unknown",
     "quality": "SD",
@@ -2280,10 +2584,10 @@
     "isWorking": true
   },
   {
-    "id": "deepto-tv-121",
+    "id": "deepto-tv-137",
     "tvgId": "",
     "name": "Deepto TV",
-    "number": 121,
+    "number": 137,
     "category": "Bangla",
     "country": "Unknown",
     "quality": "SD",
@@ -2299,10 +2603,10 @@
     "isWorking": true
   },
   {
-    "id": "ekushe-tv-122",
+    "id": "ekushe-tv-138",
     "tvgId": "",
     "name": "Ekushe TV",
-    "number": 122,
+    "number": 138,
     "category": "Football World Cup 2026",
     "country": "Unknown",
     "quality": "SD",
@@ -2318,10 +2622,10 @@
     "isWorking": true
   },
   {
-    "id": "channel-s-tv-123",
+    "id": "channel-s-tv-139",
     "tvgId": "",
     "name": "Channel S TV",
-    "number": 123,
+    "number": 139,
     "category": "Football World Cup 2026",
     "country": "Unknown",
     "quality": "SD",
@@ -2337,10 +2641,10 @@
     "isWorking": true
   },
   {
-    "id": "boishakhi-tv-124",
+    "id": "boishakhi-tv-140",
     "tvgId": "",
     "name": "Boishakhi TV",
-    "number": 124,
+    "number": 140,
     "category": "Football World Cup 2026",
     "country": "Unknown",
     "quality": "SD",
@@ -2356,10 +2660,10 @@
     "isWorking": true
   },
   {
-    "id": "gtv-125",
+    "id": "gtv-141",
     "tvgId": "",
     "name": "GTV",
-    "number": 125,
+    "number": 141,
     "category": "Football World Cup 2026",
     "country": "Unknown",
     "quality": "SD",
@@ -2375,10 +2679,10 @@
     "isWorking": true
   },
   {
-    "id": "mohona-tv-126",
+    "id": "mohona-tv-142",
     "tvgId": "",
     "name": "Mohona TV",
-    "number": 126,
+    "number": 142,
     "category": "Football World Cup 2026",
     "country": "Unknown",
     "quality": "SD",
@@ -2394,10 +2698,10 @@
     "isWorking": true
   },
   {
-    "id": "desh-tv-127",
+    "id": "desh-tv-143",
     "tvgId": "",
     "name": "Desh TV",
-    "number": 127,
+    "number": 143,
     "category": "Football World Cup 2026",
     "country": "Unknown",
     "quality": "SD",
@@ -2413,10 +2717,10 @@
     "isWorking": true
   },
   {
-    "id": "bijoy-tv-128",
+    "id": "bijoy-tv-144",
     "tvgId": "",
     "name": "Bijoy TV",
-    "number": 128,
+    "number": 144,
     "category": "Football World Cup 2026",
     "country": "Unknown",
     "quality": "SD",
@@ -2432,10 +2736,10 @@
     "isWorking": true
   },
   {
-    "id": "nexus-tv-129",
+    "id": "nexus-tv-145",
     "tvgId": "",
     "name": "Nexus TV",
-    "number": 129,
+    "number": 145,
     "category": "Football World Cup 2026",
     "country": "Unknown",
     "quality": "SD",
@@ -2451,10 +2755,10 @@
     "isWorking": true
   },
   {
-    "id": "global-tv-130",
+    "id": "global-tv-146",
     "tvgId": "",
     "name": "Global TV",
-    "number": 130,
+    "number": 146,
     "category": "Football World Cup 2026",
     "country": "Unknown",
     "quality": "SD",
@@ -2470,10 +2774,10 @@
     "isWorking": true
   },
   {
-    "id": "channel-1-tv-131",
+    "id": "channel-1-tv-147",
     "tvgId": "",
     "name": "Channel 1 TV",
-    "number": 131,
+    "number": 147,
     "category": "Football World Cup 2026",
     "country": "Unknown",
     "quality": "SD",
@@ -2489,10 +2793,10 @@
     "isWorking": true
   },
   {
-    "id": "ayna-tv-132",
+    "id": "ayna-tv-148",
     "tvgId": "",
     "name": "Ayna TV",
-    "number": 132,
+    "number": 148,
     "category": "Football World Cup 2026",
     "country": "Unknown",
     "quality": "SD",
@@ -2508,10 +2812,10 @@
     "isWorking": true
   },
   {
-    "id": "jago-news-24-133",
+    "id": "jago-news-24-149",
     "tvgId": "",
     "name": "Jago News 24",
-    "number": 133,
+    "number": 149,
     "category": "News",
     "country": "Unknown",
     "quality": "SD",
@@ -2527,10 +2831,10 @@
     "isWorking": true
   },
   {
-    "id": "ekhon-tv-134",
+    "id": "ekhon-tv-150",
     "tvgId": "",
     "name": "Ekhon TV",
-    "number": 134,
+    "number": 150,
     "category": "Football World Cup 2026",
     "country": "Unknown",
     "quality": "SD",
@@ -2546,10 +2850,10 @@
     "isWorking": true
   },
   {
-    "id": "independent-tv-135",
+    "id": "independent-tv-151",
     "tvgId": "",
     "name": "Independent TV",
-    "number": 135,
+    "number": 151,
     "category": "Bangla",
     "country": "Unknown",
     "quality": "SD",
@@ -2565,10 +2869,10 @@
     "isWorking": true
   },
   {
-    "id": "atn-news-hd-136",
+    "id": "atn-news-hd-152",
     "tvgId": "",
     "name": "ATN News HD",
-    "number": 136,
+    "number": 152,
     "category": "News",
     "country": "Unknown",
     "quality": "SD",
@@ -2584,10 +2888,10 @@
     "isWorking": true
   },
   {
-    "id": "max-hd-137",
+    "id": "max-hd-153",
     "tvgId": "",
     "name": "MAX  HD",
-    "number": 137,
+    "number": 153,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -2603,10 +2907,10 @@
     "isWorking": true
   },
   {
-    "id": "ipl-138",
+    "id": "ipl-154",
     "tvgId": "",
     "name": "IPL",
-    "number": 138,
+    "number": 154,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -2622,10 +2926,10 @@
     "isWorking": true
   },
   {
-    "id": "willow-tv-139",
+    "id": "willow-tv-155",
     "tvgId": "",
     "name": "Willow TV",
-    "number": 139,
+    "number": 155,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -2641,10 +2945,10 @@
     "isWorking": true
   },
   {
-    "id": "star-sports-1-hd-140",
+    "id": "star-sports-1-hd-156",
     "tvgId": "",
     "name": "Star Sports 1 HD",
-    "number": 140,
+    "number": 156,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -2660,10 +2964,10 @@
     "isWorking": true
   },
   {
-    "id": "star-sports-1-141",
+    "id": "star-sports-1-157",
     "tvgId": "",
     "name": "Star sports 1",
-    "number": 141,
+    "number": 157,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -2679,10 +2983,10 @@
     "isWorking": true
   },
   {
-    "id": "cnn-now-142",
+    "id": "cnn-now-158",
     "tvgId": "",
     "name": "CNN Now",
-    "number": 142,
+    "number": 158,
     "category": "News",
     "country": "Unknown",
     "quality": "SD",
@@ -2698,10 +3002,10 @@
     "isWorking": true
   },
   {
-    "id": "dw-english-hd-143",
+    "id": "dw-english-hd-159",
     "tvgId": "",
     "name": "DW English HD",
-    "number": 143,
+    "number": 159,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -2717,10 +3021,10 @@
     "isWorking": true
   },
   {
-    "id": "tom-jerry-tv-144",
+    "id": "tom-jerry-tv-160",
     "tvgId": "",
     "name": "Tom & Jerry TV",
-    "number": 144,
+    "number": 160,
     "category": "Kids",
     "country": "Unknown",
     "quality": "SD",
@@ -2736,10 +3040,10 @@
     "isWorking": true
   },
   {
-    "id": "doraemon-tv-145",
+    "id": "doraemon-tv-161",
     "tvgId": "",
     "name": "Doraemon TV",
-    "number": 145,
+    "number": 161,
     "category": "Kids",
     "country": "Unknown",
     "quality": "SD",
@@ -2755,10 +3059,10 @@
     "isWorking": true
   },
   {
-    "id": "mr-bean-animated-146",
+    "id": "mr-bean-animated-162",
     "tvgId": "",
     "name": "Mr Bean Animated",
-    "number": 146,
+    "number": 162,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -2774,10 +3078,10 @@
     "isWorking": true
   },
   {
-    "id": "cartoon-network-147",
+    "id": "cartoon-network-163",
     "tvgId": "",
     "name": "Cartoon Network",
-    "number": 147,
+    "number": 163,
     "category": "Kids",
     "country": "Unknown",
     "quality": "SD",
@@ -2793,10 +3097,10 @@
     "isWorking": true
   },
   {
-    "id": "fifa-english-hd-148",
+    "id": "fifa-english-hd-164",
     "tvgId": "",
     "name": "FIFA+ English HD",
-    "number": 148,
+    "number": 164,
     "category": "FIFA WC 2026",
     "country": "Unknown",
     "quality": "SD",
@@ -2812,10 +3116,10 @@
     "isWorking": true
   },
   {
-    "id": "fifa-usa-149",
+    "id": "fifa-usa-165",
     "tvgId": "",
     "name": "FIFA+ USA",
-    "number": 149,
+    "number": 165,
     "category": "FIFA WC 2026",
     "country": "Unknown",
     "quality": "SD",
@@ -2831,10 +3135,10 @@
     "isWorking": true
   },
   {
-    "id": "fifa-uk-150",
+    "id": "fifa-uk-166",
     "tvgId": "",
     "name": "FIFA+ UK",
-    "number": 150,
+    "number": 166,
     "category": "FIFA WC 2026",
     "country": "Unknown",
     "quality": "SD",
@@ -2850,10 +3154,10 @@
     "isWorking": true
   },
   {
-    "id": "bein-sports-xtra-1080p-151",
+    "id": "bein-sports-xtra-1080p-167",
     "tvgId": "",
     "name": "beIN SPORTS XTRA (1080p)",
-    "number": 151,
+    "number": 167,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -2869,10 +3173,10 @@
     "isWorking": true
   },
   {
-    "id": "cbs-sports-golazo-network-152",
+    "id": "cbs-sports-golazo-network-168",
     "tvgId": "",
     "name": "CBS Sports Golazo Network",
-    "number": 152,
+    "number": 168,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
@@ -2888,10 +3192,10 @@
     "isWorking": true
   },
   {
-    "id": "cazetv-1080i-153",
+    "id": "cazetv-1080i-169",
     "tvgId": "",
     "name": "CazeTV (1080i)",
-    "number": 153,
+    "number": 169,
     "category": "Sports",
     "country": "Unknown",
     "quality": "SD",
