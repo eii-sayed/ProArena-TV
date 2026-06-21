@@ -44,7 +44,15 @@ Since the application relies on fetching local files (`channels.json` and `confi
    ```
 3. Open your browser and navigate to `http://localhost:8080`.
 
-### Loading Dynamic External Playlists (NEW)
+### In-App Playlist Importer (UI)
+
+You don't need to touch any code to add new channels. Simply use the buttons in the top-right header of the web app:
+- **Import from URL:** Click the Link icon to paste any `.m3u` or `.m3u8` URL (e.g. from GitHub). The app naturally bypasses CORS.
+- **Import from File:** Click the File Upload icon to select a local `.m3u` or `.m3u8` playlist from your computer/device.
+
+These imported channels are temporarily injected directly into your viewing session.
+
+### Loading Dynamic External Playlists (Config)
 
 You no longer need to edit the source code to load an external M3U list. Simply open the `config.js` file located in the root folder:
 
