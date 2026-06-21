@@ -638,6 +638,37 @@ function openEPGScheduleModal() {
   }, 100);
 }
 
+// ─── Fullscreen Handler ─────────────────────────────────────────────────────
+function toggleFullscreen() {
+  const container = document.querySelector('.player-container');
+  if (!container) return;
+
+  if (!document.fullscreenElement && 
+      !document.webkitFullscreenElement && 
+      !document.mozFullScreenElement && 
+      !document.msFullscreenElement) {
+    if (container.requestFullscreen) {
+      container.requestFullscreen().catch(() => {});
+    } else if (container.webkitRequestFullscreen) {
+      container.webkitRequestFullscreen().catch(() => {});
+    } else if (container.mozRequestFullScreen) {
+      container.mozRequestFullScreen().catch(() => {});
+    } else if (container.msRequestFullscreen) {
+      container.msRequestFullscreen().catch(() => {});
+    }
+  } else {
+    if (document.exitFullscreen) {
+      document.exitFullscreen().catch(() => {});
+    } else if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen().catch(() => {});
+    } else if (document.mozCancelFullScreen) {
+      document.mozCancelFullScreen().catch(() => {});
+    } else if (document.msExitFullscreen) {
+      document.msExitFullscreen().catch(() => {});
+    }
+  }
+}
+
 // ─── Stream Health Check ────────────────────────────────────────────────────
 function checkStreamHealth(channels) {
   channels.forEach(ch => {
@@ -770,14 +801,10 @@ document.addEventListener('DOMContentLoaded', () => {
       searchInput.focus();
     }
     
-    // Fullscreen (f)
-    if (e.key === 'f') {
-      const video = document.getElementById('player-video');
-      if (document.fullscreenElement) {
-        document.exitFullscreen();
-      } else {
-        video.requestFullscreen().catch(() => {});
-      }
+    // Fullscreen (f/F)
+    if (e.key === 'f' || e.key === 'F') {
+      e.preventDefault();
+      toggleFullscreen();
     }
     
     // Mute (m)
@@ -863,6 +890,21 @@ document.addEventListener('DOMContentLoaded', () => {
   if (statsCloseBtn && statsOverlay) {
     statsCloseBtn.addEventListener('click', () => {
       statsOverlay.style.display = 'none';
+    });
+  }
+
+  // Fullscreen Button
+  const fullscreenBtn = document.getElementById('fullscreen-btn');
+  if (fullscreenBtn) {
+    fullscreenBtn.addEventListener('click', toggleFullscreen);
+  }
+
+  // Double click video to toggle fullscreen
+  const videoEl = document.getElementById('player-video');
+  if (videoEl) {
+    videoEl.addEventListener('dblclick', (e) => {
+      e.preventDefault();
+      toggleFullscreen();
     });
   }
 

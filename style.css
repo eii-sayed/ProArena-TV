@@ -1199,3 +1199,44 @@ a { text-decoration: none; color: inherit; }
   border-color: var(--neon);
   box-shadow: 0 0 10px var(--neon-glow);
 }
+
+/* Fullscreen Custom Button */
+.fullscreen-btn {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.85em;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.fullscreen-btn:hover {
+  background: var(--bg-hover);
+  border-color: var(--neon);
+  box-shadow: 0 0 10px var(--neon-glow);
+}
+
+/* Hide native controls fullscreen button in webkit browsers to avoid confusion */
+video::-webkit-media-controls-fullscreen-button {
+  display: none !important;
+}
+
+/* Style the player container when in browser fullscreen mode */
+.player-container:fullscreen {
+  width: 100vw !important;
+  height: 100vh !important;
+  aspect-ratio: auto !important;
+  border-radius: 0 !important;
+  border: none !important;
+}
+.player-container:-webkit-full-screen {
+  width: 100vw !important;
+  height: 100vh !important;
+  aspect-ratio: auto !important;
+  border-radius: 0 !important;
+  border: none !important;
+}
