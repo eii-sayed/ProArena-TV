@@ -1,33 +1,36 @@
 # ProArena TV
 
-ProArena TV is a premium, lightweight, and highly-responsive IPTV streaming web application built entirely with **Vanilla JavaScript, HTML, and CSS**. It offers a sleek and modern user interface to browse, filter, and play live TV channels via m3u8 streams.
+ProArena TV is a premium, lightweight, and highly-responsive IPTV streaming web application built entirely with **Vanilla JavaScript, HTML, and CSS**. It offers a sleek, modern, and high-performance user interface to browse, filter, and stream live TV channels via HLS (`.m3u8` / `.ts`) formats.
 
 ## 🚀 Features
 
-- **Zero Dependencies:** Built entirely with native web technologies. No heavy frameworks required.
-- **HLS Streaming Support:** Uses `hls.js` for robust playback of HTTP Live Streaming (HLS) formats, with automatic native fallback for browsers like Safari.
-- **Modern UI/UX:** Features a beautiful, responsive dark mode design with glassmorphism effects, micro-animations, theme customization, and SVG icons.
-- **Dynamic M3U Playlists:** Paste any external M3U link into `config.js` and the app will automatically fetch and load it alongside your local channels seamlessly.
-- **Native CORS Bypass:** Importing GitHub M3U UI links (like `github.com/..`) are automatically rewritten to raw links (`raw.githubusercontent.com/..`) to bypass CORS naturally without browser extensions. A fallback CORS proxy is also built-in.
-- **Local File Import:** Upload local `.m3u` or `.m3u8` playlist files directly via the UI.
-- **Electronic Program Guide (EPG):** Load XMLTV EPG data to see full channel schedules and "Now Playing / Next Playing" information natively on the player.
-- **Channel Categorization & Search:** Filter channels by categories or search instantly. Includes a quick `/` keyboard shortcut for searching.
-- **Keyboard & Remote Support:** Zap up/down using arrows, tune directly to a channel by pressing numbers (`0-9`), and toggle fullscreen with `F`.
-- **Favorites System:** Users can save their favorite channels locally. Favorites persist across sessions using `localStorage`.
-- **Online Only Filter & Health Checks:** Instantly filter out channels that are marked as offline or broken. The player dynamically checks stream health.
-- **Picture-in-Picture & Captions:** Support for floating PiP video and native/HLS subtitle tracks.
+- **Zero Dependencies Core:** Built with native, framework-less web technologies for lightning-fast loads.
+- **HLS & TS Streaming Support:** Seamless integration with `hls.js` for stable Live TV stream playback, including automatic native HLS fallback for mobile devices and Safari.
+- **Xtream Codes API Support:** 
+  - **Auto-Sync Config:** Add credentials in `config.js` to automatically load accounts at start.
+  - **In-App Login:** Quick-access Login modal in the header to connect with any Xtream Codes server (Server, Username, Password) dynamically.
+- **CORS Bypass & Proxy Architecture:**
+  - Automated rewriting of GitHub blob links to raw raw.githubusercontent links.
+  - Transparent, high-performance CORS proxying via `corsproxy.org` to bypass Cloudflare protection and fetch third-party playlists securely.
+- **DOM Virtualization:** Powered by `Clusterize.js` to render tens of thousands of channels smoothly without lagging the browser.
+- **Electronic Program Guide (EPG):** Supports XMLTV guides to show full schedule times and "Now Playing / Next Playing" info directly inside the video player HUD.
+- **Remote / Keyboard Control:** Quick keyboard shortcuts including `/` for search focus, `Arrow Up/Down` for channel zapping, direct number tuning (`0-9`), and `F` to toggle fullscreen.
+- **Favorites & Recents System:** Persistent storage for user bookmarks and view histories utilizing `localStorage`.
+- **Stream Health Checker:** Integrated status pinging to verify if stream endpoints are active and online, with an "Online Only" filter switch.
+- **Picture-in-Picture & Captions:** Support for floating PiP windows and embedded subtitles.
 
 ## 🛠️ Technology Stack
 
 - **Frontend Core:** HTML5, CSS3 (Vanilla), JavaScript (ES6+)
-- **Streaming:** [hls.js](https://github.com/video-dev/hls.js/)
-- **Data Source:** JSON (`channels.json`) and standard M3U/M3U8 playlists.
+- **DOM Virtualization:** [Clusterize.js](https://github.com/NeXTs/Clusterize.js)
+- **HLS Streaming Engine:** [hls.js](https://github.com/video-dev/hls.js/)
+- **Data Stores:** Local `channels.json` database and standard M3U/M3U8 playlists.
 
 ## 📺 Usage
 
 ### Running Locally
 
-Since the application relies on fetching local files (`channels.json` and `config.js`), it must be run via a local web server or deployed online (like Cloudflare Pages).
+Since the application relies on fetching local files (`channels.json` and `config.js`), it must be run via a local web server:
 
 1. Clone the repository:
    ```bash
@@ -46,27 +49,33 @@ Since the application relies on fetching local files (`channels.json` and `confi
 
 ### In-App Playlist Importer (UI)
 
-You don't need to touch any code to add new channels. Simply use the buttons in the top-right header of the web app:
-- **Import from URL:** Click the Link icon to paste any `.m3u` or `.m3u8` URL (e.g. from GitHub). The app naturally bypasses CORS.
-- **Import from File:** Click the File Upload icon to select a local `.m3u` or `.m3u8` playlist from your computer/device.
+Add playlists and streams instantly using the top-right header tools:
+- **Import from URL:** Paste any `.m3u` or `.m3u8` link. The app automatically proxies requests to avoid CORS blockages.
+- **Import from File:** Upload local `.m3u` or `.m3u8` playlist files directly.
+- **Xtream Codes Login:** Click the login button in the header, enter your Xtream Codes credentials, and stream your subscription instantly.
 
-These imported channels are temporarily injected directly into your viewing session.
+### Loading Dynamic External Playlists & Xtream Accounts (Config)
 
-### Loading Dynamic External Playlists (Config)
-
-You no longer need to edit the source code to load an external M3U list. Simply open the `config.js` file located in the root folder:
+Configure the app to auto-load your playlists and accounts on startup by editing `config.js`:
 
 ```javascript
 const APP_CONFIG = {
-    // Paste your M3U playlist URL between the quotes
-    EXTERNAL_PLAYLIST_URL: "https://raw.githubusercontent.com/Free-TV/IPTV/master/playlist.m3u8"
+    // 📺 DYNAMIC PLAYLIST URL
+    EXTERNAL_PLAYLIST_URL: "https://raw.githubusercontent.com/Free-TV/IPTV/master/playlist.m3u8",
+    
+    // 📅 DEFAULT EPG (TV GUIDE) URL
+    DEFAULT_EPG_URL: "https://iptv-org.github.io/epg/guides/us/tvguide.com.epg.xml",
+    
+    // 🚀 XTREAM CODES ACCOUNTS
+    XTREAM_ACCOUNTS: [
+        { server: "http://example-server.com:8080", user: "yourUsername", pass: "yourPassword" }
+    ]
 };
 ```
-Every time the app loads, it will fetch the channels from this URL and display them dynamically.
 
-### Adding Channels Manually
+### Adding Persistent Channels Manually
 
-Channel data is also loaded locally from `channels.json`. To add or modify persistent channels, update the array with the following object structure:
+To add channels to the built-in database, add them to `channels.json` using the following schema:
 
 ```json
 {
@@ -91,7 +100,7 @@ Channel data is also loaded locally from `channels.json`. To add or modify persi
 
 ## ⚠️ Disclaimer
 
-This project is a video player interface. It does not host, provide, or distribute any video streams or copyrighted material. The `channels.json` and playlist inputs are meant to be populated by the user with their own legally obtained m3u8 links.
+This project is a video player interface. It does not host, provide, or distribute any video streams or copyrighted material. Users are expected to populate the playlist inputs and configurations with their own legally obtained streams.
 
 ## 📄 License
 

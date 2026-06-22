@@ -98,6 +98,84 @@ function badgeClass(badge) {
   return 'ch-badge-default';
 }
 
+// ─── Parse M3U Content ──────────────────────────────────────────────────────
+function parseM3UContent(text, categoryName = "Imported", forceCategory = false) {
+  const lines = text.split(/\r?\n/);
+  let importedCount = 0;
+  let lastNumber = state.channels.reduce((max, c) => Math.max(max, c.number || 0), 0);
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i].trim();
+    if (line.startsWith('#EXTINF:')) {
+      const commaIdx = line.indexOf(',');
+      if (commaIdx !== -1) {
+        const name = line.substring(commaIdx + 1).trim();
+        
+        // Extract tvg-id
+        let tvgId = "";
+        const tvgIdMatch = line.match(/tvg-id="([^"]+)"/);
+        if (tvgIdMatch) tvgId = tvgIdMatch[1];
+
+        // Extract tvg-logo
+        let tvgLogo = "";
+        const tvgLogoMatch = line.match(/tvg-logo="([^"]+)"/);
+        if (tvgLogoMatch && tvgLogoMatch[1].trim()) {
+          tvgLogo = tvgLogoMatch[1].trim();
+        } else {
+          tvgLogo = `https://ui-avatars.com/api/?name=${encodeURIComponent(name.substring(0,2))}&background=1a1a2e&color=e94560&size=200&bold=true`;
+        }
+
+        // Extract group-title
+        let groupTitle = categoryName;
+        if (!forceCategory) {
+          const groupMatch = line.match(/group-title="([^"]+)"/i);
+          if (groupMatch && groupMatch[1].trim()) {
+            groupTitle = groupMatch[1].trim();
+          }
+        }
+        
+        let url = '';
+        for (let j = i + 1; j < lines.length; j++) {
+          const nextLine = lines[j].trim();
+          if (nextLine && !nextLine.startsWith('#')) {
+            url = nextLine;
+            break;
+          }
+        }
+        if (url) {
+          lastNumber++;
+          state.channels.push({
+            id: name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') + '-' + lastNumber,
+            tvgId: tvgId,
+            name: name,
+            number: lastNumber,
+            category: groupTitle,
+            country: "Unknown",
+            quality: "SD",
+            logo: tvgLogo,
+            streams: [{ name: "Stream 1", url: url }],
+            isLive: true,
+            badge: "",
+            isWorking: true
+          });
+          importedCount++;
+        }
+      }
+    }
+  }
+  
+  // Categories are now automatically extracted during renderCategories()
+  
+  if (importedCount > 0) {
+    state.category = categoryName;
+    renderCategories();
+    renderChannelList();
+    showToast(`Imported ${importedCount} channels!`);
+  } else {
+    showToast(`No channels found.`);
+  }
+}
+
 // ─── Load channels ──────────────────────────────────────────────────────────
 async function loadChannels() {
   try {
@@ -120,7 +198,7 @@ async function loadChannels() {
             if (!r.ok) throw new Error('HTTP ' + r.status);
             text = await r.text();
           } catch(e) {
-            const proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(dynamicUrl);
+            const proxyUrl = 'https://corsproxy.org/?' + encodeURIComponent(dynamicUrl);
             const proxyR = await fetch(proxyUrl);
             if (!proxyR.ok) throw new Error('HTTP ' + proxyR.status);
             text = await proxyR.text();
@@ -132,6 +210,33 @@ async function loadChannels() {
       }, 500);
     }
     
+    // Dynamically load Xtream Accounts if configured
+    if (typeof APP_CONFIG !== 'undefined' && Array.isArray(APP_CONFIG.XTREAM_ACCOUNTS)) {
+      APP_CONFIG.XTREAM_ACCOUNTS.forEach((account, idx) => {
+        setTimeout(async () => {
+          try {
+            let server = account.server.trim();
+            if (server.endsWith('/')) server = server.slice(0, -1);
+            const url = `${server}/get.php?username=${encodeURIComponent(account.user)}&password=${encodeURIComponent(account.pass)}&type=m3u_plus&output=ts`;
+            
+            let text;
+            try {
+              const r = await fetch(url);
+              if (!r.ok) throw new Error('HTTP ' + r.status);
+              text = await r.text();
+            } catch(e) {
+              const proxyUrl = 'https://corsproxy.org/?' + encodeURIComponent(url);
+              const proxyR = await fetch(proxyUrl);
+              if (!proxyR.ok) throw new Error('HTTP ' + proxyR.status);
+              text = await proxyR.text();
+            }
+            parseM3UContent(text, "Xtream", true);
+          } catch (err) {
+            console.error('Failed to load Xtream account:', err);
+          }
+        }, 500 + (idx * 500)); // Stagger fetches
+      });
+    }
     // Auto-load EPG if configured
     if (typeof APP_CONFIG !== 'undefined' && APP_CONFIG.DEFAULT_EPG_URL) {
       setTimeout(() => {
@@ -897,64 +1002,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const urlCancel = document.getElementById('url-cancel');
   const urlSubmit = document.getElementById('url-submit');
 
-  function parseM3UContent(text, categoryName = "Imported") {
-    const lines = text.split(/\r?\n/);
-    let importedCount = 0;
-    let lastNumber = state.channels.reduce((max, c) => Math.max(max, c.number || 0), 0);
+  // Xtream Login Modal
+  const xtreamLoginBtn = document.getElementById('xtream-login-btn');
+  const xtreamModal = document.getElementById('xtream-modal');
+  const xtreamServer = document.getElementById('xtream-server');
+  const xtreamUser = document.getElementById('xtream-user');
+  const xtreamPass = document.getElementById('xtream-pass');
+  const xtreamCancel = document.getElementById('xtream-cancel');
+  const xtreamSubmit = document.getElementById('xtream-submit');
 
-    for (let i = 0; i < lines.length; i++) {
-      const line = lines[i].trim();
-      if (line.startsWith('#EXTINF:')) {
-        const commaIdx = line.indexOf(',');
-        if (commaIdx !== -1) {
-          const name = line.substring(commaIdx + 1).trim();
-          
-          // Extract tvg-id
-          let tvgId = "";
-          const tvgIdMatch = line.match(/tvg-id="([^"]+)"/);
-          if (tvgIdMatch) tvgId = tvgIdMatch[1];
-          
-          let url = '';
-          for (let j = i + 1; j < lines.length; j++) {
-            const nextLine = lines[j].trim();
-            if (nextLine && !nextLine.startsWith('#')) {
-              url = nextLine;
-              break;
-            }
-          }
-          if (url) {
-            lastNumber++;
-            state.channels.push({
-              id: name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') + '-' + lastNumber,
-              tvgId: tvgId,
-              name: name,
-              number: lastNumber,
-              category: categoryName,
-              country: "Unknown",
-              quality: "SD",
-              logo: `https://ui-avatars.com/api/?name=${encodeURIComponent(name.substring(0,2))}&background=1a1a2e&color=e94560&size=200&bold=true`,
-              streams: [{ name: "Stream 1", url: url }],
-              isLive: true,
-              badge: "",
-              isWorking: true
-            });
-            importedCount++;
-          }
-        }
-      }
-    }
-    
-    // Categories are now automatically extracted during renderCategories()
-    
-    if (importedCount > 0) {
-      state.category = categoryName;
-      renderCategories();
-      renderChannelList();
-      showToast(`Imported ${importedCount} channels!`);
-    } else {
-      showToast(`No channels found.`);
-    }
-  }
+
 
   importBtn.addEventListener('click', () => {
     m3uUpload.click();
@@ -981,6 +1038,60 @@ document.addEventListener('DOMContentLoaded', () => {
     urlModal.style.display = 'none';
     urlInput.value = '';
   });
+
+  // Xtream Login Handlers
+  xtreamLoginBtn.addEventListener('click', () => {
+    xtreamModal.style.display = 'flex';
+    xtreamServer.focus();
+  });
+
+  xtreamCancel.addEventListener('click', () => {
+    xtreamModal.style.display = 'none';
+    xtreamServer.value = '';
+    xtreamUser.value = '';
+    xtreamPass.value = '';
+  });
+
+  xtreamSubmit.addEventListener('click', async () => {
+    let server = xtreamServer.value.trim();
+    let user = xtreamUser.value.trim();
+    let pass = xtreamPass.value.trim();
+
+    if (!server || !user || !pass) {
+      showToast('Please fill all fields');
+      return;
+    }
+
+    if (server.endsWith('/')) server = server.slice(0, -1);
+    
+    xtreamSubmit.textContent = 'Loading...';
+    // Construct the M3U Plus URL
+    const url = `${server}/get.php?username=${encodeURIComponent(user)}&password=${encodeURIComponent(pass)}&type=m3u_plus&output=ts`;
+    
+    try {
+      let text;
+      try {
+        const resp = await fetch(url);
+        if (!resp.ok) throw new Error('HTTP Error ' + resp.status);
+        text = await resp.text();
+      } catch (directError) {
+        const proxyUrl = 'https://corsproxy.org/?' + encodeURIComponent(url);
+        const proxyResp = await fetch(proxyUrl);
+        if (!proxyResp.ok) throw new Error('Proxy HTTP Error ' + proxyResp.status);
+        text = await proxyResp.text();
+      }
+      parseM3UContent(text, "Xtream", true);
+      xtreamModal.style.display = 'none';
+      xtreamServer.value = '';
+      xtreamUser.value = '';
+      xtreamPass.value = '';
+    } catch (e) {
+      showToast('Failed to load Xtream account: ' + e.message);
+    } finally {
+      xtreamSubmit.textContent = 'Login';
+    }
+  });
+
   urlSubmit.addEventListener('click', async () => {
     let url = urlInput.value.trim();
     if (!url) return;
@@ -1004,9 +1115,9 @@ document.addEventListener('DOMContentLoaded', () => {
         text = await resp.text();
       } catch (directError) {
         // Fallback to CORS proxy if direct fetch fails
-        const proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(url);
+        const proxyUrl = 'https://corsproxy.org/?' + encodeURIComponent(url);
         const proxyResp = await fetch(proxyUrl);
-        if (!proxyResp.ok) throw new Error('HTTP Error ' + proxyResp.status + ' (Proxy)');
+        if (!proxyResp.ok) throw new Error('Proxy HTTP Error ' + proxyResp.status);
         text = await proxyResp.text();
       }
       parseM3UContent(text, "Imported");
