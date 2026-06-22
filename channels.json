@@ -1,5 +1,24 @@
 [
   {
+    "id": "world-cup-s1-35",
+    "tvgId": "",
+    "name": "World Cup S1",
+    "number": 35,
+    "category": "FIFA WC 2026",
+    "country": "Unknown",
+    "quality": "HD",
+    "logo": "https://imglink.cc/cdn/RY7jBwPKAr.jpg",
+    "streams": [
+      {
+        "name": "Stream 1",
+        "url": "https://live05.msdht.app/live/24561735.m3u8"
+      }
+    ],
+    "isLive": true,
+    "badge": "",
+    "isWorking": true
+  },
+  {
     "id": "caze-tv-br-1",
     "tvgId": "Caze TV BR",
     "name": "Caze TV BR",
@@ -645,25 +664,7 @@
     "badge": "",
     "isWorking": true
   },
-  {
-    "id": "world-cup-s1-35",
-    "tvgId": "",
-    "name": "World Cup S1",
-    "number": 35,
-    "category": "FIFA WC 2026",
-    "country": "Unknown",
-    "quality": "HD",
-    "logo": "https://imglink.cc/cdn/RY7jBwPKAr.jpg",
-    "streams": [
-      {
-        "name": "Stream 1",
-        "url": "https://live05.msdht.app/live/24561735.m3u8"
-      }
-    ],
-    "isLive": true,
-    "badge": "",
-    "isWorking": true
-  },
+
   {
     "id": "world-cup-s2-36",
     "tvgId": "",
