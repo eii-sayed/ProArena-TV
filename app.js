@@ -1023,7 +1023,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const reader = new FileReader();
     reader.onload = (event) => {
-      parseM3UContent(event.target.result, "File Import");
+      parseM3UContent(event.target.result, "File Import", true);
       m3uUpload.value = ''; 
     };
     reader.readAsText(file);
@@ -1120,7 +1120,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!proxyResp.ok) throw new Error('Proxy HTTP Error ' + proxyResp.status);
         text = await proxyResp.text();
       }
-      parseM3UContent(text, "Imported");
+      parseM3UContent(text, "Imported", true);
       urlModal.style.display = 'none';
       urlInput.value = '';
     } catch (e) {
