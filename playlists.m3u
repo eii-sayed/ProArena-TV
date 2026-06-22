@@ -1,5 +1,8 @@
 #EXTM3U
 
+#EXTINF:-1  tvg-logo="https://imglink.cc/cdn/RY7jBwPKAr.jpg" group-title="FIFA WC 2026", World Cup S1
+https://live05.msdht.app/live/24561735.m3u8
+
 #EXTINF:-1 tvg-id="Caze TV BR" tvg-name="Caze TV BR" tvg-logo="https://assets.football-logos.cc/logos/tournaments/1500x1500/fifa-world-cup-2026--white.10e0b37b.png" group-title="FIFA",Caze TV BR
 https://dfr80qz435crc.cloudfront.net/MNOP/Amagi/Caze/Caze_TV_BR/Caze_TV.m3u8
 
@@ -101,9 +104,6 @@ https://tv.beyondtaxconsultants.com/api/robi/lps/http://116.204.149.16/somoytv/t
 
 #EXTINF:-1  tvg-logo="https://imglink.cc/cdn/RY7jBwPKAr.jpg" group-title="Sports", Toffee Live
 https://prod-cdn01-live.toffeelive.com/live/FIFA-2026-4/0/master_2000.m3u8?hdntl=Expires=1781889962~_GO=Generated~URLPrefix=aHR0cHM6Ly9wcm9kLWNkbjAxLWxpdmUudG9mZmVlbGl2ZS5jb20~Signature=AduQTZ__yhQoYQ9quTfH5m5S8aVHfNHn65noStJ3WkyY-eBA7y2smXsQ1P_0pKKB1Jc2CsEoHWlzkjB9zSNYr6xh7NsG
-
-#EXTINF:-1  tvg-logo="https://imglink.cc/cdn/RY7jBwPKAr.jpg" group-title="FIFA WC 2026", World Cup S1
-https://live05.msdht.app/live/24561735.m3u8
 
 #EXTINF:-1  tvg-logo="https://imglink.cc/cdn/RY7jBwPKAr.jpg" group-title="FIFA WC 2026", World Cup S2
 https://andro.226503.xyz/checklist/androstreamlivebs1.m3u8
@@ -431,3 +431,4 @@ http://starhub.pro/live/Anthony2/Anthony123/113069.ts
 
 #EXTINF:-1 tvg-id="PTV4K" tvg-name="PTV 4K" tvg-logo="https://assets.football-logos.cc/logos/tournaments/1500x1500/fifa-world-cup-2026--white.10e0b37b.png" group-title="FIFA",PTV 4K
 http://starhub.pro/live/Anthony2/Anthony123/61674.ts
+
